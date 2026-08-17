@@ -10,9 +10,11 @@ class RootResponse(BaseModel):
     name: str
     status: str
     description: str
+    url: str
     docs: str
     health: str
     stats: str
+    search: str
 
 
 class HealthResponse(BaseModel):

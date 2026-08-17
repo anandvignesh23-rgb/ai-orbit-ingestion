@@ -25,9 +25,11 @@ def test_api_health_and_stats_load_generated_dataset_without_running_ingestion(t
         "name": "AI Orbit Data Ingestion Pipeline",
         "status": "online",
         "description": "API serving normalized AI ecosystem entities and relationships.",
-        "docs": "/docs",
-        "health": "/health",
-        "stats": "/stats",
+        "url": "http://testserver",
+        "docs": "http://testserver/docs",
+        "health": "http://testserver/health",
+        "stats": "http://testserver/stats",
+        "search": "http://testserver/search?q=agent",
     }
     assert health.status_code == 200
     assert health.json() == {

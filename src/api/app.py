@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
 
 from src.api.schemas import (
     EntityRelationshipsResponse,
@@ -28,14 +28,17 @@ def create_app(data_dir: str | Path = "data") -> FastAPI:
     app.state.dataset_service = dataset_service
 
     @app.get("/", response_model=RootResponse)
-    def root() -> RootResponse:
+    def root(request: Request) -> RootResponse:
+        base_url = str(request.base_url).rstrip("/")
         return RootResponse(
             name="AI Orbit Data Ingestion Pipeline",
             status="online",
             description="API serving normalized AI ecosystem entities and relationships.",
-            docs="/docs",
-            health="/health",
-            stats="/stats",
+            url=base_url,
+            docs=f"{base_url}/docs",
+            health=f"{base_url}/health",
+            stats=f"{base_url}/stats",
+            search=f"{base_url}/search?q=agent",
         )
 
     @app.get("/health", response_model=HealthResponse)
