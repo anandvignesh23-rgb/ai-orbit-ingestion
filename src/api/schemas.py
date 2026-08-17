@@ -6,6 +6,15 @@ from src.models import Entity, Relationship
 from src.query import RelationshipView
 
 
+class RootResponse(BaseModel):
+    name: str
+    status: str
+    description: str
+    docs: str
+    health: str
+    stats: str
+
+
 class HealthResponse(BaseModel):
     status: str
     entities_loaded: int = Field(ge=0)
@@ -60,3 +69,9 @@ def relationship_view_response(view: RelationshipView) -> RelationshipViewRespon
         direction=view.direction,
         related_entity=view.related_entity,
     )
+
+
+class EntityRelationshipsResponse(BaseModel):
+    entity_id: str
+    outgoing: list[RelationshipViewResponse] = Field(default_factory=list)
+    incoming: list[RelationshipViewResponse] = Field(default_factory=list)

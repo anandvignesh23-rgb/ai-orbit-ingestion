@@ -11,6 +11,7 @@ from src.validation import ValidationReport
 class DatasetService:
     def __init__(self, data_dir: str | Path = "data") -> None:
         self.data_dir = Path(data_dir)
+        self._validate_required_files()
         self.index = load_dataset(self.data_dir)
         self.validation_report = self._load_validation_report()
 
@@ -110,6 +111,19 @@ class DatasetService:
 
     def _load_validation_report(self) -> ValidationReport | None:
         path = self.data_dir / "validation_report.json"
-        if not path.exists():
-            return None
         return ValidationReport.model_validate(json.loads(path.read_text(encoding="utf-8")))
+
+    def _validate_required_files(self) -> None:
+        missing = [
+            file_name
+            for file_name in [
+                "entities.json",
+                "relationships.json",
+                "validation_report.json",
+            ]
+            if not (self.data_dir / file_name).exists()
+        ]
+        if missing:
+            raise FileNotFoundError(
+                f"API dataset is incomplete in {self.data_dir}; missing: {', '.join(missing)}"
+            )

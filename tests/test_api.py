@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import pytest
 from fastapi.testclient import TestClient
 
 from src.api import create_app
@@ -15,9 +16,19 @@ def make_client(tmp_path) -> TestClient:
 def test_api_health_and_stats_load_generated_dataset_without_running_ingestion(tmp_path) -> None:
     client = make_client(tmp_path)
 
+    root = client.get("/")
     health = client.get("/health")
     stats = client.get("/stats")
 
+    assert root.status_code == 200
+    assert root.json() == {
+        "name": "AI Orbit Data Ingestion Pipeline",
+        "status": "online",
+        "description": "API serving normalized AI ecosystem entities and relationships.",
+        "docs": "/docs",
+        "health": "/health",
+        "stats": "/stats",
+    }
     assert health.status_code == 200
     assert health.json() == {
         "status": "ok",
@@ -35,15 +46,18 @@ def test_api_health_and_stats_load_generated_dataset_without_running_ingestion(t
 def test_api_lists_and_fetches_entities(tmp_path) -> None:
     client = make_client(tmp_path)
 
-    entities = client.get("/entities", params={"type": "tool", "limit": 5}).json()
+    response = client.get("/entities", params={"type": "tool", "limit": 5, "offset": 0})
+    entities = response.json()
     entity_id = entities[0]["id"]
     entity = client.get(f"/entities/{entity_id}")
 
+    assert response.status_code == 200
     assert len(entities) == 5
     assert all(item["entity_type"] == "tool" for item in entities)
     assert entity.status_code == 200
     assert entity.json()["id"] == entity_id
     assert client.get("/entities/not-found").status_code == 404
+    assert client.get("/entities", params={"limit": 101}).status_code == 422
 
 
 def test_api_search_uses_dataset_search_helpers(tmp_path) -> None:
@@ -64,20 +78,27 @@ def test_api_search_uses_dataset_search_helpers(tmp_path) -> None:
 def test_api_relationship_endpoints_expose_canonical_and_entity_views(tmp_path) -> None:
     client = make_client(tmp_path)
 
-    relationships = client.get("/relationships", params={"type": "develops", "limit": 1}).json()
+    relationships = client.get("/relationships", params={"relationship_type": "develops", "limit": 1}).json()
     relationship = relationships[0]
     source_views = client.get(f"/entities/{relationship['source_id']}/relationships").json()
     target_views = client.get(
         f"/entities/{relationship['target_id']}/relationships",
-        params={"type": "developed_by"},
+        params={"relationship_type": "developed_by"},
     ).json()
 
     assert len(relationships) == 1
     assert relationship["relationship_type"] == "develops"
-    assert any(view["direction"] == "outgoing" for view in source_views)
+    assert source_views["entity_id"] == relationship["source_id"]
+    assert any(view["direction"] == "outgoing" for view in source_views["outgoing"])
     assert any(
         view["direction"] == "incoming"
         and view["effective_relationship_type"] == "developed_by"
-        for view in target_views
+        for view in target_views["incoming"]
     )
     assert client.get("/entities/not-found/relationships").status_code == 404
+    assert client.get("/relationships", params={"limit": 101}).status_code == 422
+
+
+def test_api_startup_fails_when_required_dataset_files_are_missing(tmp_path) -> None:
+    with pytest.raises(FileNotFoundError, match="validation_report.json"):
+        create_app(data_dir=tmp_path)

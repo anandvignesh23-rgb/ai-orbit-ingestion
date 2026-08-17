@@ -1,14 +1,15 @@
 from __future__ import annotations
 
-from functools import lru_cache
 from pathlib import Path
 
-from fastapi import Depends, FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query
 
 from src.api.schemas import (
+    EntityRelationshipsResponse,
     EntitySearchResult,
     HealthResponse,
     RelationshipViewResponse,
+    RootResponse,
     StatsResponse,
     relationship_view_response,
     search_result_from_match,
@@ -18,37 +19,45 @@ from src.models import Entity, Relationship
 
 
 def create_app(data_dir: str | Path = "data") -> FastAPI:
-    @lru_cache(maxsize=1)
-    def get_service() -> DatasetService:
-        return DatasetService(data_dir=data_dir)
-
+    dataset_service = DatasetService(data_dir=data_dir)
     app = FastAPI(
-        title="AI Orbit Dataset API",
-        description="Thin demo API over pre-generated AI Orbit canonical dataset files.",
+        title="AI Orbit Data API",
+        description="Public demonstration API for the AI Orbit ingestion pipeline.",
         version="1.0.0",
     )
+    app.state.dataset_service = dataset_service
+
+    @app.get("/", response_model=RootResponse)
+    def root() -> RootResponse:
+        return RootResponse(
+            name="AI Orbit Data Ingestion Pipeline",
+            status="online",
+            description="API serving normalized AI ecosystem entities and relationships.",
+            docs="/docs",
+            health="/health",
+            stats="/stats",
+        )
 
     @app.get("/health", response_model=HealthResponse)
-    def health(service: DatasetService = Depends(get_service)) -> HealthResponse:
+    def health() -> HealthResponse:
         return HealthResponse(
             status="ok",
-            entities_loaded=service.entities_loaded,
-            relationships_loaded=service.relationships_loaded,
+            entities_loaded=dataset_service.entities_loaded,
+            relationships_loaded=dataset_service.relationships_loaded,
         )
 
     @app.get("/stats", response_model=StatsResponse)
-    def stats(service: DatasetService = Depends(get_service)) -> StatsResponse:
-        return StatsResponse.model_validate(service.stats())
+    def stats() -> StatsResponse:
+        return StatsResponse.model_validate(dataset_service.stats())
 
     @app.get("/entities", response_model=list[Entity])
     def entities(
         type: str | None = Query(default=None),
         category: str | None = Query(default=None),
         offset: int = Query(default=0, ge=0),
-        limit: int = Query(default=50, ge=1, le=500),
-        service: DatasetService = Depends(get_service),
+        limit: int = Query(default=50, ge=1, le=100),
     ) -> list[Entity]:
-        return service.list_entities(
+        return dataset_service.list_entities(
             entity_type=type,
             category=category,
             offset=offset,
@@ -56,39 +65,45 @@ def create_app(data_dir: str | Path = "data") -> FastAPI:
         )
 
     @app.get("/entities/{entity_id}", response_model=Entity)
-    def entity(entity_id: str, service: DatasetService = Depends(get_service)) -> Entity:
-        found = service.get_entity(entity_id)
+    def entity(entity_id: str) -> Entity:
+        found = dataset_service.get_entity(entity_id)
         if found is None:
             raise HTTPException(status_code=404, detail="entity not found")
         return found
 
     @app.get("/relationships", response_model=list[Relationship])
     def relationships(
-        type: str | None = Query(default=None),
+        relationship_type: str | None = Query(default=None),
         source_id: str | None = Query(default=None),
         target_id: str | None = Query(default=None),
         offset: int = Query(default=0, ge=0),
-        limit: int = Query(default=100, ge=1, le=500),
-        service: DatasetService = Depends(get_service),
+        limit: int = Query(default=100, ge=1, le=100),
     ) -> list[Relationship]:
-        return service.list_relationships(
-            relationship_type=type,
+        return dataset_service.list_relationships(
+            relationship_type=relationship_type,
             source_id=source_id,
             target_id=target_id,
             offset=offset,
             limit=limit,
         )
 
-    @app.get("/entities/{entity_id}/relationships", response_model=list[RelationshipViewResponse])
+    @app.get("/entities/{entity_id}/relationships", response_model=EntityRelationshipsResponse)
     def entity_relationships(
         entity_id: str,
-        type: str | None = Query(default=None),
-        service: DatasetService = Depends(get_service),
-    ) -> list[RelationshipViewResponse]:
-        views = service.relationship_views_for_entity(entity_id, relationship_type=type)
+        relationship_type: str | None = Query(default=None),
+    ) -> EntityRelationshipsResponse:
+        views = dataset_service.relationship_views_for_entity(
+            entity_id,
+            relationship_type=relationship_type,
+        )
         if views is None:
             raise HTTPException(status_code=404, detail="entity not found")
-        return [relationship_view_response(view) for view in views]
+        responses = [relationship_view_response(view) for view in views]
+        return EntityRelationshipsResponse(
+            entity_id=entity_id,
+            outgoing=[view for view in responses if view.direction == "outgoing"],
+            incoming=[view for view in responses if view.direction == "incoming"],
+        )
 
     @app.get("/search", response_model=list[EntitySearchResult])
     def search(
@@ -96,9 +111,8 @@ def create_app(data_dir: str | Path = "data") -> FastAPI:
         type: str | None = Query(default=None),
         category: str | None = Query(default=None),
         limit: int = Query(default=10, ge=1, le=100),
-        service: DatasetService = Depends(get_service),
     ) -> list[EntitySearchResult]:
-        matches = service.index.search_entities(
+        matches = dataset_service.index.search_entities(
             q,
             entity_type=type,
             category=category,
