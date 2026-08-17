@@ -11,3 +11,4 @@ data/processed/*.json
 data/schema/
 data/graph_csv/
 releases/
+.vercel
