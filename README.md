@@ -397,6 +397,46 @@ GET /entities/{entity_id}/relationships
 GET /search?q=...
 ```
 
+## Live Deployment
+
+Live API:
+https://ai-orbit-ingestion.vercel.app
+
+Swagger Docs:
+https://ai-orbit-ingestion.vercel.app/docs
+
+Health:
+https://ai-orbit-ingestion.vercel.app/health
+
+Stats:
+https://ai-orbit-ingestion.vercel.app/stats
+
+Deployment architecture:
+
+```text
+External APIs
+-> offline ingestion
+-> canonical JSON
+-> FastAPI
+-> public API
+```
+
+The deployed service reads committed canonical JSON artifacts from `data/`.
+Public API requests do not execute the ingestion pipeline and do not call
+GitHub, Hugging Face, YouTube, or RSS sources.
+
+Local API command:
+
+```bash
+uvicorn src.api.app:app --reload
+```
+
+Production command for Python web hosts:
+
+```bash
+uvicorn src.api.app:app --host 0.0.0.0 --port $PORT
+```
+
 ## Setup
 
 Python 3.11+ is recommended.
