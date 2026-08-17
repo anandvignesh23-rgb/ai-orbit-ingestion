@@ -1,0 +1,20 @@
+[
+  {
+    "name": "GitHub MCP Server",
+    "entity_type": "mcp",
+    "url": "https://github.com/github/github-mcp-server",
+    "description": "GitHub-maintained MCP server for GitHub integrations.",
+    "categories": ["developer-tools", "open-source"],
+    "sources": [{"name": "GitHub repository", "url": "https://github.com/github/github-mcp-server", "source_type": "github", "is_official": true}],
+    "metadata": {"provider": "GitHub", "supported_tools": ["ChatGPT", "Claude"]}
+  },
+  {
+    "name": "Fetch MCP Server",
+    "entity_type": "mcp",
+    "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+    "description": "Reference MCP server for fetching web content.",
+    "categories": ["developer-tools", "open-source"],
+    "sources": [{"name": "GitHub repository", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch", "source_type": "github", "is_official": true}],
+    "metadata": {"provider": "Model Context Protocol", "supported_tools": ["ChatGPT"]}
+  }
+]

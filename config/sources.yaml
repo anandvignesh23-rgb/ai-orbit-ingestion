@@ -1,0 +1,18 @@
+github:
+  enabled: false
+  queries: []
+
+huggingface:
+  enabled: false
+  queries: []
+
+rss:
+  enabled: false
+  feeds: []
+
+youtube:
+  enabled: false
+
+curated:
+  enabled: true
+  seed_dir: config/seeds

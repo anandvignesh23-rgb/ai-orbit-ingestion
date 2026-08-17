@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Open Models Collection",
+    "description": "Hugging Face model hub collection entry point.",
+    "url": "https://huggingface.co/models",
+    "categories": ["open-source", "research"],
+    "metadata": {"curated": true},
+    "sources": [{"name": "Hugging Face models", "url": "https://huggingface.co/models"}]
+  },
+  {
+    "name": "MCP Servers Collection",
+    "description": "Model Context Protocol server repository collection.",
+    "url": "https://github.com/modelcontextprotocol/servers",
+    "categories": ["developer-tools", "open-source"],
+    "metadata": {"curated": true},
+    "sources": [{"name": "Official repository", "url": "https://github.com/modelcontextprotocol/servers"}]
+  },
+  {
+    "name": "AI Agents Collection",
+    "description": "Representative open-source collection of AI agent resources.",
+    "url": "https://github.com/e2b-dev/awesome-ai-agents",
+    "categories": ["agents", "developer-tools"],
+    "metadata": {"curated": true},
+    "sources": [{"name": "GitHub collection", "url": "https://github.com/e2b-dev/awesome-ai-agents"}]
+  },
+  {
+    "name": "Computer Vision Tasks Collection",
+    "description": "Computer vision task listings and benchmarks.",
+    "url": "https://paperswithcode.com/area/computer-vision",
+    "categories": ["computer-vision", "research"],
+    "metadata": {"curated": true},
+    "sources": [{"name": "Papers with Code area", "url": "https://paperswithcode.com/area/computer-vision"}]
+  }
+]

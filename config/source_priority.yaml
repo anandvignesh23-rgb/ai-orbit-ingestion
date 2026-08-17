@@ -1,0 +1,11 @@
+source_priority:
+  official_site: 100
+  official: 100
+  github: 90
+  huggingface: 90
+  trusted_rss: 80
+  rss: 80
+  youtube: 75
+  curated: 85
+  directory: 60
+  unknown: 50

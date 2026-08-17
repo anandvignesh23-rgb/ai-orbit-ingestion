@@ -1,0 +1,20 @@
+[
+  {
+    "name": "DALL-E 3",
+    "entity_type": "creative",
+    "url": "https://openai.com/dall-e-3",
+    "description": "Image generation model from OpenAI.",
+    "categories": ["image-generation"],
+    "sources": [{"name": "Official product page", "url": "https://openai.com/dall-e-3", "source_type": "official_site", "is_official": true}],
+    "metadata": {"provider": "OpenAI"}
+  },
+  {
+    "name": "Sora",
+    "entity_type": "creative",
+    "url": "https://openai.com/sora",
+    "description": "Video generation product from OpenAI.",
+    "categories": ["video-generation"],
+    "sources": [{"name": "Official product page", "url": "https://openai.com/sora", "source_type": "official_site", "is_official": true}],
+    "metadata": {"provider": "OpenAI"}
+  }
+]

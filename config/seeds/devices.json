@@ -1,0 +1,34 @@
+[
+  {
+    "name": "NVIDIA Jetson Orin",
+    "description": "Edge AI computing module family.",
+    "url": "https://developer.nvidia.com/embedded/jetson-agx-orin",
+    "categories": ["hardware"],
+    "metadata": {"provider": "NVIDIA", "runs_models": ["Llama 3.1 8B"]},
+    "sources": [{"name": "Official product page", "url": "https://developer.nvidia.com/embedded/jetson-agx-orin"}]
+  },
+  {
+    "name": "NVIDIA DGX H100",
+    "description": "NVIDIA AI training and inference system.",
+    "url": "https://nvidia.com/en-us/data-center/dgx-h100",
+    "categories": ["hardware"],
+    "metadata": {"provider": "NVIDIA", "runs_models": ["Llama 3.1 70B"]},
+    "sources": [{"name": "Official product page", "url": "https://nvidia.com/en-us/data-center/dgx-h100"}]
+  },
+  {
+    "name": "Apple Vision Pro",
+    "description": "Apple spatial computing device with AI-capable hardware and software.",
+    "url": "https://apple.com/apple-vision-pro",
+    "categories": ["hardware", "multimodal"],
+    "metadata": {"provider": "Apple", "runs_models": ["Gemma 2"]},
+    "sources": [{"name": "Official product page", "url": "https://apple.com/apple-vision-pro"}]
+  },
+  {
+    "name": "AWS Trainium",
+    "description": "AWS machine learning accelerator for model training.",
+    "url": "https://aws.amazon.com/machine-learning/trainium",
+    "categories": ["hardware"],
+    "metadata": {"provider": "Amazon", "runs_models": ["Llama 3.1 70B"]},
+    "sources": [{"name": "Official product page", "url": "https://aws.amazon.com/machine-learning/trainium"}]
+  }
+]

@@ -1,0 +1,45 @@
+categories:
+  - agents
+  - rag
+  - coding
+  - code-generation
+  - image-generation
+  - video-generation
+  - audio
+  - speech
+  - computer-vision
+  - developer-tools
+  - productivity
+  - research
+  - education
+  - robotics
+  - hardware
+  - multimodal
+  - open-source
+  - search
+  - data-analysis
+  - automation
+
+aliases:
+  agent: agents
+  ai-agents: agents
+  code: code-generation
+  code-assistant: code-generation
+  programming-assistant: code-generation
+  developer: developer-tools
+  devtools: developer-tools
+  image: image-generation
+  images: image-generation
+  vision: computer-vision
+  cv: computer-vision
+  voice: speech
+  audio-generation: audio
+  robot: robotics
+  robots: robotics
+  devices: hardware
+  device: hardware
+  models: research
+  oss: open-source
+  retrieval-augmented-generation: rag
+  workflow-automation: automation
+  data: data-analysis

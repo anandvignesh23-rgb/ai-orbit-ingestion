@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Figure 02",
+    "description": "Humanoid robot from Figure AI.",
+    "url": "https://figure.ai",
+    "categories": ["robotics"],
+    "metadata": {"provider": "Figure AI"},
+    "sources": [{"name": "Official site", "url": "https://figure.ai"}]
+  },
+  {
+    "name": "Tesla Optimus",
+    "description": "Humanoid robot program from Tesla.",
+    "url": "https://tesla.com/AI",
+    "categories": ["robotics"],
+    "metadata": {"provider": "Tesla"},
+    "sources": [{"name": "Official AI page", "url": "https://tesla.com/AI"}]
+  },
+  {
+    "name": "Boston Dynamics Atlas",
+    "description": "Atlas humanoid robot from Boston Dynamics.",
+    "url": "https://bostondynamics.com/atlas",
+    "categories": ["robotics"],
+    "metadata": {"provider": "Boston Dynamics"},
+    "sources": [{"name": "Official product page", "url": "https://bostondynamics.com/atlas"}]
+  },
+  {
+    "name": "Agility Digit",
+    "description": "Bipedal robot from Agility Robotics.",
+    "url": "https://agilityrobotics.com",
+    "categories": ["robotics"],
+    "metadata": {"provider": "Agility Robotics"},
+    "sources": [{"name": "Official site", "url": "https://agilityrobotics.com"}]
+  }
+]

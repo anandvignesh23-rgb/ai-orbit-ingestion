@@ -1,0 +1,72 @@
+[
+  {
+    "name": "ChatGPT",
+    "description": "AI assistant for writing, coding, analysis, and multimodal tasks.",
+    "url": "https://chatgpt.com",
+    "categories": ["productivity", "code-generation", "multimodal"],
+    "metadata": {
+      "provider": "OpenAI",
+      "tasks": ["Question Answering", "Writing Assistance", "Code Generation"]
+    },
+    "sources": [{"name": "Official product", "url": "https://chatgpt.com"}]
+  },
+  {
+    "name": "Claude",
+    "description": "AI assistant from Anthropic.",
+    "url": "https://claude.ai",
+    "categories": ["productivity", "code-generation"],
+    "metadata": {
+      "provider": "Anthropic",
+      "tasks": ["Question Answering", "Writing Assistance", "Code Generation"]
+    },
+    "sources": [{"name": "Official product", "url": "https://claude.ai"}]
+  },
+  {
+    "name": "Hugging Face Inference Endpoints",
+    "description": "Managed inference service for AI models.",
+    "url": "https://huggingface.co/inference-endpoints",
+    "categories": ["developer-tools", "open-source"],
+    "metadata": {
+      "provider": "Hugging Face",
+      "tasks": ["Workflow Automation"]
+    },
+    "sources": [{"name": "Official product", "url": "https://huggingface.co/inference-endpoints"}]
+  },
+  {
+    "name": "NVIDIA NIM",
+    "description": "NVIDIA inference microservices for AI model deployment.",
+    "url": "https://nvidia.com/en-us/ai",
+    "categories": ["developer-tools", "hardware"],
+    "metadata": {
+      "provider": "NVIDIA",
+      "tasks": ["Workflow Automation"]
+    },
+    "sources": [{"name": "Official AI page", "url": "https://nvidia.com/en-us/ai"}]
+  },
+  {
+    "name": "Runway",
+    "type": "creative",
+    "description": "Creative AI platform for video and image generation.",
+    "url": "https://runwayml.com",
+    "categories": ["video-generation", "image-generation"],
+    "metadata": {
+      "provider": "Runway",
+      "tasks": ["Video Generation", "Image Generation"]
+    },
+    "sources": [{"name": "Official site", "url": "https://runwayml.com"}]
+  },
+  {
+    "name": "GitHub MCP Server",
+    "entity_type": "mcp",
+    "description": "MCP server for GitHub workflows.",
+    "url": "https://github.com/github/github-mcp-server",
+    "categories": ["developer-tools", "open-source"],
+    "metadata": {
+      "installation_method": "repository",
+      "runtime_requirements": ["docker"],
+      "repository_url": "https://github.com/github/github-mcp-server",
+      "supported_tools": ["GitHub Copilot"]
+    },
+    "sources": [{"name": "Official repository", "url": "https://github.com/github/github-mcp-server"}]
+  }
+]

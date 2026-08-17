@@ -1,0 +1,54 @@
+[
+  {
+    "name": "OpenAI",
+    "description": "AI research and product company.",
+    "url": "https://openai.com",
+    "categories": ["research", "developer-tools"],
+    "metadata": {
+      "founding_year": 2015,
+      "industry_sector": "AI research and products",
+      "headquarters": "San Francisco, US",
+      "official_domain": "openai.com"
+    },
+    "sources": [{"name": "Official site", "url": "https://openai.com"}]
+  },
+  {
+    "name": "Anthropic",
+    "description": "AI safety and assistant company.",
+    "url": "https://anthropic.com",
+    "categories": ["research", "productivity"],
+    "metadata": {
+      "founding_year": 2021,
+      "industry_sector": "AI safety and assistants",
+      "headquarters": "San Francisco, US",
+      "official_domain": "anthropic.com"
+    },
+    "sources": [{"name": "Official site", "url": "https://anthropic.com"}]
+  },
+  {
+    "name": "Hugging Face",
+    "description": "AI platform and model hub.",
+    "url": "https://huggingface.co",
+    "categories": ["developer-tools", "open-source"],
+    "metadata": {
+      "founding_year": 2016,
+      "industry_sector": "AI platform",
+      "headquarters": "New York, US",
+      "official_domain": "huggingface.co"
+    },
+    "sources": [{"name": "Official site", "url": "https://huggingface.co"}]
+  },
+  {
+    "name": "NVIDIA",
+    "description": "AI computing and hardware company.",
+    "url": "https://nvidia.com",
+    "categories": ["hardware", "developer-tools"],
+    "metadata": {
+      "founding_year": 1993,
+      "industry_sector": "AI hardware and accelerated computing",
+      "headquarters": "Santa Clara, US",
+      "official_domain": "nvidia.com"
+    },
+    "sources": [{"name": "Official site", "url": "https://nvidia.com"}]
+  }
+]

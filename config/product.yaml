@@ -1,0 +1,11 @@
+freshness:
+  recently_added_days: 30
+
+coverage:
+  company: 15
+  tool: 30
+  model: 20
+  repository: 20
+  mcp: 10
+  task: 15
+  news: 10

@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Question Answering",
+    "description": "Answering natural-language questions from model knowledge or context.",
+    "url": "https://paperswithcode.com/task/question-answering",
+    "categories": ["research"],
+    "metadata": {"taxonomy": "Papers with Code task"},
+    "sources": [{"name": "Papers with Code task", "url": "https://paperswithcode.com/task/question-answering"}]
+  },
+  {
+    "name": "Summarization",
+    "description": "Producing concise summaries from longer text.",
+    "url": "https://paperswithcode.com/task/text-summarization",
+    "categories": ["research", "productivity"],
+    "metadata": {"taxonomy": "Papers with Code task"},
+    "sources": [{"name": "Papers with Code task", "url": "https://paperswithcode.com/task/text-summarization"}]
+  },
+  {
+    "name": "Code Generation",
+    "description": "Generating source code from natural-language or structured prompts.",
+    "url": "https://paperswithcode.com/task/code-generation",
+    "categories": ["code-generation", "developer-tools"],
+    "metadata": {"taxonomy": "Papers with Code task"},
+    "sources": [{"name": "Papers with Code task", "url": "https://paperswithcode.com/task/code-generation"}]
+  },
+  {
+    "name": "Object Detection",
+    "description": "Locating and classifying objects in images.",
+    "url": "https://paperswithcode.com/task/object-detection",
+    "categories": ["computer-vision"],
+    "metadata": {"taxonomy": "Papers with Code task"},
+    "sources": [{"name": "Papers with Code task", "url": "https://paperswithcode.com/task/object-detection"}]
+  }
+]

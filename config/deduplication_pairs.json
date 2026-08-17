@@ -1,0 +1,28 @@
+[
+  {"label": "duplicate", "left": {"entity_type": "company", "name": "OpenAI"}, "right": {"entity_type": "company", "name": "Open AI"}},
+  {"label": "duplicate", "left": {"entity_type": "company", "name": "OpenAI"}, "right": {"entity_type": "company", "name": "OpenAI Inc."}},
+  {"label": "duplicate", "left": {"entity_type": "company", "name": "Hugging Face"}, "right": {"entity_type": "company", "name": "HuggingFace"}},
+  {"label": "duplicate", "left": {"entity_type": "company", "name": "Anthropic", "url": "https://anthropic.com"}, "right": {"entity_type": "company", "name": "Anthropic PBC", "url": "https://www.anthropic.com/"}},
+  {"label": "duplicate", "left": {"entity_type": "tool", "name": "ChatGPT", "url": "https://chatgpt.com"}, "right": {"entity_type": "tool", "name": "Chat GPT", "url": "https://www.chatgpt.com/"}},
+  {"label": "duplicate", "left": {"entity_type": "tool", "name": "Cursor", "categories": ["developer-tools"], "metadata": {"provider": "Anysphere"}}, "right": {"entity_type": "tool", "name": "Cursor", "categories": ["developer-tools", "code-generation"], "metadata": {"provider": "Anysphere"}}},
+  {"label": "duplicate", "left": {"entity_type": "model", "name": "Llama 3", "metadata": {"provider": "Meta", "license": "llama-license"}}, "right": {"entity_type": "model", "name": "Llama-3", "metadata": {"provider": "Meta", "license": "llama-license"}}},
+  {"label": "duplicate", "left": {"entity_type": "repository", "name": "langchain", "url": "https://github.com/langchain-ai/langchain", "metadata": {"owner": "langchain-ai", "primary_language": "Python"}}, "right": {"entity_type": "repository", "name": "LangChain", "url": "http://www.github.com/langchain-ai/langchain/", "metadata": {"owner": "langchain-ai", "primary_language": "Python"}}},
+  {"label": "duplicate", "left": {"entity_type": "device", "name": "NVIDIA Jetson Orin", "url": "https://nvidia.com/jetson"}, "right": {"entity_type": "device", "name": "Nvidia Jetson Orin", "url": "https://www.nvidia.com/jetson/"}},
+  {"label": "duplicate", "left": {"entity_type": "robot", "name": "Figure 02", "url": "https://figure.ai"}, "right": {"entity_type": "robot", "name": "Figure-02", "url": "https://www.figure.ai/"}},
+  {"label": "duplicate", "left": {"entity_type": "mcp", "name": "GitHub MCP Server", "url": "https://github.com/github/github-mcp-server"}, "right": {"entity_type": "mcp", "name": "Github MCP Server", "url": "https://www.github.com/github/github-mcp-server/"}},
+  {"label": "duplicate", "left": {"entity_type": "creative", "name": "Runway Gen-3", "url": "https://runwayml.com"}, "right": {"entity_type": "creative", "name": "Runway Gen 3", "url": "https://www.runwayml.com/"}},
+
+  {"label": "distinct", "left": {"entity_type": "tool", "name": "Claude"}, "right": {"entity_type": "tool", "name": "Claude Desktop"}},
+  {"label": "distinct", "left": {"entity_type": "company", "name": "LangChain"}, "right": {"entity_type": "repository", "name": "LangChain"}},
+  {"label": "distinct", "left": {"entity_type": "company", "name": "Meta"}, "right": {"entity_type": "company", "name": "Meta AI"}},
+  {"label": "distinct", "left": {"entity_type": "company", "name": "OpenAI"}, "right": {"entity_type": "company", "name": "Anthropic"}},
+  {"label": "distinct", "left": {"entity_type": "repository", "name": "langchain", "url": "https://github.com/langchain-ai/langchain"}, "right": {"entity_type": "repository", "name": "openai-python", "url": "https://github.com/openai/openai-python"}},
+  {"label": "distinct", "left": {"entity_type": "tool", "name": "Claude", "metadata": {"provider": "Anthropic"}}, "right": {"entity_type": "tool", "name": "Claude Code", "metadata": {"provider": "Anthropic"}}},
+  {"label": "distinct", "left": {"entity_type": "model", "name": "GPT-4o", "metadata": {"provider": "OpenAI"}}, "right": {"entity_type": "model", "name": "GPT-4.1", "metadata": {"provider": "OpenAI"}}},
+  {"label": "distinct", "left": {"entity_type": "company", "name": "Mistral AI", "metadata": {"official_domain": "mistral.ai"}}, "right": {"entity_type": "company", "name": "Meta AI", "metadata": {"official_domain": "ai.meta.com"}}},
+  {"label": "distinct", "left": {"entity_type": "tool", "name": "Gemini", "url": "https://gemini.google.com"}, "right": {"entity_type": "tool", "name": "Gemini CLI", "url": "https://github.com/google-gemini/gemini-cli"}},
+  {"label": "distinct", "left": {"entity_type": "device", "name": "Rabbit R1", "url": "https://rabbit.tech"}, "right": {"entity_type": "device", "name": "Humane AI Pin", "url": "https://hu.ma.ne"}},
+  {"label": "distinct", "left": {"entity_type": "collection", "name": "AI Agents"}, "right": {"entity_type": "collection", "name": "AI Hardware"}},
+  {"label": "distinct", "left": {"entity_type": "personal", "name": "Pi"}, "right": {"entity_type": "personal", "name": "Perplexity"}},
+  {"label": "distinct", "left": {"entity_type": "news", "name": "OpenAI releases model"}, "right": {"entity_type": "news", "name": "Anthropic releases model"}}
+]

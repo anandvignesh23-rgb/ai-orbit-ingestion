@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-17T12:40:13.145505+00:00",
+  "run_mode": "deterministic",
+  "success": true,
+  "summary": {
+    "raw_records": 283,
+    "canonical_entities": 283,
+    "relationships": 171,
+    "duplicates_merged": 0,
+    "possible_duplicates": 27,
+    "critical_errors": 0
+  },
+  "entity_counts": {
+    "task": 25,
+    "company": 25,
+    "tool": 45,
+    "model": 35,
+    "repository": 35,
+    "device": 12,
+    "robot": 12,
+    "personal": 12,
+    "creative": 15,
+    "collection": 12,
+    "mcp": 20,
+    "news": 20,
+    "video": 15
+  },
+  "source_counts": {
+    "AI Orbit curated task taxonomy": 25,
+    "Official source": 223,
+    "AI Orbit curated news": 20,
+    "AI Orbit curated video index": 15
+  },
+  "source_runs": [],
+  "files": [
+    "entities.json",
+    "relationships.json",
+    "product_catalog.json",
+    "relationship_views.json",
+    "validation_report.json",
+    "manifest.json"
+  ]
+}

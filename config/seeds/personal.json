@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Pi",
+    "entity_type": "personal",
+    "url": "https://pi.ai",
+    "description": "Personal AI assistant from Inflection.",
+    "categories": ["productivity"],
+    "sources": [{"name": "Official website", "url": "https://pi.ai", "source_type": "official_site", "is_official": true}],
+    "metadata": {"provider": "Inflection"}
+  },
+  {
+    "name": "Poe",
+    "entity_type": "personal",
+    "url": "https://poe.com",
+    "description": "Consumer AI chat product from Quora.",
+    "categories": ["productivity"],
+    "sources": [{"name": "Official website", "url": "https://poe.com", "source_type": "official_site", "is_official": true}],
+    "metadata": {"provider": "Quora"}
+  }
+]

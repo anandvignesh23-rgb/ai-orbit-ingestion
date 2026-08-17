@@ -1,0 +1,3201 @@
+[
+  {
+    "id": "001f2e80-5998-591a-b253-244ce54c4ce8",
+    "source_id": "1385567d-f19a-5222-a556-2082bd2b2a5a",
+    "relationship_type": "integrates_with",
+    "target_id": "18b4c86a-ad16-58c0-8c9c-43b603e2a616",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://linear.app/",
+        "note": "Supported tools metadata links Linear MCP Server to Cursor"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cursor.com/",
+        "note": "Supported tools metadata links Linear MCP Server to Cursor"
+      }
+    ]
+  },
+  {
+    "id": "01ef5d11-5615-5e9f-8421-e868928b812b",
+    "source_id": "738ca153-8992-5711-8a3a-59b4a493e57e",
+    "relationship_type": "develops",
+    "target_id": "a84f288d-f110-58fd-a818-a24bbc97bc46",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://deepmind.google/",
+        "note": "Provider metadata links Google DeepMind to Gemini 2.0 Flash"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://deepmind.google/models/gemini/flash",
+        "note": "Provider metadata links Google DeepMind to Gemini 2.0 Flash"
+      }
+    ]
+  },
+  {
+    "id": "0281e610-1a41-541c-bf62-90d88ea3ec1d",
+    "source_id": "71b13c0f-e996-57ee-9a88-534307c78b3e",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+        "note": "Supported tools metadata links Postgres MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Postgres MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "02904f7f-0320-5453-85d2-b8d58aa08f4f",
+    "source_id": "ef7832ca-9fee-5fb0-9f52-d43f7497a8d3",
+    "relationship_type": "develops",
+    "target_id": "90d969c0-4c7f-5a5c-b513-7a7e494abf46",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://adobe.com/",
+        "note": "Provider metadata links Adobe to Adobe Firefly"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://firefly.adobe.com/",
+        "note": "Provider metadata links Adobe to Adobe Firefly"
+      }
+    ]
+  },
+  {
+    "id": "05dbce78-8001-57e2-aa24-450dab6f60f6",
+    "source_id": "231b5629-c32d-5de0-832c-7c15cd9b53ae",
+    "relationship_type": "runs",
+    "target_id": "2628c441-57c8-57fe-9ea2-73d172989faa",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://apple.com/iphone-16-pro",
+        "note": "Runs models metadata links iPhone 16 Pro to Gemma 2"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/google/gemma-2-2b",
+        "note": "Runs models metadata links iPhone 16 Pro to Gemma 2"
+      }
+    ]
+  },
+  {
+    "id": "069b8fbd-b54c-5698-b610-e4b6cd7c2e42",
+    "source_id": "71158146-0182-5a61-98e4-e42fe16dcfe1",
+    "relationship_type": "solves",
+    "target_id": "b5351a80-f181-557a-bb2c-c2dd8ff1ee7e",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://aws.amazon.com/q",
+        "note": "Tasks metadata links Amazon Q to Data Analysis"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://data-analysis.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Amazon Q to Data Analysis"
+      }
+    ]
+  },
+  {
+    "id": "078ffc9a-18b3-5380-a247-9aaab85aadfa",
+    "source_id": "1a29f7aa-845a-5e3f-b67a-ac54c2e71049",
+    "relationship_type": "develops",
+    "target_id": "652f23e8-edeb-5f59-944b-feb926f8a459",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Provider metadata links OpenAI to GPT-4o"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/index/hello-gpt-4o",
+        "note": "Provider metadata links OpenAI to GPT-4o"
+      }
+    ]
+  },
+  {
+    "id": "0a1f80fc-84f9-5f9f-b34a-bff22667ed85",
+    "source_id": "41fb843a-352f-5c62-8c07-a0ee0087c235",
+    "relationship_type": "solves",
+    "target_id": "b5351a80-f181-557a-bb2c-c2dd8ff1ee7e",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://chatgpt.com/",
+        "note": "Tasks metadata links ChatGPT to Data Analysis"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://data-analysis.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links ChatGPT to Data Analysis"
+      }
+    ]
+  },
+  {
+    "id": "0a714a7c-457f-5997-af74-ea1db8ba3f67",
+    "source_id": "e4de7884-7615-5727-b98a-70c4f4c36008",
+    "relationship_type": "develops",
+    "target_id": "dc2da7a1-3c71-520d-bd08-cb2967a629ac",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://anthropic.com/",
+        "note": "Provider metadata links Anthropic to Claude 3.5 Sonnet"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://anthropic.com/claude/sonnet",
+        "note": "Provider metadata links Anthropic to Claude 3.5 Sonnet"
+      }
+    ]
+  },
+  {
+    "id": "0aab2149-f1f7-5b26-a916-1acbe63872af",
+    "source_id": "6d98930c-3af7-5cfd-a701-ddfa04c28a2d",
+    "relationship_type": "develops",
+    "target_id": "15f91045-deb0-5e5e-b903-77d6dde82f16",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://character.ai/",
+        "note": "Provider metadata links Character.AI to Character.AI"
+      }
+    ]
+  },
+  {
+    "id": "0c7aa508-bdf3-5385-bee4-5f26cb876c1a",
+    "source_id": "897f47d9-0186-5ac4-adf1-3b1fdf2245ce",
+    "relationship_type": "solves",
+    "target_id": "98ab7e18-25ca-5fbe-941f-da8202d58c6a",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://notion.so/product/ai",
+        "note": "Tasks metadata links Notion AI to Writing Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://writing-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Notion AI to Writing Assistance"
+      }
+    ]
+  },
+  {
+    "id": "0e93d8b5-e6db-5778-a792-d1c4d7903c10",
+    "source_id": "5544bd7f-ef87-572d-9800-54526f65649d",
+    "relationship_type": "integrates_with",
+    "target_id": "18b4c86a-ad16-58c0-8c9c-43b603e2a616",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://supabase.com/",
+        "note": "Supported tools metadata links Supabase MCP Server to Cursor"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cursor.com/",
+        "note": "Supported tools metadata links Supabase MCP Server to Cursor"
+      }
+    ]
+  },
+  {
+    "id": "10abc263-358e-52c8-bb44-4054fb03235f",
+    "source_id": "1a29f7aa-845a-5e3f-b67a-ac54c2e71049",
+    "relationship_type": "develops",
+    "target_id": "41fb843a-352f-5c62-8c07-a0ee0087c235",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Provider metadata links OpenAI to ChatGPT"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://chatgpt.com/",
+        "note": "Provider metadata links OpenAI to ChatGPT"
+      }
+    ]
+  },
+  {
+    "id": "1183bebf-76ca-54c5-841e-00e6a7aa5104",
+    "source_id": "524ca68c-4995-5df5-858a-239cb68bcd3c",
+    "relationship_type": "develops",
+    "target_id": "7c0a62f7-78c7-52f3-b345-258967d2da2d",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://nvidia.com/",
+        "note": "Provider metadata links NVIDIA to NVIDIA NIM"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://nvidia.com/en-us/ai",
+        "note": "Provider metadata links NVIDIA to NVIDIA NIM"
+      }
+    ]
+  },
+  {
+    "id": "12a41267-6ba1-53d4-9b66-615c49b99eac",
+    "source_id": "7552bd6d-6329-5d89-9dff-1a8daf8a7135",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/slack",
+        "note": "Supported tools metadata links Slack MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Slack MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "185af5ee-179a-51ee-9f01-e476280b3ea7",
+    "source_id": "0112dded-b090-5db2-80e1-c946b027b0ea",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cloud.google.com/vertex-ai",
+        "note": "Tasks metadata links Google Vertex AI to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Google Vertex AI to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "191ed3aa-2d88-51dd-896c-ca37343df9e1",
+    "source_id": "85c8bd97-4d1c-547a-9ac0-00cafcdc5057",
+    "relationship_type": "develops",
+    "target_id": "dc5b0be9-d34b-508c-be38-cbb102b14d80",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://amazon.com/",
+        "note": "Provider metadata links Amazon to Amazon Bedrock"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://aws.amazon.com/bedrock",
+        "note": "Provider metadata links Amazon to Amazon Bedrock"
+      }
+    ]
+  },
+  {
+    "id": "1994313f-60b4-58ae-a9e5-5c269b50a709",
+    "source_id": "66baf28e-84ee-5d0f-a288-ec2fcb8b5bee",
+    "relationship_type": "runs",
+    "target_id": "ac1e0ebe-f9c9-5eae-a02e-552b0b4b12b4",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://aws.amazon.com/machine-learning/inferentia",
+        "note": "Runs models metadata links AWS Inferentia to Mixtral 8x7B"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "note": "Runs models metadata links AWS Inferentia to Mixtral 8x7B"
+      }
+    ]
+  },
+  {
+    "id": "1e0fe4b2-76f4-56af-989d-156a77bd7a68",
+    "source_id": "1b9da085-3c28-53d7-a3d8-756366ad8178",
+    "relationship_type": "develops",
+    "target_id": "2d9c89ec-12e5-5670-a936-dd3b63a1a06b",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://stability.ai/",
+        "note": "Provider metadata links Stability AI to Stable Diffusion 3"
+      }
+    ]
+  },
+  {
+    "id": "2075c22a-f0ed-5cb0-b316-f7824db7ed68",
+    "source_id": "aa9159f4-5eb8-5251-9d9c-ae1d7a86b29c",
+    "relationship_type": "develops",
+    "target_id": "7e22763e-23ea-509e-bf1a-62f3c45e9ea6",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://perplexity.ai/",
+        "note": "Provider metadata links Perplexity to Perplexity Pages"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://perplexity.ai/pages",
+        "note": "Provider metadata links Perplexity to Perplexity Pages"
+      }
+    ]
+  },
+  {
+    "id": "229edb3a-0f2d-5e72-838e-8ad38a7722b1",
+    "source_id": "738ca153-8992-5711-8a3a-59b4a493e57e",
+    "relationship_type": "develops",
+    "target_id": "2f10b149-fe86-5290-9fa1-fa7b54a59f13",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://deepmind.google/",
+        "note": "Provider metadata links Google DeepMind to Veo"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://deepmind.google/models/veo",
+        "note": "Provider metadata links Google DeepMind to Veo"
+      }
+    ]
+  },
+  {
+    "id": "2431152f-433a-5b72-9277-17e2c85ef38a",
+    "source_id": "0be05732-03dd-54b2-b831-6e3825184824",
+    "relationship_type": "develops",
+    "target_id": "5736cc53-adce-592f-adbe-55ed9f9e7ff1",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/",
+        "note": "Provider metadata links Cohere to Command R+"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/command",
+        "note": "Provider metadata links Cohere to Command R+"
+      }
+    ]
+  },
+  {
+    "id": "2476901a-b4a6-5437-a738-54d87a87057d",
+    "source_id": "e4de7884-7615-5727-b98a-70c4f4c36008",
+    "relationship_type": "develops",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://anthropic.com/",
+        "note": "Provider metadata links Anthropic to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Provider metadata links Anthropic to Claude"
+      }
+    ]
+  },
+  {
+    "id": "254e362e-e641-518b-8e79-7473710f40de",
+    "source_id": "2f10b149-fe86-5290-9fa1-fa7b54a59f13",
+    "relationship_type": "solves",
+    "target_id": "81c355ef-a7bd-540d-aef4-c5089c87908b",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://deepmind.google/models/veo",
+        "note": "Tasks metadata links Veo to Video Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://video-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Veo to Video Generation"
+      }
+    ]
+  },
+  {
+    "id": "26d67883-8bc2-5181-9a95-6080d33685be",
+    "source_id": "136b3a10-dbcf-51a6-982b-cf433c886c4a",
+    "relationship_type": "develops",
+    "target_id": "85acd8e2-e65b-5d78-bf3c-01135d324816",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://mistral.ai/",
+        "note": "Provider metadata links Mistral AI to Mistral Large"
+      }
+    ]
+  },
+  {
+    "id": "2be9bdce-637f-56c4-8c83-ab74124c59a9",
+    "source_id": "c4ef8010-98a4-513b-b371-be4e8660cf94",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://console.anthropic.com/",
+        "note": "Tasks metadata links Anthropic API to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Anthropic API to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "2bf8acce-42cb-542d-a14d-78631a024dbb",
+    "source_id": "b148d7e6-01f2-5743-82ae-607cf1107a54",
+    "relationship_type": "integrates_with",
+    "target_id": "18b4c86a-ad16-58c0-8c9c-43b603e2a616",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/getsentry/sentry-mcp",
+        "note": "Supported tools metadata links Sentry MCP Server to Cursor"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cursor.com/",
+        "note": "Supported tools metadata links Sentry MCP Server to Cursor"
+      }
+    ]
+  },
+  {
+    "id": "2c6ec996-05ff-5754-86f9-7b5a0dead2a3",
+    "source_id": "1a29f7aa-845a-5e3f-b67a-ac54c2e71049",
+    "relationship_type": "develops",
+    "target_id": "6095526c-f3a8-5d45-8e2b-f24fb3371aca",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Provider metadata links OpenAI to GPT-4.1"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/models/gpt-4.1",
+        "note": "Provider metadata links OpenAI to GPT-4.1"
+      }
+    ]
+  },
+  {
+    "id": "2c89133e-79bd-5476-8a58-125a019ec71e",
+    "source_id": "095fa50d-d62a-5b77-83f0-654a48913f3d",
+    "relationship_type": "develops",
+    "target_id": "6e4f1228-0525-55fe-a4c9-2c86d6e245ac",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://about.meta.com/",
+        "note": "Provider metadata links Meta to Segment Anything"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/facebookresearch/segment-anything",
+        "note": "Provider metadata links Meta to Segment Anything"
+      }
+    ]
+  },
+  {
+    "id": "2cc495fe-45f4-5df6-9812-8421c3043b61",
+    "source_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "relationship_type": "solves",
+    "target_id": "81fa2484-7c48-51db-826f-bd9410eadea4",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Tasks metadata links Claude to Code Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://code-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Claude to Code Generation"
+      }
+    ]
+  },
+  {
+    "id": "2f05799d-ba67-5f11-be5a-58cb61ad089f",
+    "source_id": "5d4db14e-9a21-5e40-b2f9-9bd62d4b2c60",
+    "relationship_type": "develops",
+    "target_id": "2290b05e-19a0-5cab-9a73-d27e07f8d3a3",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://elevenlabs.io/",
+        "note": "Provider metadata links ElevenLabs to ElevenLabs Studio"
+      }
+    ]
+  },
+  {
+    "id": "2f8961a6-c55a-5e6e-9100-f51cea308538",
+    "source_id": "3fadc871-7ad5-54a2-a532-9482640b2558",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+        "note": "Supported tools metadata links Filesystem MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Filesystem MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "2fa77700-fefd-59f6-ab35-f4d4e2a47bbd",
+    "source_id": "ed94b60c-fcef-5a86-8b1a-b550ed49637b",
+    "relationship_type": "develops",
+    "target_id": "897f47d9-0186-5ac4-adf1-3b1fdf2245ce",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://notion.so/",
+        "note": "Provider metadata links Notion to Notion AI"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://notion.so/product/ai",
+        "note": "Provider metadata links Notion to Notion AI"
+      }
+    ]
+  },
+  {
+    "id": "318e2743-ab63-58c9-9531-6204b4b4a83d",
+    "source_id": "fee72437-796b-5631-a41a-81dbc34e0c14",
+    "relationship_type": "solves",
+    "target_id": "edf9191d-f8ae-5925-aebc-cf223c4b9553",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://chat.mistral.ai/",
+        "note": "Tasks metadata links Le Chat to Question Answering"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://question-answering.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Le Chat to Question Answering"
+      }
+    ]
+  },
+  {
+    "id": "329f1936-c821-5a3f-add7-2be3a772602c",
+    "source_id": "8c25f2a1-c18a-592f-8927-918ae57982c6",
+    "relationship_type": "solves",
+    "target_id": "5b245002-1e4f-56f6-9ea1-b9db7f712e6d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/command",
+        "note": "Tasks metadata links Command R to Search"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://search.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Command R to Search"
+      }
+    ]
+  },
+  {
+    "id": "3582666e-044c-5350-b590-ab138081ea6d",
+    "source_id": "e2d36c3e-7f7f-5dc2-9967-41ae58f05de8",
+    "relationship_type": "solves",
+    "target_id": "81c355ef-a7bd-540d-aef4-c5089c87908b",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://nvidia.com/omniverse",
+        "note": "Tasks metadata links NVIDIA Omniverse to Video Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://video-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links NVIDIA Omniverse to Video Generation"
+      }
+    ]
+  },
+  {
+    "id": "36af537c-1429-5d85-9fc9-fdc46c651697",
+    "source_id": "10b23c04-4c55-51ad-abfa-2e97f0aa4919",
+    "relationship_type": "solves",
+    "target_id": "27a6423f-1dcc-5d37-8299-9cd305b7b10e",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://elevenlabs.io/dubbing",
+        "note": "Tasks metadata links ElevenLabs Dubbing to Text To Speech"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://text-to-speech.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links ElevenLabs Dubbing to Text To Speech"
+      }
+    ]
+  },
+  {
+    "id": "3a24318a-13ac-56ad-8f1d-1ea5686125b4",
+    "source_id": "dc5b0be9-d34b-508c-be38-cbb102b14d80",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://aws.amazon.com/bedrock",
+        "note": "Tasks metadata links Amazon Bedrock to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Amazon Bedrock to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "3b4490ba-9e30-50d4-835b-b925eb6b7e30",
+    "source_id": "7e22763e-23ea-509e-bf1a-62f3c45e9ea6",
+    "relationship_type": "solves",
+    "target_id": "ac68d98b-f4c3-5157-b005-df5d59be83e5",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://perplexity.ai/pages",
+        "note": "Tasks metadata links Perplexity Pages to Research Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://research-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Perplexity Pages to Research Assistance"
+      }
+    ]
+  },
+  {
+    "id": "3d5e3a84-0fec-5a19-8c7f-c219dd33fc84",
+    "source_id": "41fb843a-352f-5c62-8c07-a0ee0087c235",
+    "relationship_type": "solves",
+    "target_id": "98ab7e18-25ca-5fbe-941f-da8202d58c6a",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://chatgpt.com/",
+        "note": "Tasks metadata links ChatGPT to Writing Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://writing-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links ChatGPT to Writing Assistance"
+      }
+    ]
+  },
+  {
+    "id": "3dd623c5-eed2-5e3e-b884-6baa71ed58fc",
+    "source_id": "67a75d45-083c-512d-9f85-14dcc5d9ffd4",
+    "relationship_type": "runs",
+    "target_id": "16648eba-f2ec-5b85-bcd8-8e9cf75a18c4",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://apple.com/mac-studio",
+        "note": "Runs models metadata links Mac Studio to Whisper"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/openai/whisper",
+        "note": "Runs models metadata links Mac Studio to Whisper"
+      }
+    ]
+  },
+  {
+    "id": "41d770af-e62b-5d50-ab8d-912586f39b9e",
+    "source_id": "1a29f7aa-845a-5e3f-b67a-ac54c2e71049",
+    "relationship_type": "develops",
+    "target_id": "3f2da934-b2e9-59bb-90b5-09588fbb346f",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Provider metadata links OpenAI to OpenAI API"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://platform.openai.com/",
+        "note": "Provider metadata links OpenAI to OpenAI API"
+      }
+    ]
+  },
+  {
+    "id": "42a12909-0218-55fe-a7f8-a241fd310c6a",
+    "source_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "relationship_type": "solves",
+    "target_id": "98ab7e18-25ca-5fbe-941f-da8202d58c6a",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Tasks metadata links Claude to Writing Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://writing-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Claude to Writing Assistance"
+      }
+    ]
+  },
+  {
+    "id": "45a1b7be-2143-5c50-9838-3215f63566df",
+    "source_id": "5190508f-f5d6-5b20-b6ad-c971b8004031",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://figma.com/",
+        "note": "Supported tools metadata links Figma MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Figma MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "45a6f5f7-5dbb-5f24-8483-5cd3c6449f73",
+    "source_id": "5d4db14e-9a21-5e40-b2f9-9bd62d4b2c60",
+    "relationship_type": "develops",
+    "target_id": "10b23c04-4c55-51ad-abfa-2e97f0aa4919",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://elevenlabs.io/",
+        "note": "Provider metadata links ElevenLabs to ElevenLabs Dubbing"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://elevenlabs.io/dubbing",
+        "note": "Provider metadata links ElevenLabs to ElevenLabs Dubbing"
+      }
+    ]
+  },
+  {
+    "id": "49636c9e-abed-5905-958c-bed570535143",
+    "source_id": "d5bc280d-b46d-5375-b018-319fa43c2548",
+    "relationship_type": "develops",
+    "target_id": "3a814b67-c160-52aa-8d22-74919448e3d2",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://microsoft.com/",
+        "note": "Provider metadata links Microsoft to Microsoft Copilot"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://copilot.microsoft.com/",
+        "note": "Provider metadata links Microsoft to Microsoft Copilot"
+      }
+    ]
+  },
+  {
+    "id": "49a0e0a7-c19d-569a-98a2-5920c5fa7a91",
+    "source_id": "7e22763e-23ea-509e-bf1a-62f3c45e9ea6",
+    "relationship_type": "solves",
+    "target_id": "98ab7e18-25ca-5fbe-941f-da8202d58c6a",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://perplexity.ai/pages",
+        "note": "Tasks metadata links Perplexity Pages to Writing Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://writing-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Perplexity Pages to Writing Assistance"
+      }
+    ]
+  },
+  {
+    "id": "4d670245-75fb-5bd4-a2d8-422e4fee7f21",
+    "source_id": "ddeb4ece-0c8f-5f9e-8357-7fff4c49d642",
+    "relationship_type": "solves",
+    "target_id": "98ab7e18-25ca-5fbe-941f-da8202d58c6a",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://apple.com/apple-intelligence",
+        "note": "Tasks metadata links Apple Intelligence to Writing Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://writing-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Apple Intelligence to Writing Assistance"
+      }
+    ]
+  },
+  {
+    "id": "4fdcb0a6-e0d1-51b6-91cb-9121bb77a227",
+    "source_id": "339b5a55-f68e-5232-8b1d-0877a856bee6",
+    "relationship_type": "integrates_with",
+    "target_id": "41fb843a-352f-5c62-8c07-a0ee0087c235",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://airtable.com/",
+        "note": "Supported tools metadata links Airtable MCP Server to ChatGPT"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://chatgpt.com/",
+        "note": "Supported tools metadata links Airtable MCP Server to ChatGPT"
+      }
+    ]
+  },
+  {
+    "id": "5077e8b5-ab2e-5365-8ca2-a169e1cde326",
+    "source_id": "bdb0c079-2192-56cc-91f9-d9d9e2d9589b",
+    "relationship_type": "integrates_with",
+    "target_id": "41fb843a-352f-5c62-8c07-a0ee0087c235",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/stripe/agent-toolkit",
+        "note": "Supported tools metadata links Stripe MCP Server to ChatGPT"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://chatgpt.com/",
+        "note": "Supported tools metadata links Stripe MCP Server to ChatGPT"
+      }
+    ]
+  },
+  {
+    "id": "50fd74e7-c19f-5674-a896-fd9e522ba658",
+    "source_id": "738ca153-8992-5711-8a3a-59b4a493e57e",
+    "relationship_type": "develops",
+    "target_id": "3a52346c-d005-5a91-a1de-f4c1855aa955",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://deepmind.google/",
+        "note": "Provider metadata links Google DeepMind to Gemini"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://gemini.google.com/",
+        "note": "Provider metadata links Google DeepMind to Gemini"
+      }
+    ]
+  },
+  {
+    "id": "525a3af5-0c0c-5e74-84af-7be252237d4a",
+    "source_id": "53d637ea-e533-503a-acb7-031b8541f76c",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://browserbase.com/",
+        "note": "Supported tools metadata links Browserbase MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Browserbase MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "54f1ff01-83ad-5e4f-8171-bb58348116c8",
+    "source_id": "c59ad660-ce69-5b11-9707-b450890432f7",
+    "relationship_type": "solves",
+    "target_id": "81fa2484-7c48-51db-826f-bd9410eadea4",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/codex",
+        "note": "Tasks metadata links OpenAI Codex to Code Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://code-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links OpenAI Codex to Code Generation"
+      }
+    ]
+  },
+  {
+    "id": "55a3a910-2f94-5543-8817-d46cb4ec20ca",
+    "source_id": "fdd18faf-98fc-5b25-866b-6b7073795025",
+    "relationship_type": "integrates_with",
+    "target_id": "4b910b82-8af0-594b-83fb-c269bd5a82bf",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/github/github-mcp-server",
+        "note": "Supported tools metadata links GitHub MCP Server to GitHub Copilot"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/features/copilot",
+        "note": "Supported tools metadata links GitHub MCP Server to GitHub Copilot"
+      }
+    ]
+  },
+  {
+    "id": "5626f4ab-6274-5cc5-922b-ac5d1b4caf27",
+    "source_id": "6377295f-be39-5a61-9eab-923272fdbc19",
+    "relationship_type": "runs",
+    "target_id": "652f23e8-edeb-5f59-944b-feb926f8a459",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://nvidia.com/en-us/data-center/gb200-nvl72",
+        "note": "Runs models metadata links NVIDIA Grace Blackwell to GPT-4o"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/index/hello-gpt-4o",
+        "note": "Runs models metadata links NVIDIA Grace Blackwell to GPT-4o"
+      }
+    ]
+  },
+  {
+    "id": "56a86f0d-7a23-5ccf-9c0d-e61718b756e6",
+    "source_id": "5d4db14e-9a21-5e40-b2f9-9bd62d4b2c60",
+    "relationship_type": "develops",
+    "target_id": "6b7e6304-684c-5905-abba-c9f4074d3656",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://elevenlabs.io/",
+        "note": "Provider metadata links ElevenLabs to Eleven Multilingual v2"
+      }
+    ]
+  },
+  {
+    "id": "56cd1e09-7bab-5f93-a3e2-4515b86f9b41",
+    "source_id": "ef7832ca-9fee-5fb0-9f52-d43f7497a8d3",
+    "relationship_type": "develops",
+    "target_id": "9ca6249c-9aa1-5d4b-bde2-ac0c8e5567ca",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://adobe.com/",
+        "note": "Provider metadata links Adobe to Adobe Express AI"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://adobe.com/express",
+        "note": "Provider metadata links Adobe to Adobe Express AI"
+      }
+    ]
+  },
+  {
+    "id": "57e8d04d-c955-59b5-81f5-888f04d96e56",
+    "source_id": "2290b05e-19a0-5cab-9a73-d27e07f8d3a3",
+    "relationship_type": "solves",
+    "target_id": "6bed9b38-c3eb-5559-a22c-d47de65d091f",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://elevenlabs.io/",
+        "note": "Tasks metadata links ElevenLabs Studio to Speech Recognition"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://speech-recognition.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links ElevenLabs Studio to Speech Recognition"
+      }
+    ]
+  },
+  {
+    "id": "585e2cfd-67e7-5af5-ba42-c5523c051e8a",
+    "source_id": "4c16aec3-509a-5de2-9aa1-86d811b0644e",
+    "relationship_type": "solves",
+    "target_id": "5b245002-1e4f-56f6-9ea1-b9db7f712e6d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://perplexity.ai/",
+        "note": "Tasks metadata links Perplexity to Search"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://search.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Perplexity to Search"
+      }
+    ]
+  },
+  {
+    "id": "5a7c5831-e065-55e6-ac53-b8304ec7c96f",
+    "source_id": "e6242cee-452b-5a38-8665-3fe569180f6f",
+    "relationship_type": "runs",
+    "target_id": "df96ab20-4acb-5681-ba85-65b1fc93cda2",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://meta.com/quest/quest-3",
+        "note": "Runs models metadata links Meta Quest 3 to SAM 2"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://ai.meta.com/sam2",
+        "note": "Runs models metadata links Meta Quest 3 to SAM 2"
+      }
+    ]
+  },
+  {
+    "id": "5ba794c3-72d5-5e3b-a403-45bb14cdc7e3",
+    "source_id": "0be05732-03dd-54b2-b831-6e3825184824",
+    "relationship_type": "develops",
+    "target_id": "54c486fd-6422-561a-850e-6c7197f3b01f",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/",
+        "note": "Provider metadata links Cohere to Cohere Toolkit"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/toolkit",
+        "note": "Provider metadata links Cohere to Cohere Toolkit"
+      }
+    ]
+  },
+  {
+    "id": "5c63b81c-f9e3-5861-a24d-3c9705d645ac",
+    "source_id": "e4de7884-7615-5727-b98a-70c4f4c36008",
+    "relationship_type": "develops",
+    "target_id": "c673dfcf-b3c4-50de-90ad-a2c2b1afd85f",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://anthropic.com/",
+        "note": "Provider metadata links Anthropic to Claude Code"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://anthropic.com/claude-code",
+        "note": "Provider metadata links Anthropic to Claude Code"
+      }
+    ]
+  },
+  {
+    "id": "5c64e1f4-6d83-53e5-8854-6743b792d43e",
+    "source_id": "095fa50d-d62a-5b77-83f0-654a48913f3d",
+    "relationship_type": "develops",
+    "target_id": "df96ab20-4acb-5681-ba85-65b1fc93cda2",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://about.meta.com/",
+        "note": "Provider metadata links Meta to SAM 2"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://ai.meta.com/sam2",
+        "note": "Provider metadata links Meta to SAM 2"
+      }
+    ]
+  },
+  {
+    "id": "5e4fcc1d-54e9-50eb-aac7-4f6f3db42a49",
+    "source_id": "baa6ce03-6b8f-5a1a-8cc2-181e85f37c26",
+    "relationship_type": "develops",
+    "target_id": "5248bb22-bc44-59ac-b6fb-4de124838672",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://google.com/",
+        "note": "Provider metadata links Google to NotebookLM"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://notebooklm.google/",
+        "note": "Provider metadata links Google to NotebookLM"
+      }
+    ]
+  },
+  {
+    "id": "60c1988a-95d1-530e-bc1e-6f4500de6eb5",
+    "source_id": "3a814b67-c160-52aa-8d22-74919448e3d2",
+    "relationship_type": "solves",
+    "target_id": "98ab7e18-25ca-5fbe-941f-da8202d58c6a",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://copilot.microsoft.com/",
+        "note": "Tasks metadata links Microsoft Copilot to Writing Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://writing-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Microsoft Copilot to Writing Assistance"
+      }
+    ]
+  },
+  {
+    "id": "6303088d-eee0-535e-8a54-56737aff7a7e",
+    "source_id": "d5bc280d-b46d-5375-b018-319fa43c2548",
+    "relationship_type": "develops",
+    "target_id": "532a2c7b-0261-54f1-a4cf-38792fd538a4",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://microsoft.com/",
+        "note": "Provider metadata links Microsoft to Phi-4"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/microsoft",
+        "note": "Provider metadata links Microsoft to Phi-4"
+      }
+    ]
+  },
+  {
+    "id": "6514caee-c760-57a1-a870-a02940c71c43",
+    "source_id": "e2405b6d-58b1-52ae-92a4-fc0dba4056d3",
+    "relationship_type": "integrates_with",
+    "target_id": "897f47d9-0186-5ac4-adf1-3b1fdf2245ce",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://notion.so/",
+        "note": "Supported tools metadata links Notion MCP Server to Notion AI"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://notion.so/product/ai",
+        "note": "Supported tools metadata links Notion MCP Server to Notion AI"
+      }
+    ]
+  },
+  {
+    "id": "65cce531-155a-5cfc-a283-01173be11269",
+    "source_id": "c3abe304-42fb-539f-8aa2-bc8b31b3903f",
+    "relationship_type": "solves",
+    "target_id": "4d5ea463-8796-5ad6-a9d0-ef1a9bc4d382",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://midjourney.com/",
+        "note": "Tasks metadata links Midjourney to Image Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://image-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Midjourney to Image Generation"
+      }
+    ]
+  },
+  {
+    "id": "6a3907d4-6eac-5b0f-8b11-dc8807b117a1",
+    "source_id": "523e131a-c8af-53e0-9813-d0b5114d0574",
+    "relationship_type": "develops",
+    "target_id": "886e73eb-c017-5d75-b156-b702cbef4c35",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/",
+        "note": "Provider metadata links Hugging Face to BGE Large"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/BAAI/bge-large-en-v1.5",
+        "note": "Provider metadata links Hugging Face to BGE Large"
+      }
+    ]
+  },
+  {
+    "id": "6d44838b-f92a-5d5f-b4be-cdd0f8d32b94",
+    "source_id": "d5bc280d-b46d-5375-b018-319fa43c2548",
+    "relationship_type": "develops",
+    "target_id": "a57795c2-5e3f-545e-8268-4c70f468ad64",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://microsoft.com/",
+        "note": "Provider metadata links Microsoft to E5 Large"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/intfloat/e5-large-v2",
+        "note": "Provider metadata links Microsoft to E5 Large"
+      }
+    ]
+  },
+  {
+    "id": "6fa62d26-70a2-55c1-8e61-8f8e9fcd0418",
+    "source_id": "54c486fd-6422-561a-850e-6c7197f3b01f",
+    "relationship_type": "solves",
+    "target_id": "605ee2ac-29ee-5697-ad5a-b9bc0ab457bd",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/toolkit",
+        "note": "Tasks metadata links Cohere Toolkit to Retrieval Augmented Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://retrieval-augmented-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Cohere Toolkit to Retrieval Augmented Generation"
+      }
+    ]
+  },
+  {
+    "id": "6fa89a43-799d-5606-aeff-767d3e392946",
+    "source_id": "52f67866-7362-5814-82e9-cb6c2228504a",
+    "relationship_type": "solves",
+    "target_id": "81c355ef-a7bd-540d-aef4-c5089c87908b",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://runwayml.com/",
+        "note": "Tasks metadata links Runway to Video Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://video-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Runway to Video Generation"
+      }
+    ]
+  },
+  {
+    "id": "6facd2b0-c801-5d4b-927c-49e926835535",
+    "source_id": "18b4c86a-ad16-58c0-8c9c-43b603e2a616",
+    "relationship_type": "solves",
+    "target_id": "81fa2484-7c48-51db-826f-bd9410eadea4",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cursor.com/",
+        "note": "Tasks metadata links Cursor to Code Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://code-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Cursor to Code Generation"
+      }
+    ]
+  },
+  {
+    "id": "7103fc46-fce1-5869-93c1-beb9f5d91195",
+    "source_id": "e0a0dba5-650a-57c9-b451-a5af07f772ad",
+    "relationship_type": "solves",
+    "target_id": "edf9191d-f8ae-5925-aebc-cf223c4b9553",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://meta.ai/",
+        "note": "Tasks metadata links Meta AI to Question Answering"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://question-answering.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Meta AI to Question Answering"
+      }
+    ]
+  },
+  {
+    "id": "71189524-3ec6-5317-97f1-59d249004705",
+    "source_id": "3f2da934-b2e9-59bb-90b5-09588fbb346f",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://platform.openai.com/",
+        "note": "Tasks metadata links OpenAI API to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links OpenAI API to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "71232f50-fbe4-5ae6-a829-3128f8cc7d4d",
+    "source_id": "00acef54-f513-508c-a2f2-77f8765e0dab",
+    "relationship_type": "solves",
+    "target_id": "81c355ef-a7bd-540d-aef4-c5089c87908b",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://runwayml.com/research/introducing-gen-3-alpha",
+        "note": "Tasks metadata links Runway Gen-3 to Video Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://video-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Runway Gen-3 to Video Generation"
+      }
+    ]
+  },
+  {
+    "id": "71bfa35d-d049-52d3-80e6-a467c8ac5080",
+    "source_id": "c42cd6a6-3f5c-52ed-86dd-6a3ca604466b",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+        "note": "Supported tools metadata links Memory MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Memory MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "73422728-489f-5493-94ea-44077fa5049f",
+    "source_id": "baa6ce03-6b8f-5a1a-8cc2-181e85f37c26",
+    "relationship_type": "develops",
+    "target_id": "030f612a-714f-59cd-bba4-16ecf0b1e380",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://google.com/",
+        "note": "Provider metadata links Google to PaliGemma"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/google/paligemma-3b-pt-224",
+        "note": "Provider metadata links Google to PaliGemma"
+      }
+    ]
+  },
+  {
+    "id": "734c34f6-6e22-592c-9ef4-9a1976dd9023",
+    "source_id": "0be05732-03dd-54b2-b831-6e3825184824",
+    "relationship_type": "develops",
+    "target_id": "f65dcafc-fe0d-5264-a1e9-da4aaa63dc9f",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/",
+        "note": "Provider metadata links Cohere to Aya Expanse"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/research",
+        "note": "Provider metadata links Cohere to Aya Expanse"
+      }
+    ]
+  },
+  {
+    "id": "755b598a-d763-563a-b307-a5beb7ddc706",
+    "source_id": "baa6ce03-6b8f-5a1a-8cc2-181e85f37c26",
+    "relationship_type": "develops",
+    "target_id": "11e30950-d8a0-5a8d-99b9-7a7239c31cce",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://google.com/",
+        "note": "Provider metadata links Google to BERT"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/google-bert/bert-base-uncased",
+        "note": "Provider metadata links Google to BERT"
+      }
+    ]
+  },
+  {
+    "id": "75d115a0-1a82-5a67-8cef-5570b1c40d5c",
+    "source_id": "068ddc95-1f05-503d-845f-bf4ebbd78fa9",
+    "relationship_type": "runs",
+    "target_id": "16648eba-f2ec-5b85-bcd8-8e9cf75a18c4",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://rabbit.tech/",
+        "note": "Runs models metadata links Rabbit R1 to Whisper"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/openai/whisper",
+        "note": "Runs models metadata links Rabbit R1 to Whisper"
+      }
+    ]
+  },
+  {
+    "id": "763700ca-4841-5928-ab3e-4bb26d9e0986",
+    "source_id": "6d2532d4-08fb-5684-851a-9e7ff1932ec4",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/cloudflare/mcp-server-cloudflare",
+        "note": "Supported tools metadata links Cloudflare MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Cloudflare MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "763e0747-55c0-5bed-a619-fc57ea6252ae",
+    "source_id": "c18232b9-4364-5bef-a7aa-ba638b673c25",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://ai.google.dev/",
+        "note": "Tasks metadata links Gemini API to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Gemini API to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "7b376877-54e4-5c77-af55-b8789650262e",
+    "source_id": "3f2da934-b2e9-59bb-90b5-09588fbb346f",
+    "relationship_type": "solves",
+    "target_id": "81fa2484-7c48-51db-826f-bd9410eadea4",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://platform.openai.com/",
+        "note": "Tasks metadata links OpenAI API to Code Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://code-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links OpenAI API to Code Generation"
+      }
+    ]
+  },
+  {
+    "id": "7e033f6c-4051-5910-ac2f-f0b8ae62c65e",
+    "source_id": "3a52346c-d005-5a91-a1de-f4c1855aa955",
+    "relationship_type": "solves",
+    "target_id": "ac68d98b-f4c3-5157-b005-df5d59be83e5",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://gemini.google.com/",
+        "note": "Tasks metadata links Gemini to Research Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://research-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Gemini to Research Assistance"
+      }
+    ]
+  },
+  {
+    "id": "8127cd45-bf28-592b-ac72-220e013de07e",
+    "source_id": "38b83f9d-c00b-57f4-a54c-bbac0b8511b6",
+    "relationship_type": "develops",
+    "target_id": "00acef54-f513-508c-a2f2-77f8765e0dab",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://runwayml.com/",
+        "note": "Provider metadata links Runway to Runway Gen-3"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://runwayml.com/research/introducing-gen-3-alpha",
+        "note": "Provider metadata links Runway to Runway Gen-3"
+      }
+    ]
+  },
+  {
+    "id": "8486c1f4-4cb0-5115-a473-9d41a8e66a6f",
+    "source_id": "8c25f2a1-c18a-592f-8927-918ae57982c6",
+    "relationship_type": "solves",
+    "target_id": "605ee2ac-29ee-5697-ad5a-b9bc0ab457bd",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/command",
+        "note": "Tasks metadata links Command R to Retrieval Augmented Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://retrieval-augmented-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Command R to Retrieval Augmented Generation"
+      }
+    ]
+  },
+  {
+    "id": "84c9d1e6-cca0-50a5-9d87-e36e9c409905",
+    "source_id": "c76fd0d2-6be8-57c3-96f1-e26d9b51910c",
+    "relationship_type": "develops",
+    "target_id": "5ff5a3b8-3c89-5013-a3e7-44e841475887",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://x.ai/",
+        "note": "Provider metadata links xAI to Grok"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://grok.com/",
+        "note": "Provider metadata links xAI to Grok"
+      }
+    ]
+  },
+  {
+    "id": "860d748e-4705-5a20-8afa-b1ed199453b1",
+    "source_id": "90d969c0-4c7f-5a5c-b513-7a7e494abf46",
+    "relationship_type": "solves",
+    "target_id": "4d5ea463-8796-5ad6-a9d0-ef1a9bc4d382",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://firefly.adobe.com/",
+        "note": "Tasks metadata links Adobe Firefly to Image Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://image-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Adobe Firefly to Image Generation"
+      }
+    ]
+  },
+  {
+    "id": "8a382f6e-934f-5576-a61b-2a31dc822249",
+    "source_id": "38b83f9d-c00b-57f4-a54c-bbac0b8511b6",
+    "relationship_type": "develops",
+    "target_id": "9e504fde-6ac0-561d-b4a6-eea56f7964fb",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://runwayml.com/",
+        "note": "Provider metadata links Runway to Runway Gen-3 Alpha"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://runwayml.com/research/introducing-gen-3-alpha",
+        "note": "Provider metadata links Runway to Runway Gen-3 Alpha"
+      }
+    ]
+  },
+  {
+    "id": "8a591819-53fb-5195-854d-118ee1d05bb5",
+    "source_id": "5627611f-b980-5d00-a53c-baf16f7cd9f6",
+    "relationship_type": "solves",
+    "target_id": "ac68d98b-f4c3-5157-b005-df5d59be83e5",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Tasks metadata links Deep Research to Research Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://research-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Deep Research to Research Assistance"
+      }
+    ]
+  },
+  {
+    "id": "8a99d457-f0ec-5ccd-9ea5-6011791115db",
+    "source_id": "1b9da085-3c28-53d7-a3d8-756366ad8178",
+    "relationship_type": "develops",
+    "target_id": "fa383778-6f95-5c29-9b9b-8167f5b137ba",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://stability.ai/",
+        "note": "Provider metadata links Stability AI to Stable Diffusion XL"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+        "note": "Provider metadata links Stability AI to Stable Diffusion XL"
+      }
+    ]
+  },
+  {
+    "id": "8bdd74ab-e801-56e6-9cd4-87b21da7dfd7",
+    "source_id": "136b3a10-dbcf-51a6-982b-cf433c886c4a",
+    "relationship_type": "develops",
+    "target_id": "46db9215-22d1-5060-b928-93307ebeb7a3",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://mistral.ai/",
+        "note": "Provider metadata links Mistral AI to Mistral La Plateforme"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://console.mistral.ai/",
+        "note": "Provider metadata links Mistral AI to Mistral La Plateforme"
+      }
+    ]
+  },
+  {
+    "id": "8d225954-b90f-526c-b85d-54b68ff4f4b5",
+    "source_id": "095fa50d-d62a-5b77-83f0-654a48913f3d",
+    "relationship_type": "develops",
+    "target_id": "90319e0c-1b24-56ef-bb80-b0ed46353729",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://about.meta.com/",
+        "note": "Provider metadata links Meta to DINOv2"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/facebookresearch/dinov2",
+        "note": "Provider metadata links Meta to DINOv2"
+      }
+    ]
+  },
+  {
+    "id": "8dd5200e-714c-5aa8-963b-5fda114babd5",
+    "source_id": "46db9215-22d1-5060-b928-93307ebeb7a3",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://console.mistral.ai/",
+        "note": "Tasks metadata links Mistral La Plateforme to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Mistral La Plateforme to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "8e0be680-e8ec-58e1-b6a4-5048156918fb",
+    "source_id": "3a814b67-c160-52aa-8d22-74919448e3d2",
+    "relationship_type": "solves",
+    "target_id": "81fa2484-7c48-51db-826f-bd9410eadea4",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://copilot.microsoft.com/",
+        "note": "Tasks metadata links Microsoft Copilot to Code Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://code-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Microsoft Copilot to Code Generation"
+      }
+    ]
+  },
+  {
+    "id": "8e44afd1-0e14-5ee3-acff-702e4d2fcc3e",
+    "source_id": "aa9159f4-5eb8-5251-9d9c-ae1d7a86b29c",
+    "relationship_type": "develops",
+    "target_id": "4c16aec3-509a-5de2-9aa1-86d811b0644e",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://perplexity.ai/",
+        "note": "Provider metadata links Perplexity to Perplexity"
+      }
+    ]
+  },
+  {
+    "id": "8ed3e116-e11a-5dfe-9462-9894810ffb98",
+    "source_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "relationship_type": "solves",
+    "target_id": "edf9191d-f8ae-5925-aebc-cf223c4b9553",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Tasks metadata links Claude to Question Answering"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://question-answering.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Claude to Question Answering"
+      }
+    ]
+  },
+  {
+    "id": "902d338e-a413-50d1-be14-b0e4d1763e10",
+    "source_id": "c673dfcf-b3c4-50de-90ad-a2c2b1afd85f",
+    "relationship_type": "solves",
+    "target_id": "81fa2484-7c48-51db-826f-bd9410eadea4",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://anthropic.com/claude-code",
+        "note": "Tasks metadata links Claude Code to Code Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://code-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Claude Code to Code Generation"
+      }
+    ]
+  },
+  {
+    "id": "9302656d-da1b-5f15-b2e5-32a916db1f61",
+    "source_id": "095fa50d-d62a-5b77-83f0-654a48913f3d",
+    "relationship_type": "develops",
+    "target_id": "7346a1aa-8461-5bdd-9651-a0483e7d99f0",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://about.meta.com/",
+        "note": "Provider metadata links Meta to MusicGen"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/facebookresearch/audiocraft",
+        "note": "Provider metadata links Meta to MusicGen"
+      }
+    ]
+  },
+  {
+    "id": "948d3554-1318-52f8-b52b-f95e6a18ba82",
+    "source_id": "3a52346c-d005-5a91-a1de-f4c1855aa955",
+    "relationship_type": "solves",
+    "target_id": "edf9191d-f8ae-5925-aebc-cf223c4b9553",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://gemini.google.com/",
+        "note": "Tasks metadata links Gemini to Question Answering"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://question-answering.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Gemini to Question Answering"
+      }
+    ]
+  },
+  {
+    "id": "98adda26-1f45-539f-925f-cb8cc0e6bc2a",
+    "source_id": "8055147d-cbb5-5fa2-b6e8-dbaf1305c482",
+    "relationship_type": "develops",
+    "target_id": "0a90653d-2420-542b-a7c4-5746ba29093c",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://langchain.com/",
+        "note": "Provider metadata links LangChain to LangSmith"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://smith.langchain.com/",
+        "note": "Provider metadata links LangChain to LangSmith"
+      }
+    ]
+  },
+  {
+    "id": "997bc122-dc7b-5513-a2d8-e6718af65e31",
+    "source_id": "095fa50d-d62a-5b77-83f0-654a48913f3d",
+    "relationship_type": "develops",
+    "target_id": "782c1418-5447-5857-855f-3dcaaef5a2f2",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://about.meta.com/",
+        "note": "Provider metadata links Meta to Llama 3.1 8B"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/meta-llama/Llama-3.1-8B",
+        "note": "Provider metadata links Meta to Llama 3.1 8B"
+      }
+    ]
+  },
+  {
+    "id": "99f3a6d6-3280-5d42-977f-3de8a24da788",
+    "source_id": "9ca6249c-9aa1-5d4b-bde2-ac0c8e5567ca",
+    "relationship_type": "solves",
+    "target_id": "4d5ea463-8796-5ad6-a9d0-ef1a9bc4d382",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://adobe.com/express",
+        "note": "Tasks metadata links Adobe Express AI to Image Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://image-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Adobe Express AI to Image Generation"
+      }
+    ]
+  },
+  {
+    "id": "9a3799a3-9816-583d-84ff-4f302f1c055e",
+    "source_id": "5248bb22-bc44-59ac-b6fb-4de124838672",
+    "relationship_type": "solves",
+    "target_id": "916657c1-e754-5f4b-8b4d-9ae86d9823c1",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://notebooklm.google/",
+        "note": "Tasks metadata links NotebookLM to Knowledge Management"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://knowledge-management.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links NotebookLM to Knowledge Management"
+      }
+    ]
+  },
+  {
+    "id": "9b32e997-88db-5428-8a19-098babce1989",
+    "source_id": "d63f4bc1-61e3-57f7-95b0-db93e2f7c163",
+    "relationship_type": "develops",
+    "target_id": "ddeb4ece-0c8f-5f9e-8357-7fff4c49d642",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://apple.com/",
+        "note": "Provider metadata links Apple to Apple Intelligence"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://apple.com/apple-intelligence",
+        "note": "Provider metadata links Apple to Apple Intelligence"
+      }
+    ]
+  },
+  {
+    "id": "9b77477a-81c3-5b3a-b904-b1f060f6e392",
+    "source_id": "524ca68c-4995-5df5-858a-239cb68bcd3c",
+    "relationship_type": "develops",
+    "target_id": "e2d36c3e-7f7f-5dc2-9967-41ae58f05de8",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://nvidia.com/",
+        "note": "Provider metadata links NVIDIA to NVIDIA Omniverse"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://nvidia.com/omniverse",
+        "note": "Provider metadata links NVIDIA to NVIDIA Omniverse"
+      }
+    ]
+  },
+  {
+    "id": "9c9a2b38-87f2-5e85-9674-b1cc087fd641",
+    "source_id": "baa6ce03-6b8f-5a1a-8cc2-181e85f37c26",
+    "relationship_type": "develops",
+    "target_id": "64f65c54-e06e-5bb8-ba27-994757964532",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://google.com/",
+        "note": "Provider metadata links Google to Gemini Code Assist"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cloud.google.com/products/gemini/code-assist",
+        "note": "Provider metadata links Google to Gemini Code Assist"
+      }
+    ]
+  },
+  {
+    "id": "9dc8c71e-a7c1-5d5a-8ca0-d74a2d477ad4",
+    "source_id": "baa6ce03-6b8f-5a1a-8cc2-181e85f37c26",
+    "relationship_type": "develops",
+    "target_id": "2628c441-57c8-57fe-9ea2-73d172989faa",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://google.com/",
+        "note": "Provider metadata links Google to Gemma 2"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/google/gemma-2-2b",
+        "note": "Provider metadata links Google to Gemma 2"
+      }
+    ]
+  },
+  {
+    "id": "9fc12910-7a37-5ab7-8076-3072732fbdf0",
+    "source_id": "4b910b82-8af0-594b-83fb-c269bd5a82bf",
+    "relationship_type": "solves",
+    "target_id": "81fa2484-7c48-51db-826f-bd9410eadea4",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/features/copilot",
+        "note": "Tasks metadata links GitHub Copilot to Code Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://code-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links GitHub Copilot to Code Generation"
+      }
+    ]
+  },
+  {
+    "id": "9fee5f94-2e16-5439-9adb-f98f34d723a1",
+    "source_id": "1a29f7aa-845a-5e3f-b67a-ac54c2e71049",
+    "relationship_type": "develops",
+    "target_id": "c59ad660-ce69-5b11-9707-b450890432f7",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Provider metadata links OpenAI to OpenAI Codex"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/codex",
+        "note": "Provider metadata links OpenAI to OpenAI Codex"
+      }
+    ]
+  },
+  {
+    "id": "a042ef55-df31-580e-8834-3daf2f973706",
+    "source_id": "baa6ce03-6b8f-5a1a-8cc2-181e85f37c26",
+    "relationship_type": "develops",
+    "target_id": "0112dded-b090-5db2-80e1-c946b027b0ea",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://google.com/",
+        "note": "Provider metadata links Google to Google Vertex AI"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cloud.google.com/vertex-ai",
+        "note": "Provider metadata links Google to Google Vertex AI"
+      }
+    ]
+  },
+  {
+    "id": "a35df527-09ad-5135-b9ef-84dea1fcef78",
+    "source_id": "beee2e6c-3528-5377-9f8f-7f18f6324646",
+    "relationship_type": "solves",
+    "target_id": "4d5ea463-8796-5ad6-a9d0-ef1a9bc4d382",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://stability.ai/stable-assistant",
+        "note": "Tasks metadata links Stable Assistant to Image Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://image-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Stable Assistant to Image Generation"
+      }
+    ]
+  },
+  {
+    "id": "a45c0554-5f17-5ac2-a89b-ae9c19635133",
+    "source_id": "59988852-dcac-5acb-892b-7f373ff1f48f",
+    "relationship_type": "runs",
+    "target_id": "2628c441-57c8-57fe-9ea2-73d172989faa",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://apple.com/apple-vision-pro",
+        "note": "Runs models metadata links Apple Vision Pro to Gemma 2"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/google/gemma-2-2b",
+        "note": "Runs models metadata links Apple Vision Pro to Gemma 2"
+      }
+    ]
+  },
+  {
+    "id": "a55104ae-5f3b-5183-b349-9a56c7181b33",
+    "source_id": "15f91045-deb0-5e5e-b903-77d6dde82f16",
+    "relationship_type": "solves",
+    "target_id": "edf9191d-f8ae-5925-aebc-cf223c4b9553",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://character.ai/",
+        "note": "Tasks metadata links Character.AI to Question Answering"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://question-answering.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Character.AI to Question Answering"
+      }
+    ]
+  },
+  {
+    "id": "a587d7f2-2b74-5e22-a28b-5fb381ed2b7c",
+    "source_id": "b7069731-3440-5340-b433-0530d2241609",
+    "relationship_type": "develops",
+    "target_id": "89ffab4b-cec0-5795-8f97-1dc8f1e60846",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://midjourney.com/",
+        "note": "Provider metadata links Midjourney to Midjourney V6"
+      }
+    ]
+  },
+  {
+    "id": "a7ccfe52-42a4-5a4d-be92-aa492e59153b",
+    "source_id": "e0a0dba5-650a-57c9-b451-a5af07f772ad",
+    "relationship_type": "solves",
+    "target_id": "98ab7e18-25ca-5fbe-941f-da8202d58c6a",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://meta.ai/",
+        "note": "Tasks metadata links Meta AI to Writing Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://writing-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Meta AI to Writing Assistance"
+      }
+    ]
+  },
+  {
+    "id": "a7e4ebbb-d12e-545d-9556-08d902893ae9",
+    "source_id": "8159e19d-6a82-5d61-b6c4-f09d8569c10f",
+    "relationship_type": "runs",
+    "target_id": "532a2c7b-0261-54f1-a4cf-38792fd538a4",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://azure.microsoft.com/products/virtual-machines",
+        "note": "Runs models metadata links Microsoft Azure ND H100 v5 to Phi-4"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/microsoft",
+        "note": "Runs models metadata links Microsoft Azure ND H100 v5 to Phi-4"
+      }
+    ]
+  },
+  {
+    "id": "a82e5034-38ed-50ac-bd15-3fbc416404c9",
+    "source_id": "00f4f204-853a-5224-9fcf-b9100e00152a",
+    "relationship_type": "integrates_with",
+    "target_id": "3a52346c-d005-5a91-a1de-f4c1855aa955",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive",
+        "note": "Supported tools metadata links Google Drive MCP Server to Gemini"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://gemini.google.com/",
+        "note": "Supported tools metadata links Google Drive MCP Server to Gemini"
+      }
+    ]
+  },
+  {
+    "id": "a9889c9f-60e9-57b6-8ed2-e64cd5f1ef44",
+    "source_id": "738ca153-8992-5711-8a3a-59b4a493e57e",
+    "relationship_type": "develops",
+    "target_id": "5abadc79-0091-5bac-96af-ddd254be63cb",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://deepmind.google/",
+        "note": "Provider metadata links Google DeepMind to Gemini 2.5 Pro"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://deepmind.google/models/gemini/pro",
+        "note": "Provider metadata links Google DeepMind to Gemini 2.5 Pro"
+      }
+    ]
+  },
+  {
+    "id": "b02781e6-f07c-559f-a26b-7acb55fca7e5",
+    "source_id": "095fa50d-d62a-5b77-83f0-654a48913f3d",
+    "relationship_type": "develops",
+    "target_id": "39b4365a-e5e3-57dd-9899-69f179079e26",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://about.meta.com/",
+        "note": "Provider metadata links Meta to Llama 3.1 70B"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/meta-llama/Llama-3.1-70B",
+        "note": "Provider metadata links Meta to Llama 3.1 70B"
+      }
+    ]
+  },
+  {
+    "id": "b276cde1-719d-55b3-85ff-bc3d752f6fcc",
+    "source_id": "136b3a10-dbcf-51a6-982b-cf433c886c4a",
+    "relationship_type": "develops",
+    "target_id": "fee72437-796b-5631-a41a-81dbc34e0c14",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://mistral.ai/",
+        "note": "Provider metadata links Mistral AI to Le Chat"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://chat.mistral.ai/",
+        "note": "Provider metadata links Mistral AI to Le Chat"
+      }
+    ]
+  },
+  {
+    "id": "b81b4675-8a0a-5930-b3d4-008b90e798c3",
+    "source_id": "d7dedcd5-4fc2-5dac-b577-55943277e66c",
+    "relationship_type": "develops",
+    "target_id": "18b4c86a-ad16-58c0-8c9c-43b603e2a616",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://anysphere.co/",
+        "note": "Provider metadata links Anysphere to Cursor"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cursor.com/",
+        "note": "Provider metadata links Anysphere to Cursor"
+      }
+    ]
+  },
+  {
+    "id": "b849ccf0-5bcb-5098-a234-c2c9313d9dde",
+    "source_id": "41fb843a-352f-5c62-8c07-a0ee0087c235",
+    "relationship_type": "solves",
+    "target_id": "edf9191d-f8ae-5925-aebc-cf223c4b9553",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://chatgpt.com/",
+        "note": "Tasks metadata links ChatGPT to Question Answering"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://question-answering.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links ChatGPT to Question Answering"
+      }
+    ]
+  },
+  {
+    "id": "b86ac7cb-dd9d-5f21-88de-e7d5674dc83e",
+    "source_id": "7542cd12-6bb2-5731-bc7a-2b3ca8e52546",
+    "relationship_type": "runs",
+    "target_id": "39b4365a-e5e3-57dd-9899-69f179079e26",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://nvidia.com/en-us/data-center/dgx-h100",
+        "note": "Runs models metadata links NVIDIA DGX H100 to Llama 3.1 70B"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/meta-llama/Llama-3.1-70B",
+        "note": "Runs models metadata links NVIDIA DGX H100 to Llama 3.1 70B"
+      }
+    ]
+  },
+  {
+    "id": "bc091869-b28e-50e7-a62e-91945d891290",
+    "source_id": "d5bc280d-b46d-5375-b018-319fa43c2548",
+    "relationship_type": "develops",
+    "target_id": "fdfd7f7f-36fd-582c-a114-bdb848739f66",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://microsoft.com/",
+        "note": "Provider metadata links Microsoft to Florence-2"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/microsoft/Florence-2-base",
+        "note": "Provider metadata links Microsoft to Florence-2"
+      }
+    ]
+  },
+  {
+    "id": "bcd9df9f-7d98-5668-99d4-bbe1426a153b",
+    "source_id": "baa6ce03-6b8f-5a1a-8cc2-181e85f37c26",
+    "relationship_type": "develops",
+    "target_id": "9366cfc0-d788-5eea-8db8-18d1392a332c",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://google.com/",
+        "note": "Provider metadata links Google to T5"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/google-t5/t5-base",
+        "note": "Provider metadata links Google to T5"
+      }
+    ]
+  },
+  {
+    "id": "c0d619cb-d8d9-5b18-b4d0-a529270dfb46",
+    "source_id": "2738b2fc-09b0-5f3d-9567-0079c589edff",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://ai.azure.com/",
+        "note": "Tasks metadata links Azure AI Foundry to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Azure AI Foundry to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "c20fe6b0-51a7-5168-ac54-340ee19925c1",
+    "source_id": "4c16aec3-509a-5de2-9aa1-86d811b0644e",
+    "relationship_type": "solves",
+    "target_id": "ac68d98b-f4c3-5157-b005-df5d59be83e5",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://perplexity.ai/",
+        "note": "Tasks metadata links Perplexity to Research Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://research-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Perplexity to Research Assistance"
+      }
+    ]
+  },
+  {
+    "id": "c2465188-c237-5c87-a46d-a129bb3aac5a",
+    "source_id": "897f47d9-0186-5ac4-adf1-3b1fdf2245ce",
+    "relationship_type": "solves",
+    "target_id": "916657c1-e754-5f4b-8b4d-9ae86d9823c1",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://notion.so/product/ai",
+        "note": "Tasks metadata links Notion AI to Knowledge Management"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://knowledge-management.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Notion AI to Knowledge Management"
+      }
+    ]
+  },
+  {
+    "id": "c5941e1a-2f5d-59b8-9292-23723e2a807a",
+    "source_id": "26b8e06d-2f90-54e2-a811-b950cc763e65",
+    "relationship_type": "runs",
+    "target_id": "a84f288d-f110-58fd-a818-a24bbc97bc46",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cloud.google.com/tpu",
+        "note": "Runs models metadata links Google TPU v5p to Gemini 2.0 Flash"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://deepmind.google/models/gemini/flash",
+        "note": "Runs models metadata links Google TPU v5p to Gemini 2.0 Flash"
+      }
+    ]
+  },
+  {
+    "id": "c872b79f-831b-55e8-8b5d-5515d4e2fb96",
+    "source_id": "e4de7884-7615-5727-b98a-70c4f4c36008",
+    "relationship_type": "develops",
+    "target_id": "906405ef-5233-50b4-aa6a-65a17386962b",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://anthropic.com/",
+        "note": "Provider metadata links Anthropic to Claude 3 Opus"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://anthropic.com/claude/opus",
+        "note": "Provider metadata links Anthropic to Claude 3 Opus"
+      }
+    ]
+  },
+  {
+    "id": "c87d50f6-8cf8-5174-a1c7-bc1d0f99ba50",
+    "source_id": "1a29f7aa-845a-5e3f-b67a-ac54c2e71049",
+    "relationship_type": "develops",
+    "target_id": "04b05ff4-d994-581a-8548-3eea411bcb79",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Provider metadata links OpenAI to o3"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/models/o3",
+        "note": "Provider metadata links OpenAI to o3"
+      }
+    ]
+  },
+  {
+    "id": "c9a3538d-3c38-537a-aec2-57eedb578082",
+    "source_id": "10b23c04-4c55-51ad-abfa-2e97f0aa4919",
+    "relationship_type": "solves",
+    "target_id": "65bc8e27-3faa-58e1-9fa6-729868b2d2e2",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://elevenlabs.io/dubbing",
+        "note": "Tasks metadata links ElevenLabs Dubbing to Machine Translation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://machine-translation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links ElevenLabs Dubbing to Machine Translation"
+      }
+    ]
+  },
+  {
+    "id": "caef3c3b-780a-51f5-9fcf-c71da9c680cf",
+    "source_id": "7c0a62f7-78c7-52f3-b345-258967d2da2d",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://nvidia.com/en-us/ai",
+        "note": "Tasks metadata links NVIDIA NIM to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links NVIDIA NIM to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "cce6f956-73a5-58a8-80bb-ba29815cf0d7",
+    "source_id": "0be05732-03dd-54b2-b831-6e3825184824",
+    "relationship_type": "develops",
+    "target_id": "8c25f2a1-c18a-592f-8927-918ae57982c6",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/",
+        "note": "Provider metadata links Cohere to Command R"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://cohere.com/command",
+        "note": "Provider metadata links Cohere to Command R"
+      }
+    ]
+  },
+  {
+    "id": "cce9b210-781f-5350-a318-419358818f26",
+    "source_id": "e4de7884-7615-5727-b98a-70c4f4c36008",
+    "relationship_type": "develops",
+    "target_id": "c4ef8010-98a4-513b-b371-be4e8660cf94",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://anthropic.com/",
+        "note": "Provider metadata links Anthropic to Anthropic API"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://console.anthropic.com/",
+        "note": "Provider metadata links Anthropic to Anthropic API"
+      }
+    ]
+  },
+  {
+    "id": "cd79b7a6-4bca-5fb1-90e4-8e1321603203",
+    "source_id": "136b3a10-dbcf-51a6-982b-cf433c886c4a",
+    "relationship_type": "develops",
+    "target_id": "ac1e0ebe-f9c9-5eae-a02e-552b0b4b12b4",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://mistral.ai/",
+        "note": "Provider metadata links Mistral AI to Mixtral 8x7B"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "note": "Provider metadata links Mistral AI to Mixtral 8x7B"
+      }
+    ]
+  },
+  {
+    "id": "d0a5e31c-f97d-586f-b2d0-0bb01313e1e9",
+    "source_id": "4a93b6cf-6042-52d8-b01b-7a4f1abe4049",
+    "relationship_type": "integrates_with",
+    "target_id": "4c16aec3-509a-5de2-9aa1-86d811b0644e",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
+        "note": "Supported tools metadata links Brave Search MCP Server to Perplexity"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://perplexity.ai/",
+        "note": "Supported tools metadata links Brave Search MCP Server to Perplexity"
+      }
+    ]
+  },
+  {
+    "id": "d2bbfa46-a6a6-5c10-a804-2f39f739b892",
+    "source_id": "1a429ba9-6df5-599d-909d-c1abbacbba9c",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/inference-endpoints",
+        "note": "Tasks metadata links Hugging Face Inference Endpoints to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Hugging Face Inference Endpoints to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "d9d7586d-4447-5607-ac18-285fa2d1ba34",
+    "source_id": "b82e6d6f-3394-552a-acc4-7b0a84ce80a9",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://ai.meta.com/ai-studio",
+        "note": "Tasks metadata links Meta AI Studio to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Meta AI Studio to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "d9e9c260-a4c7-5d09-a4ca-c6aeab257ab4",
+    "source_id": "119a4e5e-1b6c-54c6-a283-516fd9b75252",
+    "relationship_type": "runs",
+    "target_id": "39b4365a-e5e3-57dd-9899-69f179079e26",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://aws.amazon.com/machine-learning/trainium",
+        "note": "Runs models metadata links AWS Trainium to Llama 3.1 70B"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/meta-llama/Llama-3.1-70B",
+        "note": "Runs models metadata links AWS Trainium to Llama 3.1 70B"
+      }
+    ]
+  },
+  {
+    "id": "da3973fc-731f-5d6d-8345-33c36f2ba4cb",
+    "source_id": "74408965-9fe7-5b99-b5fc-491c8643fbf7",
+    "relationship_type": "develops",
+    "target_id": "4b910b82-8af0-594b-83fb-c269bd5a82bf",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/",
+        "note": "Provider metadata links GitHub to GitHub Copilot"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/features/copilot",
+        "note": "Provider metadata links GitHub to GitHub Copilot"
+      }
+    ]
+  },
+  {
+    "id": "dac3dbf5-ac20-5009-960d-32679f84488b",
+    "source_id": "66844e64-6d62-5a02-a045-49d951f4ae6c",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer",
+        "note": "Supported tools metadata links Puppeteer MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Puppeteer MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "dc05dc97-46c2-539a-add4-a0296d52cc56",
+    "source_id": "095fa50d-d62a-5b77-83f0-654a48913f3d",
+    "relationship_type": "develops",
+    "target_id": "e0a0dba5-650a-57c9-b451-a5af07f772ad",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://about.meta.com/",
+        "note": "Provider metadata links Meta to Meta AI"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://meta.ai/",
+        "note": "Provider metadata links Meta to Meta AI"
+      }
+    ]
+  },
+  {
+    "id": "ddc44522-3f64-5e08-a9a5-f5fb12bd0233",
+    "source_id": "64f65c54-e06e-5bb8-ba27-994757964532",
+    "relationship_type": "solves",
+    "target_id": "81fa2484-7c48-51db-826f-bd9410eadea4",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://cloud.google.com/products/gemini/code-assist",
+        "note": "Tasks metadata links Gemini Code Assist to Code Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://code-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Gemini Code Assist to Code Generation"
+      }
+    ]
+  },
+  {
+    "id": "e0216635-4aad-5586-a8e4-8793366a4030",
+    "source_id": "b7069731-3440-5340-b433-0530d2241609",
+    "relationship_type": "develops",
+    "target_id": "c3abe304-42fb-539f-8aa2-bc8b31b3903f",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://midjourney.com/",
+        "note": "Provider metadata links Midjourney to Midjourney"
+      }
+    ]
+  },
+  {
+    "id": "e15049b2-df88-5f9b-95fa-7338581bdd58",
+    "source_id": "1a29f7aa-845a-5e3f-b67a-ac54c2e71049",
+    "relationship_type": "develops",
+    "target_id": "5627611f-b980-5d00-a53c-baf16f7cd9f6",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Provider metadata links OpenAI to Deep Research"
+      }
+    ]
+  },
+  {
+    "id": "e1ec27ad-62a9-5154-bd76-da64b9bc422c",
+    "source_id": "523e131a-c8af-53e0-9813-d0b5114d0574",
+    "relationship_type": "develops",
+    "target_id": "1a429ba9-6df5-599d-909d-c1abbacbba9c",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/",
+        "note": "Provider metadata links Hugging Face to Hugging Face Inference Endpoints"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/inference-endpoints",
+        "note": "Provider metadata links Hugging Face to Hugging Face Inference Endpoints"
+      }
+    ]
+  },
+  {
+    "id": "e316da48-b00a-567b-9f0e-01c34e7b49fa",
+    "source_id": "5ff5a3b8-3c89-5013-a3e7-44e841475887",
+    "relationship_type": "solves",
+    "target_id": "edf9191d-f8ae-5925-aebc-cf223c4b9553",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://grok.com/",
+        "note": "Tasks metadata links Grok to Question Answering"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://question-answering.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Grok to Question Answering"
+      }
+    ]
+  },
+  {
+    "id": "e3b6504c-5843-560f-80a2-325c8d5ea8b7",
+    "source_id": "2290b05e-19a0-5cab-9a73-d27e07f8d3a3",
+    "relationship_type": "solves",
+    "target_id": "27a6423f-1dcc-5d37-8299-9cd305b7b10e",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://elevenlabs.io/",
+        "note": "Tasks metadata links ElevenLabs Studio to Text To Speech"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://text-to-speech.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links ElevenLabs Studio to Text To Speech"
+      }
+    ]
+  },
+  {
+    "id": "e3bd7c73-2920-560d-bd7a-aa5f4422edf5",
+    "source_id": "095fa50d-d62a-5b77-83f0-654a48913f3d",
+    "relationship_type": "develops",
+    "target_id": "b82e6d6f-3394-552a-acc4-7b0a84ce80a9",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://about.meta.com/",
+        "note": "Provider metadata links Meta to Meta AI Studio"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://ai.meta.com/ai-studio",
+        "note": "Provider metadata links Meta to Meta AI Studio"
+      }
+    ]
+  },
+  {
+    "id": "e3d0e64c-28ea-5f51-ac81-83faaf9e4a1f",
+    "source_id": "f37b0747-81ea-53f4-af70-5185fc9c694b",
+    "relationship_type": "integrates_with",
+    "target_id": "41fb843a-352f-5c62-8c07-a0ee0087c235",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+        "note": "Supported tools metadata links Fetch MCP Server to ChatGPT"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://chatgpt.com/",
+        "note": "Supported tools metadata links Fetch MCP Server to ChatGPT"
+      }
+    ]
+  },
+  {
+    "id": "e3e1eae4-f18e-5cc4-ba5c-292f9d9b39be",
+    "source_id": "f9b0f66d-1710-5392-bc99-1aa843a6b414",
+    "relationship_type": "solves",
+    "target_id": "edf9191d-f8ae-5925-aebc-cf223c4b9553",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/chat",
+        "note": "Tasks metadata links HuggingChat to Question Answering"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://question-answering.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links HuggingChat to Question Answering"
+      }
+    ]
+  },
+  {
+    "id": "e6da7a0d-eaca-5870-94e3-050637e00922",
+    "source_id": "38b83f9d-c00b-57f4-a54c-bbac0b8511b6",
+    "relationship_type": "develops",
+    "target_id": "52f67866-7362-5814-82e9-cb6c2228504a",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://runwayml.com/",
+        "note": "Provider metadata links Runway to Runway"
+      }
+    ]
+  },
+  {
+    "id": "eb8ba439-7ccc-57d6-b4f8-11940d587d0f",
+    "source_id": "1a29f7aa-845a-5e3f-b67a-ac54c2e71049",
+    "relationship_type": "develops",
+    "target_id": "16648eba-f2ec-5b85-bcd8-8e9cf75a18c4",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Provider metadata links OpenAI to Whisper"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/openai/whisper",
+        "note": "Provider metadata links OpenAI to Whisper"
+      }
+    ]
+  },
+  {
+    "id": "ee8c3892-88f4-540f-87b3-8d1a4a89d7cc",
+    "source_id": "d5bc280d-b46d-5375-b018-319fa43c2548",
+    "relationship_type": "develops",
+    "target_id": "2738b2fc-09b0-5f3d-9567-0079c589edff",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://microsoft.com/",
+        "note": "Provider metadata links Microsoft to Azure AI Foundry"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://ai.azure.com/",
+        "note": "Provider metadata links Microsoft to Azure AI Foundry"
+      }
+    ]
+  },
+  {
+    "id": "ef13608c-9d8b-57d9-b2db-4beed9a207f8",
+    "source_id": "5248bb22-bc44-59ac-b6fb-4de124838672",
+    "relationship_type": "solves",
+    "target_id": "ac68d98b-f4c3-5157-b005-df5d59be83e5",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://notebooklm.google/",
+        "note": "Tasks metadata links NotebookLM to Research Assistance"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://research-assistance.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links NotebookLM to Research Assistance"
+      }
+    ]
+  },
+  {
+    "id": "ef6874fc-b216-5259-bb3d-30e6f6024074",
+    "source_id": "8055147d-cbb5-5fa2-b6e8-dbaf1305c482",
+    "relationship_type": "develops",
+    "target_id": "30d8914f-0ac2-5f3f-aa2c-67e4db71d44d",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://langchain.com/",
+        "note": "Provider metadata links LangChain to LangGraph Platform"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://langchain.com/langgraph",
+        "note": "Provider metadata links LangChain to LangGraph Platform"
+      }
+    ]
+  },
+  {
+    "id": "efdb2411-82bb-5e82-9e3f-eab7a672d818",
+    "source_id": "52f67866-7362-5814-82e9-cb6c2228504a",
+    "relationship_type": "solves",
+    "target_id": "4d5ea463-8796-5ad6-a9d0-ef1a9bc4d382",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://runwayml.com/",
+        "note": "Tasks metadata links Runway to Image Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://image-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Runway to Image Generation"
+      }
+    ]
+  },
+  {
+    "id": "f2546ef8-4c06-5041-9f42-6306106f0a4f",
+    "source_id": "1b9da085-3c28-53d7-a3d8-756366ad8178",
+    "relationship_type": "develops",
+    "target_id": "beee2e6c-3528-5377-9f8f-7f18f6324646",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://stability.ai/",
+        "note": "Provider metadata links Stability AI to Stable Assistant"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://stability.ai/stable-assistant",
+        "note": "Provider metadata links Stability AI to Stable Assistant"
+      }
+    ]
+  },
+  {
+    "id": "f32ca564-a284-5494-816e-3c5990647d96",
+    "source_id": "d7f06389-d5ca-5e78-8e1f-d6dbc5272638",
+    "relationship_type": "runs",
+    "target_id": "782c1418-5447-5857-855f-3dcaaef5a2f2",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://developer.nvidia.com/embedded/jetson-agx-orin",
+        "note": "Runs models metadata links NVIDIA Jetson Orin to Llama 3.1 8B"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/meta-llama/Llama-3.1-8B",
+        "note": "Runs models metadata links NVIDIA Jetson Orin to Llama 3.1 8B"
+      }
+    ]
+  },
+  {
+    "id": "f4cdb42b-a256-5164-9f72-b245c56d023c",
+    "source_id": "71158146-0182-5a61-98e4-e42fe16dcfe1",
+    "relationship_type": "solves",
+    "target_id": "81fa2484-7c48-51db-826f-bd9410eadea4",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://aws.amazon.com/q",
+        "note": "Tasks metadata links Amazon Q to Code Generation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://code-generation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links Amazon Q to Code Generation"
+      }
+    ]
+  },
+  {
+    "id": "f4f99ea3-9dd7-57cb-94b9-2a7274c9cbe5",
+    "source_id": "85c8bd97-4d1c-547a-9ac0-00cafcdc5057",
+    "relationship_type": "develops",
+    "target_id": "71158146-0182-5a61-98e4-e42fe16dcfe1",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://amazon.com/",
+        "note": "Provider metadata links Amazon to Amazon Q"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://aws.amazon.com/q",
+        "note": "Provider metadata links Amazon to Amazon Q"
+      }
+    ]
+  },
+  {
+    "id": "f5d791e6-1e9c-5572-9cfb-2e0f08eba233",
+    "source_id": "523e131a-c8af-53e0-9813-d0b5114d0574",
+    "relationship_type": "develops",
+    "target_id": "f9b0f66d-1710-5392-bc99-1aa843a6b414",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/",
+        "note": "Provider metadata links Hugging Face to HuggingChat"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://huggingface.co/chat",
+        "note": "Provider metadata links Hugging Face to HuggingChat"
+      }
+    ]
+  },
+  {
+    "id": "f6afc016-3d99-5797-809d-e59b5858a4a1",
+    "source_id": "1a29f7aa-845a-5e3f-b67a-ac54c2e71049",
+    "relationship_type": "develops",
+    "target_id": "c438a379-68ec-5e7f-9c28-4a441488b44f",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://openai.com/",
+        "note": "Provider metadata links OpenAI to CLIP"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/openai/CLIP",
+        "note": "Provider metadata links OpenAI to CLIP"
+      }
+    ]
+  },
+  {
+    "id": "f7d34d29-6c83-5e11-9857-e5f663093221",
+    "source_id": "baa6ce03-6b8f-5a1a-8cc2-181e85f37c26",
+    "relationship_type": "develops",
+    "target_id": "c18232b9-4364-5bef-a7aa-ba638b673c25",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://google.com/",
+        "note": "Provider metadata links Google to Gemini API"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://ai.google.dev/",
+        "note": "Provider metadata links Google to Gemini API"
+      }
+    ]
+  },
+  {
+    "id": "f914a819-11e3-54bc-baeb-59a62921c7b1",
+    "source_id": "c581b3a9-920b-510e-ba98-e8e596d0a69b",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://github.com/microsoft/playwright-mcp",
+        "note": "Supported tools metadata links Playwright MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Playwright MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "fa52a195-99ff-507c-ab6c-d66c8e1137be",
+    "source_id": "30d8914f-0ac2-5f3f-aa2c-67e4db71d44d",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://langchain.com/langgraph",
+        "note": "Tasks metadata links LangGraph Platform to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links LangGraph Platform to Workflow Automation"
+      }
+    ]
+  },
+  {
+    "id": "fa85dd8b-704b-5083-861e-4831ce0a5b37",
+    "source_id": "610d7046-3c2c-519d-9d2d-b971f264bb14",
+    "relationship_type": "integrates_with",
+    "target_id": "645726fc-8c13-5ab2-9699-70098eb35c17",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://www.atlassian.com/",
+        "note": "Supported tools metadata links Atlassian MCP Server to Claude"
+      },
+      {
+        "source_name": "Official source",
+        "source_url": "https://claude.ai/",
+        "note": "Supported tools metadata links Atlassian MCP Server to Claude"
+      }
+    ]
+  },
+  {
+    "id": "fd44cc91-2e07-50ce-8e86-892a30931956",
+    "source_id": "0a90653d-2420-542b-a7c4-5746ba29093c",
+    "relationship_type": "solves",
+    "target_id": "28303519-4a60-59e5-b63b-80a4e898de3d",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "source_name": "Official source",
+        "source_url": "https://smith.langchain.com/",
+        "note": "Tasks metadata links LangSmith to Workflow Automation"
+      },
+      {
+        "source_name": "AI Orbit curated task taxonomy",
+        "source_url": "https://workflow-automation.tasks.ai-orbit.example/",
+        "note": "Tasks metadata links LangSmith to Workflow Automation"
+      }
+    ]
+  }
+]

@@ -1,0 +1,718 @@
+{
+  "summary": {
+    "raw_records": 283,
+    "canonical_entities": 283,
+    "relationships": 171,
+    "duplicates_merged": 0,
+    "possible_duplicates": 27,
+    "critical_errors": 0
+  },
+  "entity_counts": {
+    "task": 25,
+    "company": 25,
+    "tool": 45,
+    "model": 35,
+    "repository": 35,
+    "device": 12,
+    "robot": 12,
+    "personal": 12,
+    "creative": 15,
+    "collection": 12,
+    "mcp": 20,
+    "news": 20,
+    "video": 15
+  },
+  "category_counts": {
+    "code-generation": 63,
+    "image-generation": 27,
+    "video-generation": 38,
+    "speech": 15,
+    "rag": 7,
+    "productivity": 19,
+    "computer-vision": 14,
+    "robotics": 16,
+    "agents": 21,
+    "hardware": 17,
+    "research": 108,
+    "open-source": 90,
+    "developer-tools": 75,
+    "multimodal": 11
+  },
+  "source_counts": {
+    "AI Orbit curated task taxonomy": 25,
+    "Official source": 223,
+    "AI Orbit curated news": 20,
+    "AI Orbit curated video index": 15
+  },
+  "relationship_counts": {
+    "integrates_with": 20,
+    "develops": 77,
+    "runs": 12,
+    "solves": 62
+  },
+  "relationship_metrics": {
+    "total_relationships": 171,
+    "average_relationships_per_entity": 0.604,
+    "entities_without_relationships": 136
+  },
+  "product_quality_metrics": {
+    "recently_added_entities": 0,
+    "average_completeness_score": 0.744
+  },
+  "errors": [],
+  "warnings": [
+    "entity edf9191d-f8ae-5925-aebc-cf223c4b9553 may display poorly: missing categories",
+    "entity a3365c2d-1b39-5397-a85d-03e162b2ec8b may display poorly: missing categories",
+    "entity a3365c2d-1b39-5397-a85d-03e162b2ec8b has no relationships",
+    "entity 65bc8e27-3faa-58e1-9fa6-729868b2d2e2 may display poorly: missing categories",
+    "entity 5b245002-1e4f-56f6-9ea1-b9db7f712e6d may display poorly: missing categories",
+    "entity b5351a80-f181-557a-bb2c-c2dd8ff1ee7e may display poorly: missing categories",
+    "entity 90537c6c-5c21-5cf8-9fad-9811106abf75 has no relationships",
+    "entity e8b042f1-3705-5ac9-bdb5-ab8a8d9fb708 may display poorly: missing categories",
+    "entity e8b042f1-3705-5ac9-bdb5-ab8a8d9fb708 has no relationships",
+    "entity de79814b-0635-5f0a-9049-1c891d6e9197 may display poorly: missing categories",
+    "entity de79814b-0635-5f0a-9049-1c891d6e9197 has no relationships",
+    "entity ca568ca7-f5fe-51f4-8578-cfd83b820edb has no relationships",
+    "entity a4bbe8d9-6cda-5c68-b8a4-dc4a0dcd14eb has no relationships",
+    "entity 5e8da809-05ed-5053-ac24-458cb0dbed08 has no relationships",
+    "entity 4b8c35e0-05c9-5888-9649-6ffaf5b91ffe may display poorly: missing categories",
+    "entity 4b8c35e0-05c9-5888-9649-6ffaf5b91ffe has no relationships",
+    "entity 98ab7e18-25ca-5fbe-941f-da8202d58c6a may display poorly: missing categories",
+    "entity 12b559ee-f551-5c7c-80f5-4e0daeb63ad8 may display poorly: missing categories",
+    "entity 12b559ee-f551-5c7c-80f5-4e0daeb63ad8 has no relationships",
+    "entity b42bf553-16ec-5cda-9cee-fdf83389309a may display poorly: missing categories",
+    "entity b42bf553-16ec-5cda-9cee-fdf83389309a has no relationships",
+    "entity c5668c88-1716-5261-9619-1030f2c0833c may display poorly: missing categories",
+    "entity c5668c88-1716-5261-9619-1030f2c0833c has no relationships",
+    "entity 82c773bd-4340-53bd-8abe-cd4caa6166f0 has no relationships",
+    "entity 41fb843a-352f-5c62-8c07-a0ee0087c235 may display poorly: missing categories",
+    "entity e0a0dba5-650a-57c9-b451-a5af07f772ad may display poorly: missing categories",
+    "entity fee72437-796b-5631-a41a-81dbc34e0c14 may display poorly: missing categories",
+    "entity 5ff5a3b8-3c89-5013-a3e7-44e841475887 may display poorly: missing categories",
+    "entity 15f91045-deb0-5e5e-b903-77d6dde82f16 may display poorly: missing categories",
+    "entity 0756203f-a509-5ed1-8b37-936436fc6142 has no relationships",
+    "entity e4ae1a53-b810-5f78-8afc-9e867de65d8e has no relationships",
+    "entity a97b8e8a-4576-5103-ba3a-6ee2ea506af3 has no relationships",
+    "entity b198481b-6dcb-5c4a-9091-dc225de844f5 has no relationships",
+    "entity 30ba6187-6f58-5316-92b1-6ed238e07d0e has no relationships",
+    "entity b7ce25e9-11fe-5f15-8252-0e10e6d6ad32 has no relationships",
+    "entity 6555b9b1-23ee-5596-9d69-a6d5bb4b621d has no relationships",
+    "entity af8ae03c-28e9-589d-84cc-2500dbec0443 has no relationships",
+    "entity 9180b329-398d-57a8-a664-5f9b27365e5d has no relationships",
+    "entity 0a8d9815-1295-5267-b94a-28cdf8c8e0ab has no relationships",
+    "entity e1a40309-2465-5dec-9b67-a19ca284e35f has no relationships",
+    "entity 0882a0a4-2e6c-5c7b-9bc5-e8773f256b68 has no relationships",
+    "entity 7c1ea9d1-47ee-5ea2-a382-929920481757 has no relationships",
+    "entity a5c775e1-87a8-5252-924f-584ff836e82a has no relationships",
+    "entity e78c4035-4264-54a9-8d6d-c9ec167b8e84 has no relationships",
+    "entity bfd42d57-e7b7-5298-bc14-71ae0859856f has no relationships",
+    "entity ebc8a378-9b0f-55bf-8726-d8253bfb8f70 has no relationships",
+    "entity e6363611-b38c-5d2a-92fa-647f8baefe06 has no relationships",
+    "entity e8e6dede-2fd6-587f-82a2-bfd5670e351c has no relationships",
+    "entity a97159fb-3d49-54b8-ad03-cab09ae56a90 has no relationships",
+    "entity 6cfe68e4-6545-559f-a568-d602f33ffd8c has no relationships",
+    "entity b293bba5-b817-5696-a488-fa1fef0cc45c has no relationships",
+    "entity 92f0af28-d432-54c3-a0b4-0a7bfa5f074c has no relationships",
+    "entity a63c9a4a-24b4-57c2-8b6b-642ed7cf5634 has no relationships",
+    "entity a19ad925-6931-50b5-9503-80cc21596aa8 has no relationships",
+    "entity 6d1e5d84-0242-52a8-a263-7ff95cb3e309 has no relationships",
+    "entity 36fbca14-7ded-5cf0-8f50-ca0606400b51 has no relationships",
+    "entity 7faedf75-4e44-5695-8ea2-bff6b0618485 has no relationships",
+    "entity 56532e17-d894-558e-b3f0-8f03014bc1a8 has no relationships",
+    "entity 221957a7-7c01-58e5-97db-9f89ff370423 has no relationships",
+    "entity fa461ace-70ef-5449-b5ee-8f3f3c60154b has no relationships",
+    "entity 70e5d990-0305-5625-b4ad-7bd2a2fbd11b has no relationships",
+    "entity 68835c8c-b85d-59dd-af77-e2224b637427 has no relationships",
+    "entity ac4e7b2e-2839-5a1d-a988-cdb66c577a53 has no relationships",
+    "entity dce7394c-407d-5a76-817b-6cfee12311bd has no relationships",
+    "entity 5c34ef14-9b73-583e-a1e8-6132f2194694 has no relationships",
+    "entity 28b866dc-7512-5ac5-9e86-0d1be622768d has no relationships",
+    "entity 130c5880-0603-5717-9ed6-3108b1072788 has no relationships",
+    "entity edaf2803-ec69-5a06-bce6-af584413edce has no relationships",
+    "entity 573e78bf-5aab-53f1-9246-51059a86be72 has no relationships",
+    "entity d0600c34-5cbb-5dd6-aa64-bf99675a5697 has no relationships",
+    "entity d6d9778d-7cc7-5f73-882c-922d993da3e8 has no relationships",
+    "entity 1e10d084-2127-5342-8560-2f14c53aa698 has no relationships",
+    "entity 9a1e51f7-3140-5d13-89d1-b96485d07512 has no relationships",
+    "entity daae8e86-6c27-5e18-b246-2eba9ff0e675 has no relationships",
+    "entity 193679a4-6771-5e22-ba5f-fb17e6bdbad7 has no relationships",
+    "entity 7c2b6867-83cf-539b-8df5-2d57c6ba86a6 has no relationships",
+    "entity 97698037-4cf6-558e-bc9e-225aee477976 has no relationships",
+    "entity e1914680-2634-57bb-8dac-76a44808e1e6 has no relationships",
+    "entity 983d65bb-befe-553f-ae7e-6c834f419000 has no relationships",
+    "entity 412bcb5c-3d72-5d3d-8bf2-19044fc6aea5 has no relationships",
+    "entity 47060cb8-336d-5a93-9d09-4ad4fac35406 has no relationships",
+    "entity cc2c0801-db37-5b3e-a1d3-efa55b191080 has no relationships",
+    "entity 2f6e969c-3053-502f-9b6d-8ef6f9e89499 has no relationships",
+    "entity 9965f1ba-40ae-53a2-a36b-e8f168b19141 has no relationships",
+    "entity d7a4d64c-6c47-574e-90b1-5b8c7a2941fb has no relationships",
+    "entity bc77a91d-4a74-5468-917f-1e327726520d has no relationships",
+    "entity 4f6eaf80-0397-5e39-a8aa-35d70a149f27 has no relationships",
+    "entity 5e387f9f-1b77-5b51-88d0-ee45f118d6e7 has no relationships",
+    "entity f017d33f-4970-55f7-aa14-25e3079c22d4 has no relationships",
+    "entity 3c2e70fd-8b5b-5510-a781-ef3f57a1ebd6 has no relationships",
+    "entity 952300d1-c0ba-5995-8ccb-76df9ce08217 has no relationships",
+    "entity c6b2de4f-196b-5ded-a5ed-52a45e2ed904 has no relationships",
+    "entity 415fe14b-5f6b-552a-ab6c-1d3453ccaefb has no relationships",
+    "entity 59878ff3-31a9-569d-b1c0-9b2db846e957 has no relationships",
+    "entity b732400b-feeb-5eb3-abea-04ba7a043f61 has no relationships",
+    "entity 0776ff69-dccf-59b0-a9cb-67e8ffee62ea has no relationships",
+    "entity fb0be399-dfb5-5c99-abdd-cdca3d7b13d0 has no relationships",
+    "entity b6f5fb59-682f-584e-938e-5dd3ad2b678f has no relationships",
+    "entity 38401390-30ed-5e99-8233-e2d620e818c2 has no relationships",
+    "entity 88190055-cda1-562b-8438-a8528bb120b4 has no relationships",
+    "entity a65f78dc-852e-5eb4-b396-69c7e571887e has no relationships",
+    "entity ecf9db8f-b470-559b-9f69-a605706f501c has no relationships",
+    "entity 35302213-2f36-56f4-8582-c2ec0d55673e has no relationships",
+    "entity 5facf645-4906-526a-ba30-220194918ca5 has no relationships",
+    "entity 1e29fad4-dd86-5549-82db-eb52f03f9f0d has no relationships",
+    "entity eaab7bc8-72d6-5e92-9baa-065b54dd102d has no relationships",
+    "entity bedb9d96-fef1-59b5-83c0-5bb6f17e5569 has no relationships",
+    "entity f6b84f92-8838-5b6f-8fd6-68e63337b18c has no relationships",
+    "entity f2a76c98-3c5a-59b4-9a3b-2fccd3347f60 has no relationships",
+    "entity f91e50fe-aa8f-5f13-bf2d-9c944ccad0cc has no relationships",
+    "entity 3c87c5ce-fa8b-5c5a-87fa-d9c0762d3e70 has no relationships",
+    "entity a766893f-d7e8-52ff-a14b-5e9f1fc14c45 has no relationships",
+    "entity ea51d585-49a1-5556-a5bd-3ab1b785ffce has no relationships",
+    "entity c7d61368-07bf-56ac-932a-5ffc35165d3f has no relationships",
+    "entity 496c9be6-056d-56b2-aafc-0e25e722a19a has no relationships",
+    "entity 62f6adb7-7eff-51cb-b10f-10dd073e11f2 has no relationships",
+    "entity 221d81fd-4423-522d-a7d1-8b3c1c2a86e1 has no relationships",
+    "entity 8183049e-2ef5-5678-b02b-577bbe645904 has no relationships",
+    "entity e60933db-a71c-5f03-aece-3902410aafd2 may display poorly: missing categories",
+    "entity e60933db-a71c-5f03-aece-3902410aafd2 has no relationships",
+    "entity a3bea5ad-d707-5f6e-a9ae-d763b0603b5b may display poorly: missing categories",
+    "entity a3bea5ad-d707-5f6e-a9ae-d763b0603b5b has no relationships",
+    "entity 05508505-d239-5784-9f32-5cf55429ca27 may display poorly: missing categories",
+    "entity 05508505-d239-5784-9f32-5cf55429ca27 has no relationships",
+    "entity b87be577-462c-5f98-be57-2688c6043b37 has no relationships",
+    "entity 6fe26bc6-e499-554b-96bc-979b78443ea7 has no relationships",
+    "entity 0b14cb8b-7292-5c5f-b27b-c751ca9306c7 has no relationships",
+    "entity ad150192-d625-569b-b0ee-d141c1fb421a may display poorly: missing categories",
+    "entity ad150192-d625-569b-b0ee-d141c1fb421a has no relationships",
+    "entity 73727665-4020-5216-80e6-2c6351b86a33 may display poorly: missing categories",
+    "entity 73727665-4020-5216-80e6-2c6351b86a33 has no relationships",
+    "entity 4b14cac4-2031-5e43-8f60-58f69fe3a7e8 has no relationships",
+    "entity b7ff7aca-7b78-53a8-bab4-87687aca17c9 has no relationships",
+    "entity b1460a01-3b6a-5edd-ba2c-482e7b3e5a9d may display poorly: missing categories",
+    "entity b1460a01-3b6a-5edd-ba2c-482e7b3e5a9d has no relationships",
+    "entity d9f775bd-026f-5608-b790-74bd04212d69 may display poorly: missing categories",
+    "entity d9f775bd-026f-5608-b790-74bd04212d69 has no relationships",
+    "entity ec1d9733-9f3d-5e50-88d0-a0fde5c8341d may display poorly: missing categories",
+    "entity ec1d9733-9f3d-5e50-88d0-a0fde5c8341d has no relationships",
+    "entity 74bfa14e-6ea8-5a8d-8ae6-a683c619b422 has no relationships",
+    "entity 72077ef4-2e63-5a76-a780-ebdc21f98d2a may display poorly: missing categories",
+    "entity 72077ef4-2e63-5a76-a780-ebdc21f98d2a has no relationships",
+    "entity bdff618e-b0d3-50e2-b903-d7018343505f has no relationships",
+    "entity a9da9019-ffeb-59b8-b0e0-ff32e5e0f8cd has no relationships",
+    "entity ecf8f9f3-c6ed-5851-a701-6c40be66cd32 may display poorly: missing categories",
+    "entity ecf8f9f3-c6ed-5851-a701-6c40be66cd32 has no relationships",
+    "entity 21346260-a96f-5bfb-a78c-43e59e758488 has no relationships",
+    "entity eadc01fd-bce0-59d4-928e-4c05f5703b6c may display poorly: missing categories",
+    "entity eadc01fd-bce0-59d4-928e-4c05f5703b6c has no relationships",
+    "entity 87ba9d2b-78ae-5f4c-8fed-ece44362da94 has no relationships",
+    "entity 404df6ca-b3e7-5398-89b0-acaede8b1c71 has no relationships",
+    "entity 350f86d6-8248-559b-bf76-e31f773c859d has no relationships",
+    "entity 51e48b2c-0847-543e-82d3-60152555b35f has no relationships",
+    "entity 2488421d-7def-53ca-89b8-fe6113d46c56 has no relationships",
+    "entity ff6e398b-697e-517e-b071-f96acc632ada has no relationships",
+    "entity 3614d562-1e21-5ff2-b213-fe7101f5aa1b has no relationships",
+    "entity 2fd6d56d-4e2d-5542-ac86-b6c2d6787631 has no relationships",
+    "entity 4ab9fc54-09cd-5c1f-bb56-fb2288e39968 has no relationships",
+    "entity eb5fc21a-c7cc-5088-806b-5d483eb5558e has no relationships",
+    "entity 0a7064ae-bd6d-56ed-bbc1-f32970c52fe2 has no relationships",
+    "entity b26bae66-2f4c-5d47-9194-9a59d7bcc887 has no relationships",
+    "entity edcbcf55-bde2-5304-92ab-8a52355ce1f6 has no relationships",
+    "entity 40a3cfe9-5760-5808-9f0f-9704d3ef7c4c has no relationships",
+    "entity 304d1abd-b531-5a85-abd0-b9448508628d has no relationships"
+  ],
+  "duplicate_candidates": [
+    {
+      "total_score": 0.791,
+      "url_score": 1.0,
+      "name_score": 0.45,
+      "type_score": 1.0,
+      "metadata_score": 0.833,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata partially agrees"
+      ],
+      "entity_ids": [
+        "f9b0f66d-1710-5392-bc99-1aa843a6b414",
+        "1a429ba9-6df5-599d-909d-c1abbacbba9c"
+      ]
+    },
+    {
+      "total_score": 0.93,
+      "url_score": 1.0,
+      "name_score": 0.8,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "merge",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names are moderately similar",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "4c16aec3-509a-5de2-9aa1-86d811b0644e",
+        "7e22763e-23ea-509e-bf1a-62f3c45e9ea6"
+      ]
+    },
+    {
+      "total_score": 0.75,
+      "url_score": 1.0,
+      "name_score": 0.286,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "8c25f2a1-c18a-592f-8927-918ae57982c6",
+        "54c486fd-6422-561a-850e-6c7197f3b01f"
+      ]
+    },
+    {
+      "total_score": 0.896,
+      "url_score": 1.0,
+      "name_score": 0.75,
+      "type_score": 1.0,
+      "metadata_score": 0.833,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names are moderately similar",
+        "Comparable metadata partially agrees"
+      ],
+      "entity_ids": [
+        "52f67866-7362-5814-82e9-cb6c2228504a",
+        "00acef54-f513-508c-a2f2-77f8765e0dab"
+      ]
+    },
+    {
+      "total_score": 0.905,
+      "url_score": 1.0,
+      "name_score": 0.727,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "merge",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "2290b05e-19a0-5cab-9a73-d27e07f8d3a3",
+        "10b23c04-4c55-51ad-abfa-2e97f0aa4919"
+      ]
+    },
+    {
+      "total_score": 0.81,
+      "url_score": 1.0,
+      "name_score": 0.6,
+      "type_score": 1.0,
+      "metadata_score": 0.5,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata partially agrees"
+      ],
+      "entity_ids": [
+        "71158146-0182-5a61-98e4-e42fe16dcfe1",
+        "dc5b0be9-d34b-508c-be38-cbb102b14d80"
+      ]
+    },
+    {
+      "total_score": 0.833,
+      "url_score": 1.0,
+      "name_score": 0.667,
+      "type_score": 1.0,
+      "metadata_score": 0.5,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata partially agrees"
+      ],
+      "entity_ids": [
+        "7c0a62f7-78c7-52f3-b345-258967d2da2d",
+        "e2d36c3e-7f7f-5dc2-9967-41ae58f05de8"
+      ]
+    },
+    {
+      "total_score": 0.93,
+      "url_score": 1.0,
+      "name_score": 0.8,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "merge",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names are moderately similar",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "652f23e8-edeb-5f59-944b-feb926f8a459",
+        "6095526c-f3a8-5d45-8e2b-f24fb3371aca"
+      ]
+    },
+    {
+      "total_score": 0.75,
+      "url_score": 1.0,
+      "name_score": 0.286,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "652f23e8-edeb-5f59-944b-feb926f8a459",
+        "04b05ff4-d994-581a-8548-3eea411bcb79"
+      ]
+    },
+    {
+      "total_score": 0.874,
+      "url_score": 1.0,
+      "name_score": 0.64,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "dc2da7a1-3c71-520d-bd08-cb2967a629ac",
+        "906405ef-5233-50b4-aa6a-65a17386962b"
+      ]
+    },
+    {
+      "total_score": 0.854,
+      "url_score": 1.0,
+      "name_score": 0.583,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "5abadc79-0091-5bac-96af-ddd254be63cb",
+        "a84f288d-f110-58fd-a818-a24bbc97bc46"
+      ]
+    },
+    {
+      "total_score": 0.945,
+      "url_score": 1.0,
+      "name_score": 0.842,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "merge",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names are moderately similar",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "782c1418-5447-5857-855f-3dcaaef5a2f2",
+        "39b4365a-e5e3-57dd-9899-69f179079e26"
+      ]
+    },
+    {
+      "total_score": 0.777,
+      "url_score": 1.0,
+      "name_score": 0.364,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "16648eba-f2ec-5b85-bcd8-8e9cf75a18c4",
+        "c438a379-68ec-5e7f-9c28-4a441488b44f"
+      ]
+    },
+    {
+      "total_score": 0.781,
+      "url_score": 1.0,
+      "name_score": 0.375,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "fdfd7f7f-36fd-582c-a114-bdb848739f66",
+        "a57795c2-5e3f-545e-8268-4c70f468ad64"
+      ]
+    },
+    {
+      "total_score": 0.883,
+      "url_score": 1.0,
+      "name_score": 0.667,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "2628c441-57c8-57fe-9ea2-73d172989faa",
+        "030f612a-714f-59cd-bba4-16ecf0b1e380"
+      ]
+    },
+    {
+      "total_score": 0.767,
+      "url_score": 1.0,
+      "name_score": 0.333,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "11e30950-d8a0-5a8d-99b9-7a7239c31cce",
+        "9366cfc0-d788-5eea-8db8-18d1392a332c"
+      ]
+    },
+    {
+      "total_score": 0.88,
+      "url_score": 1.0,
+      "name_score": 0.8,
+      "type_score": 1.0,
+      "metadata_score": 0.5,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names are moderately similar",
+        "Comparable metadata partially agrees"
+      ],
+      "entity_ids": [
+        "886e73eb-c017-5d75-b156-b702cbef4c35",
+        "a57795c2-5e3f-545e-8268-4c70f468ad64"
+      ]
+    },
+    {
+      "total_score": 0.798,
+      "url_score": 1.0,
+      "name_score": 0.424,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "7542cd12-6bb2-5731-bc7a-2b3ca8e52546",
+        "6377295f-be39-5a61-9eab-923272fdbc19"
+      ]
+    },
+    {
+      "total_score": 0.818,
+      "url_score": 1.0,
+      "name_score": 0.48,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "59988852-dcac-5acb-892b-7f373ff1f48f",
+        "231b5629-c32d-5de0-832c-7c15cd9b53ae"
+      ]
+    },
+    {
+      "total_score": 0.772,
+      "url_score": 1.0,
+      "name_score": 0.348,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "59988852-dcac-5acb-892b-7f373ff1f48f",
+        "67a75d45-083c-512d-9f85-14dcc5d9ffd4"
+      ]
+    },
+    {
+      "total_score": 0.825,
+      "url_score": 1.0,
+      "name_score": 0.5,
+      "type_score": 1.0,
+      "metadata_score": 1.0,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "Comparable metadata agrees"
+      ],
+      "entity_ids": [
+        "119a4e5e-1b6c-54c6-a283-516fd9b75252",
+        "66baf28e-84ee-5d0f-a288-ec2fcb8b5bee"
+      ]
+    },
+    {
+      "total_score": 0.883,
+      "url_score": 1.0,
+      "name_score": 0.737,
+      "type_score": 1.0,
+      "metadata_score": 0.75,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "No comparable metadata; using neutral metadata score"
+      ],
+      "entity_ids": [
+        "bedb9d96-fef1-59b5-83c0-5bb6f17e5569",
+        "f6b84f92-8838-5b6f-8fd6-68e63337b18c"
+      ]
+    },
+    {
+      "total_score": 0.846,
+      "url_score": 1.0,
+      "name_score": 0.632,
+      "type_score": 1.0,
+      "metadata_score": 0.75,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "No comparable metadata; using neutral metadata score"
+      ],
+      "entity_ids": [
+        "bedb9d96-fef1-59b5-83c0-5bb6f17e5569",
+        "f91e50fe-aa8f-5f13-bf2d-9c944ccad0cc"
+      ]
+    },
+    {
+      "total_score": 0.816,
+      "url_score": 1.0,
+      "name_score": 0.545,
+      "type_score": 1.0,
+      "metadata_score": 0.75,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "No comparable metadata; using neutral metadata score"
+      ],
+      "entity_ids": [
+        "bedb9d96-fef1-59b5-83c0-5bb6f17e5569",
+        "221d81fd-4423-522d-a7d1-8b3c1c2a86e1"
+      ]
+    },
+    {
+      "total_score": 0.853,
+      "url_score": 1.0,
+      "name_score": 0.65,
+      "type_score": 1.0,
+      "metadata_score": 0.75,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "No comparable metadata; using neutral metadata score"
+      ],
+      "entity_ids": [
+        "f6b84f92-8838-5b6f-8fd6-68e63337b18c",
+        "f91e50fe-aa8f-5f13-bf2d-9c944ccad0cc"
+      ]
+    },
+    {
+      "total_score": 0.808,
+      "url_score": 1.0,
+      "name_score": 0.522,
+      "type_score": 1.0,
+      "metadata_score": 0.75,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "No comparable metadata; using neutral metadata score"
+      ],
+      "entity_ids": [
+        "f6b84f92-8838-5b6f-8fd6-68e63337b18c",
+        "221d81fd-4423-522d-a7d1-8b3c1c2a86e1"
+      ]
+    },
+    {
+      "total_score": 0.838,
+      "url_score": 1.0,
+      "name_score": 0.609,
+      "type_score": 1.0,
+      "metadata_score": 0.75,
+      "decision": "review",
+      "reasons": [
+        "Entity types match",
+        "Canonical domains match",
+        "Normalized names differ",
+        "No comparable metadata; using neutral metadata score"
+      ],
+      "entity_ids": [
+        "f91e50fe-aa8f-5f13-bf2d-9c944ccad0cc",
+        "221d81fd-4423-522d-a7d1-8b3c1c2a86e1"
+      ]
+    }
+  ],
+  "relationship_errors": []
+}
