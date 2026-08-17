@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Production-style AI ecosystem data ingestion, normalization, entity resolution, relationship mapping, and validation pipeline."
+    >
+    <title>AI Orbit Data Ingestion Pipeline</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8fb;
+        --panel: #ffffff;
+        --panel-soft: #f0f4ff;
+        --text: #111827;
+        --muted: #5b6475;
+        --line: #dbe2ef;
+        --primary: #2457d6;
+        --primary-dark: #173c9d;
+        --accent: #6046d9;
+        --green: #1c9a5e;
+        --shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 85% 5%, rgba(36, 87, 214, 0.12), transparent 30%),
+          linear-gradient(180deg, #ffffff 0%, var(--bg) 44%, #ffffff 100%);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:focus-visible {
+        outline: 3px solid rgba(36, 87, 214, 0.35);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(219, 226, 239, 0.8);
+        background: rgba(255, 255, 255, 0.86);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav-inner {
+        display: flex;
+        min-height: 68px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        display: grid;
+        gap: 0;
+      }
+
+      .brand strong {
+        font-size: 0.98rem;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .nav-links a,
+      .button {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: #1f2937;
+        font-size: 0.9rem;
+        font-weight: 650;
+      }
+
+      .button.primary {
+        border-color: var(--primary);
+        background: var(--primary);
+        color: white;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+        gap: 44px;
+        align-items: center;
+        min-height: 640px;
+        padding: 72px 0 54px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        border: 1px solid rgba(28, 154, 94, 0.28);
+        border-radius: 999px;
+        padding: 7px 11px;
+        background: rgba(28, 154, 94, 0.08);
+        color: #146c43;
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 0 4px rgba(28, 154, 94, 0.14);
+      }
+
+      h1 {
+        margin: 22px 0 14px;
+        max-width: 760px;
+        font-size: clamp(2.45rem, 7vw, 5.4rem);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .system-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .system-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid var(--line);
+        padding: 14px 16px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.82rem;
+      }
+
+      .orbit-visual {
+        position: relative;
+        min-height: 360px;
+        padding: 24px;
+        background:
+          linear-gradient(90deg, rgba(36, 87, 214, 0.07) 1px, transparent 1px),
+          linear-gradient(rgba(36, 87, 214, 0.07) 1px, transparent 1px),
+          #fbfdff;
+        background-size: 34px 34px;
+      }
+
+      .node {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 118px;
+        min-height: 58px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
+        color: #1f2937;
+        font-size: 0.82rem;
+        font-weight: 750;
+        text-align: center;
+      }
+
+      .node.core {
+        top: 137px;
+        left: calc(50% - 62px);
+        border-color: rgba(36, 87, 214, 0.45);
+        background: var(--panel-soft);
+        color: var(--primary-dark);
+      }
+
+      .node.github { top: 38px; left: 30px; }
+      .node.hf { top: 42px; right: 32px; }
+      .node.rss { bottom: 46px; left: 38px; }
+      .node.api { bottom: 42px; right: 34px; }
+
+      .connector {
+        position: absolute;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(36, 87, 214, 0.65), transparent);
+        transform-origin: center;
+      }
+
+      .connector.one { top: 134px; left: 120px; width: 190px; transform: rotate(24deg); }
+      .connector.two { top: 134px; right: 120px; width: 190px; transform: rotate(-24deg); }
+      .connector.three { bottom: 132px; left: 126px; width: 190px; transform: rotate(-25deg); }
+      .connector.four { bottom: 132px; right: 126px; width: 190px; transform: rotate(25deg); }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 22px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        letter-spacing: 0;
+      }
+
+      .section-head p {
+        max-width: 560px;
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 18px;
+        box-shadow: 0 10px 28px rgba(17, 24, 39, 0.05);
+      }
+
+      .metric strong {
+        display: block;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1;
+      }
+
+      .metric span,
+      .card p,
+      .count-row span {
+        color: var(--muted);
+      }
+
+      .pipeline {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .step {
+        position: relative;
+        min-height: 132px;
+      }
+
+      .step b {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .count-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 1px solid var(--line);
+        padding: 10px 0;
+      }
+
+      .count-row:last-child {
+        border-bottom: 0;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 11px;
+        background: #fff;
+        color: #283244;
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .badge small {
+        color: var(--muted);
+      }
+
+      .badge.muted {
+        color: var(--muted);
+      }
+
+      .explore {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .explore a {
+        min-height: 86px;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 16px;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 28px 0 40px;
+        color: var(--muted);
+      }
+
+      .footer .shell {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .split {
+          grid-template-columns: 1fr;
+        }
+
+        .grid,
+        .pipeline,
+        .feature-grid,
+        .explore {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .section-head {
+          display: grid;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .shell {
+          width: min(100% - 22px, 1120px);
+        }
+
+        .nav-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 14px 0;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 46px;
+        }
+
+        .grid,
+        .pipeline,
+        .feature-grid,
+        .explore {
+          grid-template-columns: 1fr;
+        }
+
+        .orbit-visual {
+          min-height: 320px;
+          padding: 16px;
+        }
+
+        .node {
+          width: 104px;
+        }
+
+        .connector {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="shell nav-inner">
+        <a class="brand" href="/">
+          <strong>AI Orbit</strong>
+          <span>Data Ingestion Pipeline</span>
+        </a>
+        <div class="nav-links">
+          <a href="/docs">API Docs</a>
+          <a href="/stats">Stats</a>
+          <a href="/entities">Entities</a>
+          <a href="{{GITHUB_URL}}">GitHub</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <header class="shell hero">
+        <div>
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span> Live API</span>
+          <h1>AI Orbit Data Ingestion Pipeline</h1>
+          <p class="hero-copy">
+            A production-style data ingestion and knowledge-layer API for structured AI ecosystem discovery.
+            It aggregates data from multiple AI ecosystem sources, normalizes it into a common schema, resolves
+            duplicates, maps relationships, validates quality, and exposes the resulting dataset through a public API.
+          </p>
+          <div class="actions" aria-label="Primary actions">
+            <a class="button primary" href="/docs">Explore API Docs</a>
+            <a class="button" href="/entities">View Dataset</a>
+            <a class="button" href="/stats">View Statistics</a>
+          </div>
+        </div>
+        <aside class="system-card" aria-label="AI Orbit knowledge layer diagram">
+          <div class="system-top">
+            <span>canonical-knowledge-layer</span>
+            <span>{{BASE_URL}}</span>
+          </div>
+          <div class="orbit-visual">
+            <span class="connector one" aria-hidden="true"></span>
+            <span class="connector two" aria-hidden="true"></span>
+            <span class="connector three" aria-hidden="true"></span>
+            <span class="connector four" aria-hidden="true"></span>
+            <div class="node github">GitHub</div>
+            <div class="node hf">Hugging Face</div>
+            <div class="node core">AI Orbit<br>Dataset</div>
+            <div class="node rss">RSS + News</div>
+            <div class="node api">FastAPI</div>
+          </div>
+        </aside>
+      </header>
+
+      <section class="shell" aria-labelledby="metrics-title">
+        <div class="section-head">
+          <h2 id="metrics-title">Live Dataset Metrics</h2>
+          <p>Metrics are loaded from the same generated validation report and canonical JSON files served by the API.</p>
+        </div>
+        <div class="grid">
+          <div class="card metric"><strong>{{TOTAL_ENTITIES}}</strong><span>Total Entities</span></div>
+          <div class="card metric"><strong>{{TOTAL_RELATIONSHIPS}}</strong><span>Total Relationships</span></div>
+          <div class="card metric"><strong>{{DUPLICATES_MERGED}}</strong><span>Duplicates Merged</span></div>
+          <div class="card metric"><strong>{{VALIDATION_ERRORS}}</strong><span>Validation Errors</span></div>
+        </div>
+      </section>
+
+      <section class="shell" aria-labelledby="pipeline-title">
+        <div class="section-head">
+          <h2 id="pipeline-title">Pipeline</h2>
+          <p>Offline ingestion produces canonical JSON once; public API requests read the generated dataset.</p>
+        </div>
+        <div class="pipeline">
+          <div class="card step"><b>Discovery</b><p>Find representative AI ecosystem entities from APIs and trusted sources.</p></div>
+          <div class="card step"><b>Extraction</b><p>Collect useful structured metadata from each source.</p></div>
+          <div class="card step"><b>Cleaning</b><p>Remove HTML, malformed text, noise, and tracking information.</p></div>
+          <div class="card step"><b>Normalization</b><p>Convert source-specific data into one common entity schema.</p></div>
+          <div class="card step"><b>Deduplication</b><p>Resolve records referring to the same canonical entity.</p></div>
+          <div class="card step"><b>Classification</b><p>Assign consistent entity types and categories.</p></div>
+          <div class="card step"><b>Relationship Mapping</b><p>Connect companies, tools, models, tasks, devices, and integrations.</p></div>
+          <div class="card step"><b>Validation</b><p>Verify schema integrity, references, coverage, and data quality.</p></div>
+        </div>
+      </section>
+
+      <section class="shell" aria-labelledby="does-title">
+        <div class="section-head">
+          <h2 id="does-title">What This System Does</h2>
+          <p>A compact backend pipeline focused on reliable, structured AI ecosystem data.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="card"><b>API-First Ingestion</b><p>Collects structured ecosystem data from APIs, feeds, and trusted official sources instead of brute-force scraping.</p></div>
+          <div class="card"><b>Common Schema</b><p>Transforms source-specific responses into one consistent AI Orbit entity model.</p></div>
+          <div class="card"><b>Entity Resolution</b><p>Combines canonical URLs, normalized names, RapidFuzz similarity, entity type, and metadata signals.</p></div>
+          <div class="card"><b>Knowledge Relationships</b><p>Maps connections such as companies developing models, tools solving tasks, and MCP servers integrating with tools.</p></div>
+          <div class="card"><b>Validation</b><p>Checks schema integrity, duplicate candidates, relationship references, and dataset coverage before export.</p></div>
+          <div class="card"><b>Public Data API</b><p>Exposes entities, relationships, statistics, health status, and search through FastAPI endpoints.</p></div>
+        </div>
+      </section>
+
+      <section class="shell" aria-labelledby="sources-title">
+        <div class="section-head">
+          <h2 id="sources-title">Data Sources</h2>
+          <p>Supported source adapters and curated official data establish broad AI ecosystem coverage.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="card"><b>GitHub</b><p>Repositories and open-source AI projects.</p></div>
+          <div class="card"><b>Hugging Face</b><p>Models and model metadata.</p></div>
+          <div class="card"><b>RSS / News</b><p>AI news and announcements.</p></div>
+          <div class="card"><b>YouTube</b><p>Optional video discovery when an API key is available.</p></div>
+          <div class="card"><b>Curated Official Sources</b><p>Companies, tools, devices, robots, tasks, MCP servers, and other ecosystem entities.</p></div>
+          <div class="card"><b>Observed Sources</b><div class="badges">{{SOURCE_BADGES}}</div></div>
+        </div>
+      </section>
+
+      <section class="shell" aria-labelledby="explore-title">
+        <div class="section-head">
+          <h2 id="explore-title">Explore the Dataset</h2>
+          <p>Use the public endpoints directly or open Swagger to test filtered requests.</p>
+        </div>
+        <div class="explore">
+          <a class="button" href="/entities"><strong>Browse Entities</strong><span>Canonical records</span></a>
+          <a class="button" href="/relationships"><strong>Browse Relationships</strong><span>Graph edges</span></a>
+          <a class="button" href="/search?q=agent"><strong>Search "agents"</strong><span>Lightweight search</span></a>
+          <a class="button" href="/stats"><strong>View Statistics</strong><span>Dataset health</span></a>
+          <a class="button primary" href="/docs"><strong>Open Swagger Docs</strong><span>Interactive API</span></a>
+        </div>
+      </section>
+
+      <section class="shell split" aria-label="Dataset summaries">
+        <div class="card">
+          <h2>Entity Distribution</h2>
+          {{ENTITY_TYPE_ROWS}}
+        </div>
+        <div class="card">
+          <h2>Relationship Overview</h2>
+          {{RELATIONSHIP_TYPE_ROWS}}
+        </div>
+      </section>
+
+      <section class="shell" aria-labelledby="tech-title">
+        <div class="section-head">
+          <h2 id="tech-title">Engineering Highlights</h2>
+          <p>Built as a deterministic Python data pipeline with typed models, resilient source adapters, and release-ready validation.</p>
+        </div>
+        <div class="badges" aria-label="Technology badges">
+          <span class="badge">Python</span>
+          <span class="badge">FastAPI</span>
+          <span class="badge">Pydantic</span>
+          <span class="badge">HTTPX</span>
+          <span class="badge">RapidFuzz</span>
+          <span class="badge">Tenacity</span>
+          <span class="badge">Pytest</span>
+          <span class="badge">UUIDv5</span>
+          <span class="badge">REST APIs</span>
+          <span class="badge">JSON</span>
+        </div>
+      </section>
+
+      <section class="shell split" aria-label="Technical details">
+        <div class="card">
+          <h2>Stable Entity IDs</h2>
+          <p>Deterministic UUIDv5 identifiers keep canonical entities stable across pipeline runs.</p>
+        </div>
+        <div class="card">
+          <h2>Duplicate Resolution</h2>
+          <p>URL match + name similarity + entity type + metadata signals produce a canonical entity while preserving provenance.</p>
+        </div>
+      </section>
+
+      <section class="shell" aria-labelledby="categories-title">
+        <div class="section-head">
+          <h2 id="categories-title">Top Categories</h2>
+          <p>Canonical categories support browsing and filtering in downstream AI Orbit experiences.</p>
+        </div>
+        <div class="badges">{{CATEGORY_BADGES}}</div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        <span>AI Orbit Data Ingestion Pipeline · Built with Python + FastAPI</span>
+        <div class="footer-links">
+          <a href="/docs">API Docs</a>
+          <a href="/health">Health</a>
+          <a href="/stats">Stats</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

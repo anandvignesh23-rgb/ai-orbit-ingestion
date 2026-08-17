@@ -399,17 +399,17 @@ GET /search?q=...
 
 ## Live Deployment
 
-Live API:
+Live Demo:
 https://ai-orbit-ingestion.vercel.app
 
-Swagger Docs:
+API Documentation:
 https://ai-orbit-ingestion.vercel.app/docs
+
+Dataset Statistics:
+https://ai-orbit-ingestion.vercel.app/stats
 
 Health:
 https://ai-orbit-ingestion.vercel.app/health
-
-Stats:
-https://ai-orbit-ingestion.vercel.app/stats
 
 Deployment architecture:
 

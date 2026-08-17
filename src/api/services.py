@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 import json
 from pathlib import Path
 
@@ -46,6 +47,25 @@ class DatasetService:
             "validation_errors": int(summary.get("critical_errors", 0) or 0),
             "recently_added_entities": report.product_quality_metrics.recently_added_entities if report else 0,
             "average_relationships_per_entity": average_relationships,
+        }
+
+    def landing_page_context(self) -> dict:
+        stats = self.stats()
+        source_names = sorted(self.validation_report.source_counts)
+        return {
+            "metrics": {
+                "entities": stats["entities"],
+                "relationships": stats["relationships"],
+                "duplicates_merged": stats["duplicates_merged"],
+                "validation_errors": stats["validation_errors"],
+            },
+            "entity_types": _selected_counts(
+                stats["entity_types"],
+                ["tool", "model", "company", "repository", "mcp", "device", "task", "news"],
+            ),
+            "relationship_types": stats["relationship_types"],
+            "sources": source_names,
+            "top_categories": _top_categories(self.index.entities, limit=8),
         }
 
     def list_entities(
@@ -127,3 +147,16 @@ class DatasetService:
             raise FileNotFoundError(
                 f"API dataset is incomplete in {self.data_dir}; missing: {', '.join(missing)}"
             )
+
+
+def _selected_counts(counts: dict[str, int], keys: list[str]) -> dict[str, int]:
+    return {key: counts[key] for key in keys if key in counts}
+
+
+def _top_categories(entities: list[Entity], *, limit: int) -> dict[str, int]:
+    counter: Counter[str] = Counter(
+        category
+        for entity in entities
+        for category in entity.categories
+    )
+    return dict(counter.most_common(limit))

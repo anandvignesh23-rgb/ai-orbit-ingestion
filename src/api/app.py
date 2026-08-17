@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+from html import escape
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.responses import HTMLResponse
 
 from src.api.schemas import (
     EntityRelationshipsResponse,
@@ -18,6 +20,10 @@ from src.api.services import DatasetService
 from src.models import Entity, Relationship
 
 
+TEMPLATE_PATH = Path(__file__).parent / "templates" / "index.html"
+GITHUB_URL = "https://github.com/anandvignesh23-rgb/ai-orbit-ingestion"
+
+
 def create_app(data_dir: str | Path = "data") -> FastAPI:
     dataset_service = DatasetService(data_dir=data_dir)
     app = FastAPI(
@@ -27,8 +33,17 @@ def create_app(data_dir: str | Path = "data") -> FastAPI:
     )
     app.state.dataset_service = dataset_service
 
-    @app.get("/", response_model=RootResponse)
-    def root(request: Request) -> RootResponse:
+    @app.get("/", response_class=HTMLResponse)
+    def root(request: Request) -> HTMLResponse:
+        base_url = str(request.base_url).rstrip("/")
+        html = _render_landing_page(
+            dataset_service.landing_page_context(),
+            base_url=base_url,
+        )
+        return HTMLResponse(content=html)
+
+    @app.get("/info", response_model=RootResponse)
+    def info(request: Request) -> RootResponse:
         base_url = str(request.base_url).rstrip("/")
         return RootResponse(
             name="AI Orbit Data Ingestion Pipeline",
@@ -124,6 +139,52 @@ def create_app(data_dir: str | Path = "data") -> FastAPI:
         return [search_result_from_match(match) for match in matches]
 
     return app
+
+
+def _render_landing_page(context: dict, *, base_url: str) -> str:
+    metrics = context["metrics"]
+    template = TEMPLATE_PATH.read_text(encoding="utf-8")
+    replacements = {
+        "BASE_URL": base_url,
+        "GITHUB_URL": GITHUB_URL,
+        "TOTAL_ENTITIES": str(metrics.get("entities", "N/A")),
+        "TOTAL_RELATIONSHIPS": str(metrics.get("relationships", "N/A")),
+        "DUPLICATES_MERGED": str(metrics.get("duplicates_merged", "N/A")),
+        "VALIDATION_ERRORS": str(metrics.get("validation_errors", "N/A")),
+        "ENTITY_TYPE_ROWS": _count_rows(context.get("entity_types", {})),
+        "RELATIONSHIP_TYPE_ROWS": _count_rows(context.get("relationship_types", {})),
+        "SOURCE_BADGES": _source_badges(context.get("sources", [])),
+        "CATEGORY_BADGES": _category_badges(context.get("top_categories", {})),
+    }
+    html = template
+    for key, value in replacements.items():
+        html = html.replace(f"{{{{{key}}}}}", value)
+    return html
+
+
+def _count_rows(counts: dict[str, int]) -> str:
+    return "\n".join(
+        f'<div class="count-row"><span>{escape(label.replace("_", " ").title())}</span><strong>{count}</strong></div>'
+        for label, count in counts.items()
+    )
+
+
+def _source_badges(sources: list[str]) -> str:
+    if not sources:
+        return '<span class="badge muted">N/A</span>'
+    return "\n".join(
+        f'<span class="badge">{escape(source)}</span>'
+        for source in sources[:6]
+    )
+
+
+def _category_badges(categories: dict[str, int]) -> str:
+    if not categories:
+        return '<span class="badge muted">N/A</span>'
+    return "\n".join(
+        f'<span class="badge">{escape(category)} <small>{count}</small></span>'
+        for category, count in categories.items()
+    )
 
 
 app = create_app()

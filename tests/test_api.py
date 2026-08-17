@@ -16,12 +16,12 @@ def make_client(tmp_path) -> TestClient:
 def test_api_health_and_stats_load_generated_dataset_without_running_ingestion(tmp_path) -> None:
     client = make_client(tmp_path)
 
-    root = client.get("/")
+    info = client.get("/info")
     health = client.get("/health")
     stats = client.get("/stats")
 
-    assert root.status_code == 200
-    assert root.json() == {
+    assert info.status_code == 200
+    assert info.json() == {
         "name": "AI Orbit Data Ingestion Pipeline",
         "status": "online",
         "description": "API serving normalized AI ecosystem entities and relationships.",
@@ -43,6 +43,23 @@ def test_api_health_and_stats_load_generated_dataset_without_running_ingestion(t
     assert stats.json()["entity_types"]["tool"] == 45
     assert stats.json()["validation_errors"] == 0
     assert stats.json()["average_relationships_per_entity"] > 0
+
+
+def test_root_serves_presentable_landing_page(tmp_path) -> None:
+    client = make_client(tmp_path)
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/html")
+    assert "AI Orbit Data Ingestion Pipeline" in response.text
+    assert '<a class="button primary" href="/docs">Explore API Docs</a>' in response.text
+    assert "Live Dataset Metrics" in response.text
+    assert ">283</strong><span>Total Entities</span>" in response.text
+    assert ">171</strong><span>Total Relationships</span>" in response.text
+    assert "Pipeline" in response.text
+    assert "Data Sources" in response.text
+    assert "Engineering Highlights" in response.text
 
 
 def test_api_lists_and_fetches_entities(tmp_path) -> None:
