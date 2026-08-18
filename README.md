@@ -388,6 +388,7 @@ uvicorn src.api.app:app --host 127.0.0.1 --port 8000
 Available demo endpoints:
 
 ```text
+GET /database
 GET /health
 GET /stats
 GET /entities
@@ -401,6 +402,9 @@ GET /search?q=...
 
 Live Demo:
 https://ai-orbit-ingestion.vercel.app
+
+Searchable Database:
+https://ai-orbit-ingestion.vercel.app/database
 
 API Documentation:
 https://ai-orbit-ingestion.vercel.app/docs

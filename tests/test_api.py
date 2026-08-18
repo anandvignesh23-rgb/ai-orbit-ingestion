@@ -54,12 +54,38 @@ def test_root_serves_presentable_landing_page(tmp_path) -> None:
     assert response.headers["content-type"].startswith("text/html")
     assert "AI Orbit Data Ingestion Pipeline" in response.text
     assert '<a class="button primary" href="/docs">Explore API Docs</a>' in response.text
+    assert '<a class="button" href="/database">Search Database</a>' in response.text
     assert "Live Dataset Metrics" in response.text
     assert ">283</strong><span>Total Entities</span>" in response.text
     assert ">610</strong><span>Total Relationships</span>" in response.text
     assert "Pipeline" in response.text
     assert "Data Sources" in response.text
     assert "Engineering Highlights" in response.text
+
+
+def test_database_page_browses_and_searches_dataset(tmp_path) -> None:
+    client = make_client(tmp_path)
+
+    browse = client.get("/database")
+    search = client.get("/database", params={"q": "chatgpt", "type": "tool"})
+    filtered = client.get("/database", params={"category": "agents", "limit": 25})
+
+    assert browse.status_code == 200
+    assert browse.headers["content-type"].startswith("text/html")
+    assert "Search the AI Orbit Database" in browse.text
+    assert "Canonical Entities" in browse.text
+    assert "Relationships" in browse.text
+    assert "Displayed Results" in browse.text
+    assert "JSON" in browse.text
+    assert "Graph" in browse.text
+
+    assert search.status_code == 200
+    assert "ChatGPT" in search.text
+    assert "Query: <strong>chatgpt</strong>" in search.text
+    assert "Type: <strong>tool</strong>" in search.text
+
+    assert filtered.status_code == 200
+    assert "Category: <strong>agents</strong>" in filtered.text
 
 
 def test_api_lists_and_fetches_entities(tmp_path) -> None:

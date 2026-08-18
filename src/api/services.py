@@ -68,6 +68,63 @@ class DatasetService:
             "top_categories": _top_categories(self.index.entities, limit=8),
         }
 
+    def database_page_context(
+        self,
+        *,
+        query: str | None = None,
+        entity_type: str | None = None,
+        category: str | None = None,
+        limit: int = 50,
+    ) -> dict:
+        entity_types = sorted({str(entity.entity_type) for entity in self.index.entities})
+        categories = sorted({category for entity in self.index.entities for category in entity.categories})
+
+        if query:
+            matches = self.index.search_entities(
+                query,
+                entity_type=entity_type,
+                category=category,
+                limit=limit,
+            )
+            rows = [
+                {
+                    "entity": match.entity,
+                    "score": match.score,
+                    "relationship_count": len(
+                        self.index.relationships_by_entity_id.get(match.entity.id, [])
+                    ),
+                }
+                for match in matches
+            ]
+        else:
+            rows = [
+                {
+                    "entity": entity,
+                    "score": None,
+                    "relationship_count": len(
+                        self.index.relationships_by_entity_id.get(entity.id, [])
+                    ),
+                }
+                for entity in self.list_entities(
+                    entity_type=entity_type,
+                    category=category,
+                    limit=limit,
+                )
+            ]
+
+        return {
+            "query": query or "",
+            "selected_type": entity_type or "",
+            "selected_category": category or "",
+            "limit": limit,
+            "entity_types": entity_types,
+            "categories": categories,
+            "rows": rows,
+            "total_entities": self.entities_loaded,
+            "total_relationships": self.relationships_loaded,
+            "result_count": len(rows),
+        }
+
     def list_entities(
         self,
         *,
