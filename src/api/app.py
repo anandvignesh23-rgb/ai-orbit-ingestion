@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from html import escape
+import math
 from pathlib import Path
 from urllib.parse import urlencode
 
@@ -25,6 +26,7 @@ TEMPLATE_PATH = Path(__file__).parent / "templates" / "index.html"
 DATABASE_TEMPLATE_PATH = Path(__file__).parent / "templates" / "database.html"
 ENTITY_DETAIL_TEMPLATE_PATH = Path(__file__).parent / "templates" / "entity_detail.html"
 RELATIONSHIPS_TEMPLATE_PATH = Path(__file__).parent / "templates" / "relationships.html"
+GRAPH_TEMPLATE_PATH = Path(__file__).parent / "templates" / "graph.html"
 GITHUB_URL = "https://github.com/anandvignesh23-rgb/ai-orbit-ingestion"
 
 
@@ -90,6 +92,27 @@ def create_app(data_dir: str | Path = "data") -> FastAPI:
                 relationship_type=relationship_type,
                 page=page,
                 limit=limit,
+            )
+        )
+        return HTMLResponse(content=html)
+
+    @app.get("/graph", response_class=HTMLResponse)
+    def graph(
+        q: str | None = Query(default=None),
+        entity: str | None = Query(default=None),
+        depth: int = Query(default=1, ge=1, le=2),
+        type: str | None = Query(default=None),
+        relationship_type: str | None = Query(default=None),
+        edge: str | None = Query(default=None),
+    ) -> HTMLResponse:
+        html = _render_graph_page(
+            dataset_service.graph_page_context(
+                query=q,
+                entity_id=entity,
+                depth=depth,
+                entity_type=type,
+                relationship_type=relationship_type,
+                edge_id=edge,
             )
         )
         return HTMLResponse(content=html)
@@ -213,6 +236,7 @@ def _render_database_page(context: dict) -> str:
         "TOTAL_ENTITIES": str(context["total_entities"]),
         "TOTAL_RELATIONSHIPS": str(context["total_relationships"]),
         "RESULT_COUNT": str(context["result_count"]),
+        "RESULT_LABEL": escape(context["result_label"]),
         "QUERY": escape(context["query"], quote=True),
         "PAGE": str(context["page"]),
         "TYPE_OPTIONS": _select_options(
@@ -264,6 +288,7 @@ def _render_entity_detail_page(context: dict) -> str:
         "OUTGOING_RELATIONSHIPS": _relationship_view_cards(context["outgoing"]),
         "INCOMING_RELATIONSHIPS": _relationship_view_cards(context["incoming"]),
         "RAW_JSON_URL": f"/entities/{escape(entity.id, quote=True)}",
+        "GRAPH_URL": f"/graph?entity={escape(entity.id, quote=True)}",
     }
     html = template
     for key, value in replacements.items():
@@ -288,6 +313,39 @@ def _render_relationships_page(context: dict) -> str:
                 "limit": context["limit"],
             },
         ),
+    }
+    html = template
+    for key, value in replacements.items():
+        html = html.replace(f"{{{{{key}}}}}", value)
+    return html
+
+
+def _render_graph_page(context: dict) -> str:
+    template = GRAPH_TEMPLATE_PATH.read_text(encoding="utf-8")
+    selected = context["selected_entity"]
+    replacements = {
+        "TOTAL_ENTITIES": str(context["total_entities"]),
+        "TOTAL_RELATIONSHIPS": str(context["total_relationships"]),
+        "VISIBLE_NODES": str(len(context["nodes"])),
+        "VISIBLE_EDGES": str(len(context["edges"])),
+        "QUERY": escape(context["query"], quote=True),
+        "DEPTH_OPTIONS": _depth_options(context["depth"]),
+        "ENTITY_TYPE_OPTIONS": _select_options(
+            context["entity_types"],
+            selected=context["selected_type"],
+            empty_label="All node types",
+        ),
+        "RELATIONSHIP_TYPE_OPTIONS": _select_options(
+            context["relationship_types"],
+            selected=context["selected_relationship_type"],
+            empty_label="All relationship types",
+        ),
+        "GRAPH_STATUS": _graph_status(context),
+        "SEARCH_MATCHES": _graph_search_matches(context),
+        "GRAPH_SVG": _graph_svg(context),
+        "GRAPH_DETAILS": _graph_details(context),
+        "RELATIONSHIP_COUNTS": _count_rows(context["relationship_counts"]),
+        "SELECTED_ENTITY_INPUT": escape(selected.id, quote=True) if selected else "",
     }
     html = template
     for key, value in replacements.items():
@@ -335,6 +393,13 @@ def _limit_options(selected: int) -> str:
     return "\n".join(
         f'<option value="{limit}"{" selected" if limit == selected else ""}>{limit}</option>'
         for limit in [25, 50, 100]
+    )
+
+
+def _depth_options(selected: int) -> str:
+    return "\n".join(
+        f'<option value="{depth}"{" selected" if depth == selected else ""}>Depth {depth}</option>'
+        for depth in [1, 2]
     )
 
 
@@ -555,8 +620,179 @@ def _relationship_explorer_rows(rows: list[dict]) -> str:
     return "\n".join(cards)
 
 
+def _graph_status(context: dict) -> str:
+    selected = context["selected_entity"]
+    if selected:
+        return (
+            f'Focused on <strong>{escape(selected.name)}</strong>: '
+            f'{len(context["nodes"])} visible nodes and {len(context["edges"])} visible relationships.'
+        )
+    if context["query"]:
+        return f'{len(context["matches"])} ranked entities found for <strong>{escape(context["query"])}</strong>.'
+    return (
+        f'{context["total_entities"]} entities available and '
+        f'{context["total_relationships"]} relationships available. Search to render a focused graph.'
+    )
+
+
+def _graph_search_matches(context: dict) -> str:
+    if context["selected_entity"]:
+        return ""
+    if not context["query"]:
+        return """
+          <div class="empty">Search for a company, tool, model, MCP server, device, repository, task, or other entity to explore its connections.</div>
+        """
+    if not context["matches"]:
+        return '<div class="empty">No matching entities found. Try a broader search.</div>'
+    cards = []
+    for match in context["matches"]:
+        entity = match.entity
+        href = _url(
+            "/graph",
+            {
+                "q": context["query"],
+                "entity": entity.id,
+                "depth": context["depth"],
+                "type": context["selected_type"],
+                "relationship_type": context["selected_relationship_type"],
+            },
+        )
+        cards.append(
+            f"""
+            <article class="match-card">
+              <span class="type-badge">{escape(_humanize(str(entity.entity_type)))}</span>
+              <h3>{escape(entity.name)}</h3>
+              <p>{escape(entity.description or "No description available.")}</p>
+              <a href="{href}">Explore Graph</a>
+            </article>
+            """
+        )
+    return "\n".join(cards)
+
+
+def _graph_svg(context: dict) -> str:
+    nodes = context["nodes"]
+    if not nodes:
+        return '<div class="graph-empty">No graph selected yet.</div>'
+
+    selected = context["selected_entity"]
+    width = 920
+    height = 560
+    cx = width / 2
+    cy = height / 2
+    positions: dict[str, tuple[float, float]] = {}
+    if selected:
+        positions[selected.id] = (cx, cy)
+    neighbors = [node for node in nodes if not selected or node.id != selected.id]
+    for index, node in enumerate(neighbors):
+        angle = (2 * math.pi * index) / max(len(neighbors), 1)
+        radius = 190 if context["depth"] == 1 else 230
+        positions[node.id] = (cx + radius * math.cos(angle), cy + radius * math.sin(angle))
+
+    edge_lines = []
+    for edge in context["edges"]:
+        relationship = edge["relationship"]
+        source_pos = positions.get(relationship.source_id)
+        target_pos = positions.get(relationship.target_id)
+        if not source_pos or not target_pos:
+            continue
+        href = _url(
+            "/graph",
+            {
+                "entity": selected.id if selected else relationship.source_id,
+                "depth": context["depth"],
+                "type": context["selected_type"],
+                "relationship_type": context["selected_relationship_type"],
+                "edge": relationship.id,
+            },
+        )
+        edge_lines.append(
+            f"""
+            <a href="{href}">
+              <line x1="{source_pos[0]:.1f}" y1="{source_pos[1]:.1f}" x2="{target_pos[0]:.1f}" y2="{target_pos[1]:.1f}" class="edge" />
+              <title>{escape(_humanize(str(relationship.relationship_type)))} · Relationship Confidence {relationship.confidence:.2f}</title>
+            </a>
+            """
+        )
+
+    node_shapes = []
+    for node in nodes:
+        x, y = positions[node.id]
+        href = _url(
+            "/graph",
+            {
+                "entity": node.id,
+                "depth": context["depth"],
+                "type": context["selected_type"],
+                "relationship_type": context["selected_relationship_type"],
+            },
+        )
+        class_name = "node selected" if selected and node.id == selected.id else "node"
+        label = _truncate(node.name, 18)
+        node_shapes.append(
+            f"""
+            <a href="{href}">
+              <g class="{class_name}">
+                <circle cx="{x:.1f}" cy="{y:.1f}" r="34" />
+                <text x="{x:.1f}" y="{y + 4:.1f}" text-anchor="middle">{escape(label)}</text>
+                <title>{escape(node.name)} · {escape(_humanize(str(node.entity_type)))}</title>
+              </g>
+            </a>
+            """
+        )
+
+    return f"""
+      <svg viewBox="0 0 {width} {height}" role="img" aria-label="AI Orbit focused ecosystem graph">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#667085"></path>
+          </marker>
+        </defs>
+        {"".join(edge_lines)}
+        {"".join(node_shapes)}
+      </svg>
+    """
+
+
+def _graph_details(context: dict) -> str:
+    selected_edge = context["selected_edge"]
+    selected = context["selected_entity"]
+    if selected_edge:
+        relationship = selected_edge["relationship"]
+        source = selected_edge["source"]
+        target = selected_edge["target"]
+        return f"""
+          <h2>Selected Relationship</h2>
+          <p><strong>{escape(source.name if source else relationship.source_id)}</strong> -> <strong>{escape(target.name if target else relationship.target_id)}</strong></p>
+          <dl>
+            <div><dt>Type</dt><dd>{escape(_humanize(str(relationship.relationship_type)))}</dd></div>
+            <div><dt>Relationship Confidence</dt><dd>{relationship.confidence:.2f}</dd></div>
+            <div><dt>Evidence Records</dt><dd>{len(relationship.evidence)}</dd></div>
+          </dl>
+        """
+    if selected:
+        return f"""
+          <h2>Selected Entity</h2>
+          <p><strong>{escape(selected.name)}</strong></p>
+          <dl>
+            <div><dt>Type</dt><dd>{escape(_humanize(str(selected.entity_type)))}</dd></div>
+            <div><dt>Visible Relationships</dt><dd>{len(context["edges"])}</dd></div>
+          </dl>
+          <a class="button primary" href="/database/{escape(selected.id, quote=True)}">View Database Record</a>
+        """
+    return """
+      <h2>How To Explore</h2>
+      <p>Search for an entity, choose a ranked canonical result, then click nodes or edges to inspect the graph neighborhood.</p>
+      <a class="button" href="/stats">View Raw Statistics</a>
+    """
+
+
 def _humanize(value: str) -> str:
     return value.replace("_", " ").replace("-", " ").title()
+
+
+def _truncate(value: str, limit: int) -> str:
+    return value if len(value) <= limit else f"{value[: limit - 1]}..."
 
 
 def _format_value(value) -> str:

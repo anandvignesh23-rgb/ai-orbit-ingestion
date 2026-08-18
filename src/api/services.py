@@ -134,6 +134,7 @@ class DatasetService:
             "total_entities": self.entities_loaded,
             "total_relationships": self.relationships_loaded,
             "result_count": total_results,
+            "result_label": "Matching Results" if query or entity_type or category else "Entities Available",
             "displayed_count": len(paginated_rows),
             "total_pages": total_pages,
             "start_index": start + 1 if total_results else 0,
@@ -194,6 +195,57 @@ class DatasetService:
             "total_pages": total_pages,
             "start_index": start + 1 if total_results else 0,
             "end_index": min(start + limit, total_results),
+        }
+
+    def graph_page_context(
+        self,
+        *,
+        query: str | None = None,
+        entity_id: str | None = None,
+        depth: int = 1,
+        entity_type: str | None = None,
+        relationship_type: str | None = None,
+        edge_id: str | None = None,
+    ) -> dict:
+        stats = self.stats()
+        entity_types = sorted({str(entity.entity_type) for entity in self.index.entities})
+        relationship_types = sorted(stats["relationship_types"])
+        depth = 2 if depth == 2 else 1
+        selected = self.get_entity(entity_id) if entity_id else None
+        matches = []
+        if query and selected is None:
+            matches = self.index.search_entities(query, entity_type=entity_type, limit=8)
+
+        graph = _focused_graph(
+            self.index,
+            selected.id if selected else None,
+            depth=depth,
+            entity_type=entity_type,
+            relationship_type=relationship_type,
+        )
+        selected_edge = next(
+            (
+                row
+                for row in graph["edges"]
+                if row["relationship"].id == edge_id
+            ),
+            None,
+        )
+        return {
+            "query": query or "",
+            "selected_entity": selected,
+            "matches": matches,
+            "depth": depth,
+            "selected_type": entity_type or "",
+            "selected_relationship_type": relationship_type or "",
+            "selected_edge": selected_edge,
+            "entity_types": entity_types,
+            "relationship_types": relationship_types,
+            "total_entities": stats["entities"],
+            "total_relationships": stats["relationships"],
+            "relationship_counts": stats["relationship_types"],
+            "nodes": graph["nodes"],
+            "edges": graph["edges"],
         }
 
     def list_entities(
@@ -309,4 +361,61 @@ def _presentable_metadata(metadata: dict[str, Any]) -> dict[str, Any]:
         key: value
         for key, value in sorted(metadata.items())
         if value not in [None, "", [], {}]
+    }
+
+
+def _focused_graph(
+    index: DatasetIndex,
+    entity_id: str | None,
+    *,
+    depth: int,
+    entity_type: str | None,
+    relationship_type: str | None,
+) -> dict:
+    if entity_id is None:
+        return {"nodes": [], "edges": []}
+
+    visible_ids = {entity_id}
+    frontier = {entity_id}
+    for _ in range(depth):
+        next_frontier: set[str] = set()
+        for relationship in index.relationships:
+            if relationship_type and str(relationship.relationship_type) != relationship_type:
+                continue
+            if relationship.source_id in frontier:
+                next_frontier.add(relationship.target_id)
+            if relationship.target_id in frontier:
+                next_frontier.add(relationship.source_id)
+        visible_ids.update(next_frontier)
+        frontier = next_frontier
+
+    entities = [
+        index.entities_by_id[visible_id]
+        for visible_id in visible_ids
+        if visible_id in index.entities_by_id
+    ]
+    if entity_type:
+        entities = [
+            entity
+            for entity in entities
+            if entity.id == entity_id or str(entity.entity_type) == entity_type
+        ]
+    visible_ids = {entity.id for entity in entities}
+    edges = [
+        {
+            "relationship": relationship,
+            "source": index.entities_by_id.get(relationship.source_id),
+            "target": index.entities_by_id.get(relationship.target_id),
+        }
+        for relationship in index.relationships
+        if relationship.source_id in visible_ids
+        and relationship.target_id in visible_ids
+        and (not relationship_type or str(relationship.relationship_type) == relationship_type)
+    ]
+    return {
+        "nodes": sorted(
+            entities,
+            key=lambda entity: (0 if entity.id == entity_id else 1, str(entity.entity_type), entity.name),
+        ),
+        "edges": edges,
     }

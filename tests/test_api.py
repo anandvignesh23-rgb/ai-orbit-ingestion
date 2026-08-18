@@ -55,7 +55,9 @@ def test_root_serves_presentable_landing_page(tmp_path) -> None:
     assert "AI Orbit Data Ingestion Pipeline" in response.text
     assert '<a class="button primary" href="/docs">Explore API Docs</a>' in response.text
     assert '<a class="button" href="/database">View Database</a>' in response.text
+    assert '<a class="button" href="/graph">Explore Ecosystem Graph</a>' in response.text
     assert 'href="/database/relationships"' in response.text
+    assert '<a class="button" href="/stats">View Statistics</a>' not in response.text
     assert "Live Dataset Metrics" in response.text
     assert ">283</strong><span>Total Entities</span>" in response.text
     assert ">610</strong><span>Total Relationships</span>" in response.text
@@ -77,7 +79,7 @@ def test_database_page_browses_and_searches_dataset(tmp_path) -> None:
     assert "AI Orbit Database Explorer" in browse.text
     assert "Canonical Entities" in browse.text
     assert "Relationships" in browse.text
-    assert "Matching Results" in browse.text
+    assert "Entities Available" in browse.text
     assert "View Details" in browse.text
     assert "Raw JSON" in browse.text
 
@@ -110,6 +112,8 @@ def test_database_entity_detail_and_relationship_explorer_pages(tmp_path) -> Non
     assert "ChatGPT" in detail.text
     assert "Outgoing Relationships" in detail.text
     assert "Incoming Relationships" in detail.text
+    assert "Explore Relationships" in detail.text
+    assert f'href="/graph?entity={entity_id}"' in detail.text
     assert f'href="/entities/{entity_id}"' in detail.text
 
     assert invalid.status_code == 404
@@ -123,6 +127,49 @@ def test_database_entity_detail_and_relationship_explorer_pages(tmp_path) -> Non
     assert filtered_relationships.status_code == 200
     assert "Matching Relationships" in filtered_relationships.text
     assert "Develops" in filtered_relationships.text
+
+
+def test_graph_page_search_focus_filters_and_raw_stats_link(tmp_path) -> None:
+    client = make_client(tmp_path)
+
+    landing = client.get("/")
+    blank = client.get("/graph")
+    search = client.get("/graph", params={"q": "openai"})
+    match_id = client.get("/search", params={"q": "openai", "limit": 1}).json()[0]["id"]
+    focused = client.get("/graph", params={"entity": match_id})
+    depth_two = client.get("/graph", params={"entity": match_id, "depth": 2})
+    filtered = client.get(
+        "/graph",
+        params={"entity": match_id, "relationship_type": "develops", "type": "model"},
+    )
+
+    assert landing.status_code == 200
+    assert 'href="/graph"' in landing.text
+    assert "Explore Ecosystem Graph" in landing.text
+
+    assert blank.status_code == 200
+    assert blank.headers["content-type"].startswith("text/html")
+    assert "AI Orbit Ecosystem Graph" in blank.text
+    assert "283" in blank.text
+    assert "610" in blank.text
+    assert "View Raw Statistics" in blank.text
+
+    assert search.status_code == 200
+    assert "ranked entities found" in search.text
+    assert "Explore Graph" in search.text
+
+    assert focused.status_code == 200
+    assert "Visible Nodes" in focused.text
+    assert "Visible Edges" in focused.text
+    assert "View Database Record" in focused.text
+    assert "Relationship Confidence" in focused.text
+
+    assert depth_two.status_code == 200
+    assert "Depth 2" in depth_two.text
+
+    assert filtered.status_code == 200
+    assert "Develops" in filtered.text
+    assert "Model" in filtered.text
 
 
 def test_api_lists_and_fetches_entities(tmp_path) -> None:
