@@ -54,7 +54,8 @@ def test_root_serves_presentable_landing_page(tmp_path) -> None:
     assert response.headers["content-type"].startswith("text/html")
     assert "AI Orbit Data Ingestion Pipeline" in response.text
     assert '<a class="button primary" href="/docs">Explore API Docs</a>' in response.text
-    assert '<a class="button" href="/database">Search Database</a>' in response.text
+    assert '<a class="button" href="/database">View Database</a>' in response.text
+    assert 'href="/database/relationships"' in response.text
     assert "Live Dataset Metrics" in response.text
     assert ">283</strong><span>Total Entities</span>" in response.text
     assert ">610</strong><span>Total Relationships</span>" in response.text
@@ -69,15 +70,16 @@ def test_database_page_browses_and_searches_dataset(tmp_path) -> None:
     browse = client.get("/database")
     search = client.get("/database", params={"q": "chatgpt", "type": "tool"})
     filtered = client.get("/database", params={"category": "agents", "limit": 25})
+    paginated = client.get("/database", params={"page": 2})
 
     assert browse.status_code == 200
     assert browse.headers["content-type"].startswith("text/html")
-    assert "Search the AI Orbit Database" in browse.text
+    assert "AI Orbit Database Explorer" in browse.text
     assert "Canonical Entities" in browse.text
     assert "Relationships" in browse.text
-    assert "Displayed Results" in browse.text
-    assert "JSON" in browse.text
-    assert "Graph" in browse.text
+    assert "Matching Results" in browse.text
+    assert "View Details" in browse.text
+    assert "Raw JSON" in browse.text
 
     assert search.status_code == 200
     assert "ChatGPT" in search.text
@@ -86,6 +88,41 @@ def test_database_page_browses_and_searches_dataset(tmp_path) -> None:
 
     assert filtered.status_code == 200
     assert "Category: <strong>agents</strong>" in filtered.text
+    assert paginated.status_code == 200
+    assert "Page 2 of" in paginated.text
+
+
+def test_database_entity_detail_and_relationship_explorer_pages(tmp_path) -> None:
+    client = make_client(tmp_path)
+
+    search = client.get("/search", params={"q": "chatgpt", "type": "tool"}).json()
+    entity_id = search[0]["id"]
+    detail = client.get(f"/database/{entity_id}")
+    invalid = client.get("/database/not-found")
+    relationships = client.get("/database/relationships")
+    filtered_relationships = client.get(
+        "/database/relationships",
+        params={"relationship_type": "develops"},
+    )
+
+    assert detail.status_code == 200
+    assert detail.headers["content-type"].startswith("text/html")
+    assert "ChatGPT" in detail.text
+    assert "Outgoing Relationships" in detail.text
+    assert "Incoming Relationships" in detail.text
+    assert f'href="/entities/{entity_id}"' in detail.text
+
+    assert invalid.status_code == 404
+
+    assert relationships.status_code == 200
+    assert relationships.headers["content-type"].startswith("text/html")
+    assert "Relationship Explorer" in relationships.text
+    assert "Develops" in relationships.text
+    assert "View Raw API" in relationships.text
+
+    assert filtered_relationships.status_code == 200
+    assert "Matching Relationships" in filtered_relationships.text
+    assert "Develops" in filtered_relationships.text
 
 
 def test_api_lists_and_fetches_entities(tmp_path) -> None:

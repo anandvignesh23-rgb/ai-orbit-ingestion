@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from pydantic import BaseModel
+from rapidfuzz import fuzz
 
 from src.models import Entity, Relationship
 from src.normalization.names import normalize_name
@@ -439,28 +440,51 @@ def _match_score(entity: Entity, normalized_query: str) -> float:
         return 0.0
 
     normalized_name = normalize_name(entity.name, entity_type=str(entity.entity_type))
-    haystack = " ".join(
-        value
-        for value in [
-            normalized_name,
-            normalize_name(entity.description or ""),
-            normalize_name(" ".join(entity.categories)),
-            normalize_name(str(entity.metadata.get("provider", ""))),
-            normalize_name(str(entity.metadata.get("company", ""))),
-            normalize_name(str(entity.metadata.get("developer", ""))),
-        ]
-        if value
-    )
+    normalized_categories = {
+        normalize_name(category)
+        for category in entity.categories
+        if category
+    }
+    provider_values = [
+        str(entity.metadata.get(field, ""))
+        for field in ["provider", "company", "developer", "owner", "publisher"]
+        if entity.metadata.get(field)
+    ]
+    normalized_provider_text = normalize_name(" ".join(provider_values))
+    normalized_source_text = normalize_name(" ".join(source.name for source in entity.sources))
+    normalized_metadata_text = normalize_name(" ".join(_metadata_search_values(entity.metadata)))
+    normalized_description = normalize_name(entity.description or "")
+    fuzzy_name_score = fuzz.partial_ratio(normalized_query, normalized_name) / 100
 
-    if normalized_query == normalized_name:
-        return 1.0
-    if normalized_name.startswith(normalized_query):
-        return 0.92
-    if normalized_query in normalized_name:
-        return 0.84
-    if normalized_query in haystack:
-        return 0.65
-    return 0.0
+    scores = [
+        1.0 if normalized_query == normalized_name else 0.0,
+        0.92 if normalized_name.startswith(normalized_query) else 0.0,
+        0.84 if normalized_query in normalized_name else 0.0,
+        0.78 if normalized_query in normalized_categories else 0.0,
+        0.74 if normalized_provider_text and normalized_query == normalized_provider_text else 0.0,
+        0.68 if normalized_provider_text and normalized_query in normalized_provider_text else 0.0,
+        min(0.66, fuzzy_name_score)
+        if normalized_name and fuzzy_name_score >= 0.75
+        else 0.0,
+        0.58 if normalized_query in normalized_source_text else 0.0,
+        0.52 if normalized_query in normalized_description else 0.0,
+        0.48 if normalized_query in normalized_metadata_text else 0.0,
+    ]
+    return max(scores)
+
+
+def _metadata_search_values(metadata: dict[str, Any]) -> list[str]:
+    values: list[str] = []
+    for key, value in metadata.items():
+        if key.startswith("_"):
+            continue
+        if isinstance(value, list):
+            values.extend(str(item) for item in value)
+        elif isinstance(value, dict):
+            values.extend(_metadata_search_values(value))
+        elif value is not None:
+            values.append(str(value))
+    return values
 
 
 def _changed_entity(before: Entity, after: Entity) -> ChangedEntity | None:

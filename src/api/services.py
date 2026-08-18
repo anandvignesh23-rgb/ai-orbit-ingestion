@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from collections import Counter
 import json
+import math
 from pathlib import Path
+from typing import Any
 
 from src.models import Entity, Relationship
 from src.query import DatasetIndex, RelationshipView, load_dataset
@@ -74,17 +76,20 @@ class DatasetService:
         query: str | None = None,
         entity_type: str | None = None,
         category: str | None = None,
-        limit: int = 50,
+        page: int = 1,
+        limit: int = 24,
     ) -> dict:
         entity_types = sorted({str(entity.entity_type) for entity in self.index.entities})
         categories = sorted({category for entity in self.index.entities for category in entity.categories})
+        page = max(page, 1)
+        limit = min(max(limit, 1), 100)
 
         if query:
             matches = self.index.search_entities(
                 query,
                 entity_type=entity_type,
                 category=category,
-                limit=limit,
+                limit=len(self.index.entities),
             )
             rows = [
                 {
@@ -105,24 +110,90 @@ class DatasetService:
                         self.index.relationships_by_entity_id.get(entity.id, [])
                     ),
                 }
-                for entity in self.list_entities(
+                for entity in _filter_entities(
+                    self.index.entities,
                     entity_type=entity_type,
                     category=category,
-                    limit=limit,
                 )
             ]
+        total_results = len(rows)
+        total_pages = max(1, math.ceil(total_results / limit))
+        page = min(page, total_pages)
+        start = (page - 1) * limit
+        paginated_rows = rows[start : start + limit]
 
         return {
             "query": query or "",
             "selected_type": entity_type or "",
             "selected_category": category or "",
+            "page": page,
             "limit": limit,
             "entity_types": entity_types,
             "categories": categories,
-            "rows": rows,
+            "rows": paginated_rows,
             "total_entities": self.entities_loaded,
             "total_relationships": self.relationships_loaded,
-            "result_count": len(rows),
+            "result_count": total_results,
+            "displayed_count": len(paginated_rows),
+            "total_pages": total_pages,
+            "start_index": start + 1 if total_results else 0,
+            "end_index": min(start + limit, total_results),
+        }
+
+    def entity_detail_context(self, entity_id: str) -> dict | None:
+        entity = self.get_entity(entity_id)
+        if entity is None:
+            return None
+        views = self.index.get_relationship_views_for_entity(entity_id)
+        outgoing = [view for view in views if view.direction == "outgoing"]
+        incoming = [view for view in views if view.direction == "incoming"]
+        return {
+            "entity": entity,
+            "metadata": _presentable_metadata(entity.metadata),
+            "sources": entity.sources,
+            "outgoing": outgoing,
+            "incoming": incoming,
+            "relationship_count": len(views),
+        }
+
+    def relationship_explorer_context(
+        self,
+        *,
+        relationship_type: str | None = None,
+        page: int = 1,
+        limit: int = 24,
+    ) -> dict:
+        page = max(page, 1)
+        limit = min(max(limit, 1), 100)
+        relationship_counts = self.stats()["relationship_types"]
+        relationships = self.list_relationships(
+            relationship_type=relationship_type,
+            limit=len(self.index.relationships),
+        )
+        total_results = len(relationships)
+        total_pages = max(1, math.ceil(total_results / limit))
+        page = min(page, total_pages)
+        start = (page - 1) * limit
+        rows = [
+            {
+                "relationship": relationship,
+                "source": self.index.entities_by_id.get(relationship.source_id),
+                "target": self.index.entities_by_id.get(relationship.target_id),
+            }
+            for relationship in relationships[start : start + limit]
+        ]
+        return {
+            "selected_type": relationship_type or "",
+            "relationship_counts": relationship_counts,
+            "rows": rows,
+            "total_relationships": self.relationships_loaded,
+            "result_count": total_results,
+            "displayed_count": len(rows),
+            "page": page,
+            "limit": limit,
+            "total_pages": total_pages,
+            "start_index": start + 1 if total_results else 0,
+            "end_index": min(start + limit, total_results),
         }
 
     def list_entities(
@@ -217,3 +288,25 @@ def _top_categories(entities: list[Entity], *, limit: int) -> dict[str, int]:
         for category in entity.categories
     )
     return dict(counter.most_common(limit))
+
+
+def _filter_entities(
+    entities: list[Entity],
+    *,
+    entity_type: str | None,
+    category: str | None,
+) -> list[Entity]:
+    filtered = entities
+    if entity_type:
+        filtered = [entity for entity in filtered if str(entity.entity_type) == entity_type]
+    if category:
+        filtered = [entity for entity in filtered if category in entity.categories]
+    return sorted(filtered, key=lambda entity: (str(entity.entity_type), entity.name))
+
+
+def _presentable_metadata(metadata: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: value
+        for key, value in sorted(metadata.items())
+        if value not in [None, "", [], {}]
+    }

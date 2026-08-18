@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ENTITY_NAME}} · AI Orbit</title>
+    <style>
+      :root { --bg:#f6f8fb; --panel:#fff; --text:#121826; --muted:#667085; --line:#dde5f0; --primary:#2457d6; --primary-dark:#183b92; --shadow:0 14px 34px rgba(18,24,38,.08); }
+      * { box-sizing:border-box; }
+      body { margin:0; background:linear-gradient(180deg,#fff 0%,var(--bg) 42%,#fff 100%); color:var(--text); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.5; }
+      a { color:inherit; text-decoration:none; }
+      .shell { width:min(1120px,calc(100% - 32px)); margin:0 auto; }
+      .nav { border-bottom:1px solid var(--line); background:rgba(255,255,255,.92); }
+      .nav-inner { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+      .brand { display:grid; } .brand span,.muted { color:var(--muted); } .brand span { font-size:.82rem; }
+      .nav-links,.actions,.pills,.relationship-grid { display:flex; flex-wrap:wrap; gap:10px; }
+      .nav-links a,.button { min-height:38px; display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:8px; background:#fff; padding:0 14px; font-size:.9rem; font-weight:750; }
+      .hero { padding:52px 0 22px; }
+      .type-badge,.pill { display:inline-flex; border-radius:999px; font-size:.78rem; font-weight:750; }
+      .type-badge { border:1px solid rgba(36,87,214,.2); background:rgba(36,87,214,.08); color:var(--primary-dark); padding:6px 9px; }
+      .pill { border:1px solid var(--line); background:#fff; color:#344054; padding:5px 8px; }
+      h1 { margin:16px 0 10px; font-size:clamp(2rem,5vw,4rem); line-height:1; letter-spacing:0; }
+      .hero p { max-width:780px; margin:0; color:var(--muted); font-size:1.04rem; }
+      .grid { display:grid; grid-template-columns:1.1fr .9fr; gap:16px; margin:22px 0 48px; }
+      .card { border:1px solid var(--line); border-radius:8px; background:var(--panel); box-shadow:var(--shadow); padding:18px; }
+      .card h2 { margin:0 0 14px; font-size:1.25rem; }
+      dl { display:grid; gap:10px; margin:0; }
+      dl div { display:grid; grid-template-columns:150px 1fr; gap:12px; border-bottom:1px solid var(--line); padding:9px 0; }
+      dt { color:var(--muted); font-size:.78rem; font-weight:800; text-transform:uppercase; } dd { margin:0; }
+      ul { margin:0; padding-left:18px; }
+      .relationship-card { border:1px solid var(--line); border-radius:8px; background:#fbfcff; padding:12px; min-width:220px; display:grid; gap:4px; }
+      .relationship-card span { color:var(--muted); font-size:.78rem; font-weight:800; text-transform:uppercase; }
+      .relationship-card a { color:var(--primary); font-weight:850; }
+      .footer { border-top:1px solid var(--line); padding:26px 0 36px; color:var(--muted); }
+      @media (max-width:800px) { .grid { grid-template-columns:1fr; } dl div { grid-template-columns:1fr; } .nav-inner { align-items:flex-start; flex-direction:column; padding:14px 0; } }
+    </style>
+  </head>
+  <body>
+    <nav class="nav"><div class="shell nav-inner"><a class="brand" href="/database"><strong>AI Orbit</strong><span>Entity Detail</span></a><div class="nav-links"><a href="/database">Database</a><a href="/database/relationships">Relationships</a><a href="{{RAW_JSON_URL}}">View Raw JSON</a><a href="/docs">API Docs</a></div></div></nav>
+    <main class="shell">
+      <header class="hero">
+        <span class="type-badge">{{ENTITY_TYPE}}</span>
+        <h1>{{ENTITY_NAME}}</h1>
+        <p>{{DESCRIPTION}}</p>
+        <div class="actions" style="margin-top:18px;"><a class="button" href="{{RAW_JSON_URL}}">View Raw JSON</a><a class="button" href="/database">Back to Database</a></div>
+      </header>
+      <section class="grid">
+        <div class="card"><h2>Overview</h2><dl><div><dt>Official URL</dt><dd>{{OFFICIAL_URL}}</dd></div><div><dt>Provider</dt><dd>{{PROVIDER}}</dd></div><div><dt>Categories</dt><dd><div class="pills">{{CATEGORIES}}</div></dd></div><div><dt>Relationships</dt><dd>{{RELATIONSHIP_COUNT}}</dd></div></dl></div>
+        <div class="card"><h2>Sources</h2><ul>{{SOURCE_ROWS}}</ul></div>
+        <div class="card"><h2>Specialized Metadata</h2><dl>{{METADATA_ROWS}}</dl></div>
+        <div class="card"><h2>Outgoing Relationships</h2><div class="relationship-grid">{{OUTGOING_RELATIONSHIPS}}</div></div>
+        <div class="card"><h2>Incoming Relationships</h2><div class="relationship-grid">{{INCOMING_RELATIONSHIPS}}</div></div>
+      </section>
+    </main>
+    <footer class="footer"><div class="shell">AI Orbit Data Ingestion Pipeline</div></footer>
+  </body>
+</html>

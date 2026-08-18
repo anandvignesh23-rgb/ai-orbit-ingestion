@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from html import escape
 from pathlib import Path
+from urllib.parse import urlencode
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse
@@ -22,6 +23,8 @@ from src.models import Entity, Relationship
 
 TEMPLATE_PATH = Path(__file__).parent / "templates" / "index.html"
 DATABASE_TEMPLATE_PATH = Path(__file__).parent / "templates" / "database.html"
+ENTITY_DETAIL_TEMPLATE_PATH = Path(__file__).parent / "templates" / "entity_detail.html"
+RELATIONSHIPS_TEMPLATE_PATH = Path(__file__).parent / "templates" / "relationships.html"
 GITHUB_URL = "https://github.com/anandvignesh23-rgb/ai-orbit-ingestion"
 
 
@@ -62,17 +65,41 @@ def create_app(data_dir: str | Path = "data") -> FastAPI:
         q: str | None = Query(default=None),
         type: str | None = Query(default=None),
         category: str | None = Query(default=None),
-        limit: int = Query(default=50, ge=1, le=100),
+        page: int = Query(default=1, ge=1),
+        limit: int = Query(default=24, ge=1, le=100),
     ) -> HTMLResponse:
         html = _render_database_page(
             dataset_service.database_page_context(
                 query=q,
                 entity_type=type,
                 category=category,
+                page=page,
                 limit=limit,
             )
         )
         return HTMLResponse(content=html)
+
+    @app.get("/database/relationships", response_class=HTMLResponse)
+    def database_relationships(
+        relationship_type: str | None = Query(default=None),
+        page: int = Query(default=1, ge=1),
+        limit: int = Query(default=24, ge=1, le=100),
+    ) -> HTMLResponse:
+        html = _render_relationships_page(
+            dataset_service.relationship_explorer_context(
+                relationship_type=relationship_type,
+                page=page,
+                limit=limit,
+            )
+        )
+        return HTMLResponse(content=html)
+
+    @app.get("/database/{entity_id}", response_class=HTMLResponse)
+    def database_entity(entity_id: str) -> HTMLResponse:
+        context = dataset_service.entity_detail_context(entity_id)
+        if context is None:
+            raise HTTPException(status_code=404, detail="entity not found")
+        return HTMLResponse(content=_render_entity_detail_page(context))
 
     @app.get("/health", response_model=HealthResponse)
     def health() -> HealthResponse:
@@ -187,6 +214,7 @@ def _render_database_page(context: dict) -> str:
         "TOTAL_RELATIONSHIPS": str(context["total_relationships"]),
         "RESULT_COUNT": str(context["result_count"]),
         "QUERY": escape(context["query"], quote=True),
+        "PAGE": str(context["page"]),
         "TYPE_OPTIONS": _select_options(
             context["entity_types"],
             selected=context["selected_type"],
@@ -198,8 +226,68 @@ def _render_database_page(context: dict) -> str:
             empty_label="All categories",
         ),
         "LIMIT_OPTIONS": _limit_options(int(context["limit"])),
-        "DATABASE_ROWS": _database_rows(context["rows"]),
+        "TYPE_FILTERS": _type_filter_links(context),
+        "DATABASE_CARDS": _database_cards(context["rows"]),
         "ACTIVE_FILTERS": _active_filters(context),
+        "SHOWING_RANGE": _showing_range(context, noun="entities"),
+        "PAGINATION": _pagination(
+            path="/database",
+            page=context["page"],
+            total_pages=context["total_pages"],
+            params={
+                "q": context["query"],
+                "type": context["selected_type"],
+                "category": context["selected_category"],
+                "limit": context["limit"],
+            },
+        ),
+    }
+    html = template
+    for key, value in replacements.items():
+        html = html.replace(f"{{{{{key}}}}}", value)
+    return html
+
+
+def _render_entity_detail_page(context: dict) -> str:
+    entity = context["entity"]
+    template = ENTITY_DETAIL_TEMPLATE_PATH.read_text(encoding="utf-8")
+    replacements = {
+        "ENTITY_NAME": escape(entity.name),
+        "ENTITY_TYPE": escape(_humanize(str(entity.entity_type))),
+        "DESCRIPTION": escape(entity.description or "No description available."),
+        "OFFICIAL_URL": _official_url(entity),
+        "CATEGORIES": _entity_category_pills(entity.categories),
+        "PROVIDER": escape(_provider_name(entity) or "N/A"),
+        "RELATIONSHIP_COUNT": str(context["relationship_count"]),
+        "SOURCE_ROWS": _source_rows(context["sources"]),
+        "METADATA_ROWS": _metadata_rows(context["metadata"]),
+        "OUTGOING_RELATIONSHIPS": _relationship_view_cards(context["outgoing"]),
+        "INCOMING_RELATIONSHIPS": _relationship_view_cards(context["incoming"]),
+        "RAW_JSON_URL": f"/entities/{escape(entity.id, quote=True)}",
+    }
+    html = template
+    for key, value in replacements.items():
+        html = html.replace(f"{{{{{key}}}}}", value)
+    return html
+
+
+def _render_relationships_page(context: dict) -> str:
+    template = RELATIONSHIPS_TEMPLATE_PATH.read_text(encoding="utf-8")
+    replacements = {
+        "TOTAL_RELATIONSHIPS": str(context["total_relationships"]),
+        "RESULT_COUNT": str(context["result_count"]),
+        "RELATIONSHIP_FILTERS": _relationship_filter_links(context),
+        "RELATIONSHIP_ROWS": _relationship_explorer_rows(context["rows"]),
+        "SHOWING_RANGE": _showing_range(context, noun="relationships"),
+        "PAGINATION": _pagination(
+            path="/database/relationships",
+            page=context["page"],
+            total_pages=context["total_pages"],
+            params={
+                "relationship_type": context["selected_type"],
+                "limit": context["limit"],
+            },
+        ),
     }
     html = template
     for key, value in replacements.items():
@@ -250,55 +338,39 @@ def _limit_options(selected: int) -> str:
     )
 
 
-def _database_rows(rows: list[dict]) -> str:
+def _database_cards(rows: list[dict]) -> str:
     if not rows:
         return """
-          <tr>
-            <td colspan="6" class="empty">No matching records found. Try a broader query or remove filters.</td>
-          </tr>
+          <div class="empty">No matching entities found. Try a broader search or clear the current filters.</div>
         """
-    return "\n".join(_database_row(row) for row in rows)
+    return "\n".join(_database_card(row) for row in rows)
 
 
-def _database_row(row: dict) -> str:
+def _database_card(row: dict) -> str:
     entity = row["entity"]
     categories = entity.categories[:4]
-    category_html = " ".join(
-        f'<span class="pill">{escape(category)}</span>'
-        for category in categories
-    )
-    if not category_html:
-        category_html = '<span class="muted">None</span>'
+    category_html = _entity_category_pills(categories)
     score = row["score"]
-    score_label = f"{score:.2f}" if score is not None else "Browse"
+    score_html = f'<span class="score">score {score:.2f}</span>' if score is not None else ""
     description = entity.description or ""
-    if len(description) > 150:
-        description = f"{description[:147].rstrip()}..."
-    url = str(entity.url) if entity.url else ""
-    link_html = (
-        f'<a href="{escape(url, quote=True)}" target="_blank" rel="noreferrer">Source</a>'
-        if url
-        else '<span class="muted">N/A</span>'
-    )
     return f"""
-          <tr>
-            <td>
-              <strong>{escape(entity.name)}</strong>
-              <span class="entity-id">{escape(entity.id[:8])}</span>
-            </td>
-            <td><span class="type-badge">{escape(str(entity.entity_type).replace("_", " ").title())}</span></td>
-            <td>{escape(description) if description else '<span class="muted">No description</span>'}</td>
-            <td>{category_html}</td>
-            <td><strong>{row["relationship_count"]}</strong><span class="muted"> edges</span></td>
-            <td>
-              <div class="row-actions">
-                <span class="score">{escape(score_label)}</span>
-                <a href="/entities/{escape(entity.id, quote=True)}">JSON</a>
-                <a href="/entities/{escape(entity.id, quote=True)}/relationships">Graph</a>
-                {link_html}
-              </div>
-            </td>
-          </tr>
+          <article class="entity-card">
+            <div class="card-top">
+              <span class="type-badge">{escape(_humanize(str(entity.entity_type)))}</span>
+              {score_html}
+            </div>
+            <h2>{escape(entity.name)}</h2>
+            <p>{escape(description) if description else "No description available."}</p>
+            <div class="pills">{category_html}</div>
+            <dl>
+              <div><dt>Provider</dt><dd>{escape(_provider_name(entity) or "N/A")}</dd></div>
+              <div><dt>Relationships</dt><dd>{row["relationship_count"]}</dd></div>
+            </dl>
+            <div class="card-actions">
+              <a href="/database/{escape(entity.id, quote=True)}">View Details</a>
+              <a href="/entities/{escape(entity.id, quote=True)}">Raw JSON</a>
+            </div>
+          </article>
     """
 
 
@@ -313,6 +385,186 @@ def _active_filters(context: dict) -> str:
     if not filters:
         return "Showing the first records in the canonical dataset."
     return " · ".join(filters)
+
+
+def _type_filter_links(context: dict) -> str:
+    current = context["selected_type"]
+    links = [_filter_link("/database", "All", current == "", {"q": context["query"], "category": context["selected_category"], "limit": context["limit"]})]
+    for entity_type in context["entity_types"]:
+        links.append(
+            _filter_link(
+                "/database",
+                _humanize(entity_type),
+                current == entity_type,
+                {
+                    "q": context["query"],
+                    "type": entity_type,
+                    "category": context["selected_category"],
+                    "limit": context["limit"],
+                },
+            )
+        )
+    return "\n".join(links)
+
+
+def _relationship_filter_links(context: dict) -> str:
+    current = context["selected_type"]
+    links = [_filter_link("/database/relationships", f"All {context['total_relationships']}", current == "", {"limit": context["limit"]})]
+    for relationship_type, count in context["relationship_counts"].items():
+        links.append(
+            _filter_link(
+                "/database/relationships",
+                f"{_humanize(relationship_type)} {count}",
+                current == relationship_type,
+                {"relationship_type": relationship_type, "limit": context["limit"]},
+            )
+        )
+    return "\n".join(links)
+
+
+def _filter_link(path: str, label: str, active: bool, params: dict) -> str:
+    href = _url(path, params)
+    class_name = "filter active" if active else "filter"
+    return f'<a class="{class_name}" href="{href}">{escape(label)}</a>'
+
+
+def _pagination(path: str, *, page: int, total_pages: int, params: dict) -> str:
+    if total_pages <= 1:
+        return ""
+    previous_link = (
+        f'<a class="button" href="{_url(path, {**params, "page": page - 1})}">Previous</a>'
+        if page > 1
+        else '<span class="button disabled">Previous</span>'
+    )
+    next_link = (
+        f'<a class="button" href="{_url(path, {**params, "page": page + 1})}">Next</a>'
+        if page < total_pages
+        else '<span class="button disabled">Next</span>'
+    )
+    return f'<nav class="pagination">{previous_link}<span>Page {page} of {total_pages}</span>{next_link}</nav>'
+
+
+def _url(path: str, params: dict) -> str:
+    clean = {
+        key: value
+        for key, value in params.items()
+        if value not in [None, "", 0]
+    }
+    query = urlencode(clean)
+    return f"{path}?{query}" if query else path
+
+
+def _showing_range(context: dict, *, noun: str) -> str:
+    if context["result_count"] == 0:
+        return f"Showing 0 {noun}"
+    return (
+        f"Showing {context['start_index']}-{context['end_index']} "
+        f"of {context['result_count']} {noun}"
+    )
+
+
+def _entity_category_pills(categories: list[str]) -> str:
+    if not categories:
+        return '<span class="muted">None</span>'
+    return " ".join(f'<span class="pill">{escape(category)}</span>' for category in categories)
+
+
+def _provider_name(entity) -> str | None:
+    if entity.display and entity.display.provider_name:
+        return entity.display.provider_name
+    for field in ["provider", "company", "developer", "owner", "publisher"]:
+        value = entity.metadata.get(field)
+        if value:
+            return str(value)
+    return None
+
+
+def _official_url(entity) -> str:
+    if not entity.url:
+        return '<span class="muted">N/A</span>'
+    url = str(entity.url)
+    return f'<a href="{escape(url, quote=True)}" target="_blank" rel="noreferrer">{escape(url)}</a>'
+
+
+def _source_rows(sources: list) -> str:
+    if not sources:
+        return '<p class="muted">No sources recorded.</p>'
+    return "\n".join(
+        f'<li><a href="{escape(str(source.url), quote=True)}" target="_blank" rel="noreferrer">{escape(source.name)}</a></li>'
+        for source in sources
+    )
+
+
+def _metadata_rows(metadata: dict) -> str:
+    if not metadata:
+        return '<p class="muted">No specialized metadata recorded.</p>'
+    rows = []
+    for key, value in metadata.items():
+        rows.append(
+            f"<div><dt>{escape(_humanize(key))}</dt><dd>{escape(_format_value(value))}</dd></div>"
+        )
+    return "\n".join(rows)
+
+
+def _relationship_view_cards(views: list) -> str:
+    if not views:
+        return '<p class="muted">No relationships in this direction.</p>'
+    cards = []
+    for view in views:
+        related = view.related_entity
+        related_name = related.name if related else view.relationship.target_id
+        related_id = related.id if related else ""
+        href = f"/database/{escape(related_id, quote=True)}" if related_id else "#"
+        cards.append(
+            f"""
+            <article class="relationship-card">
+              <span>{escape(_humanize(view.effective_relationship_type))}</span>
+              <a href="{href}">{escape(related_name)}</a>
+              <small>confidence {view.relationship.confidence:.2f}</small>
+            </article>
+            """
+        )
+    return "\n".join(cards)
+
+
+def _relationship_explorer_rows(rows: list[dict]) -> str:
+    if not rows:
+        return '<div class="empty">No relationships match this filter.</div>'
+    cards = []
+    for row in rows:
+        relationship = row["relationship"]
+        source = row["source"]
+        target = row["target"]
+        source_name = source.name if source else relationship.source_id
+        target_name = target.name if target else relationship.target_id
+        source_href = f"/database/{escape(source.id, quote=True)}" if source else "#"
+        target_href = f"/database/{escape(target.id, quote=True)}" if target else "#"
+        cards.append(
+            f"""
+            <article class="edge-card">
+              <span class="type-badge">{escape(_humanize(str(relationship.relationship_type)))}</span>
+              <div class="edge-flow">
+                <a href="{source_href}">{escape(source_name)}</a>
+                <strong>-></strong>
+                <a href="{target_href}">{escape(target_name)}</a>
+              </div>
+              <small>confidence {relationship.confidence:.2f} · {len(relationship.evidence)} evidence records</small>
+            </article>
+            """
+        )
+    return "\n".join(cards)
+
+
+def _humanize(value: str) -> str:
+    return value.replace("_", " ").replace("-", " ").title()
+
+
+def _format_value(value) -> str:
+    if isinstance(value, list):
+        return ", ".join(str(item) for item in value)
+    if isinstance(value, dict):
+        return ", ".join(f"{key}: {item}" for key, item in value.items())
+    return str(value)
 
 
 app = create_app()
