@@ -35,11 +35,11 @@ def test_api_health_and_stats_load_generated_dataset_without_running_ingestion(t
     assert health.json() == {
         "status": "ok",
         "entities_loaded": 283,
-        "relationships_loaded": 171,
+        "relationships_loaded": 610,
     }
     assert stats.status_code == 200
     assert stats.json()["entities"] == 283
-    assert stats.json()["relationships"] == 171
+    assert stats.json()["relationships"] == 610
     assert stats.json()["entity_types"]["tool"] == 45
     assert stats.json()["validation_errors"] == 0
     assert stats.json()["average_relationships_per_entity"] > 0
@@ -56,7 +56,7 @@ def test_root_serves_presentable_landing_page(tmp_path) -> None:
     assert '<a class="button primary" href="/docs">Explore API Docs</a>' in response.text
     assert "Live Dataset Metrics" in response.text
     assert ">283</strong><span>Total Entities</span>" in response.text
-    assert ">171</strong><span>Total Relationships</span>" in response.text
+    assert ">610</strong><span>Total Relationships</span>" in response.text
     assert "Pipeline" in response.text
     assert "Data Sources" in response.text
     assert "Engineering Highlights" in response.text

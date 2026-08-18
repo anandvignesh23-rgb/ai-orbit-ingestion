@@ -16,7 +16,7 @@ def test_quality_gate_passes_pipeline_export_with_thresholds(tmp_path) -> None:
         tmp_path,
         QualityGateConfig(
             min_entities=283,
-            min_relationships=171,
+            min_relationships=610,
             max_critical_errors=0,
             max_possible_duplicates=30,
             max_orphan_ratio=0.5,
@@ -53,7 +53,7 @@ def test_quality_gate_cli_exits_zero_on_success(tmp_path) -> None:
             "--min-entities",
             "283",
             "--min-relationships",
-            "171",
+            "610",
             "--max-possible-duplicates",
             "30",
         ],

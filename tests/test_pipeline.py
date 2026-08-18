@@ -33,20 +33,20 @@ def test_pipeline_run_exports_valid_dataset(tmp_path) -> None:
     manifest = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))
 
     assert len(entities) == 283
-    assert len(relationships) == 171
+    assert len(relationships) == 610
     assert len(product_catalog) == 283
-    assert len(relationship_views) == 342
+    assert len(relationship_views) == 1220
     assert {"provider", "related_entity_ids", "search_text", "completeness_score"} <= set(product_catalog[0])
     assert {"view_id", "canonical_relationship_type", "direction", "derived"} <= set(relationship_views[0])
     assert report["summary"]["critical_errors"] == 0
-    assert report["relationship_metrics"]["total_relationships"] == 171
+    assert report["relationship_metrics"]["total_relationships"] == 610
     assert report["relationship_metrics"]["average_relationships_per_entity"] > 0
     assert report["product_quality_metrics"]["average_completeness_score"] > 0
     assert manifest["schema_version"] == "1.0"
     assert manifest["run_mode"] == "deterministic"
     assert manifest["success"] is True
     assert manifest["summary"]["canonical_entities"] == 283
-    assert manifest["summary"]["relationships"] == 171
+    assert manifest["summary"]["relationships"] == 610
     assert "entities.json" in manifest["files"]
     assert "product_catalog.json" in manifest["files"]
     assert "relationship_views.json" in manifest["files"]

@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-17T12:40:13.145505+00:00",
+  "generated_at": "2026-08-18T04:45:56.954433+00:00",
   "run_mode": "deterministic",
   "success": true,
   "summary": {
     "raw_records": 283,
     "canonical_entities": 283,
-    "relationships": 171,
+    "relationships": 610,
     "duplicates_merged": 0,
     "possible_duplicates": 27,
     "critical_errors": 0

@@ -313,7 +313,7 @@ Current generated dataset:
 
 ```text
 entities:       283
-relationships:  171
+relationships:  610
 errors:           0
 warnings:         0
 ```
@@ -344,8 +344,8 @@ python scripts/query_dataset.py --data-dir data analytics --limit 10
 python scripts/query_dataset.py --data-dir data export-csv --output-dir data/graph_csv
 python scripts/query_dataset.py export-schema --output-dir data/schema
 python scripts/query_dataset.py validate-contract --data-dir data
-python scripts/query_dataset.py quality-gate --data-dir data --min-entities 283 --min-relationships 171 --max-possible-duplicates 30
-python scripts/query_dataset.py release-bundle --data-dir data --output-dir releases --min-entities 283 --min-relationships 171 --max-possible-duplicates 30 --zip
+python scripts/query_dataset.py quality-gate --data-dir data --min-entities 283 --min-relationships 610 --max-possible-duplicates 30
+python scripts/query_dataset.py release-bundle --data-dir data --output-dir releases --min-entities 283 --min-relationships 610 --max-possible-duplicates 30 --zip
 python scripts/query_dataset.py verify-release-bundle --bundle-dir releases/ai-orbit-release-YYYYMMDDTHHMMSSZ
 python scripts/query_dataset.py verify-release-archive --archive-path releases/ai-orbit-release-YYYYMMDDTHHMMSSZ.zip
 python scripts/query_dataset.py --data-dir data search chatgpt --type tool

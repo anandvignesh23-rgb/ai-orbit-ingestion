@@ -10,6 +10,7 @@ def make_entity(
     name: str,
     *,
     url: str | None = None,
+    categories: list[str] | None = None,
     metadata: dict | None = None,
 ) -> Entity:
     return Entity(
@@ -17,6 +18,7 @@ def make_entity(
         entity_type=entity_type,
         name=name,
         url=url,
+        categories=categories or [],
         sources=[
             SourceReference(
                 name=f"{name} source",
@@ -210,13 +212,59 @@ def test_relationship_mapper_maps_explicit_collection_member_lists() -> None:
     assert relationships[0].target_id == collection.id
 
 
-def test_relationship_mapper_does_not_infer_collection_edges_from_categories() -> None:
-    collection = make_entity(EntityType.COLLECTION, "Developer Tools")
-    tool = make_entity(EntityType.TOOL, "ChatGPT", metadata={"provider": "OpenAI"})
+def test_relationship_mapper_maps_repository_owner_to_company() -> None:
+    company = make_entity(EntityType.COMPANY, "Hugging Face")
+    repository = make_entity(
+        EntityType.REPOSITORY,
+        "transformers",
+        metadata={"owner": "huggingface"},
+    )
 
-    relationships = RelationshipMapper().map_relationships([collection, tool])
+    relationships = RelationshipMapper().map_relationships([company, repository])
+    edges = by_edge(relationships)
 
-    assert relationships == []
+    assert (company.id, "develops", repository.id) in edges
+    assert edges[(company.id, "develops", repository.id)].confidence == 0.9
+
+
+def test_relationship_mapper_maps_repository_topics_to_tasks() -> None:
+    task = make_entity(
+        EntityType.TASK,
+        "Retrieval Augmented Generation",
+        metadata={"curated": True},
+    )
+    task.categories = ["rag"]
+    repository = make_entity(
+        EntityType.REPOSITORY,
+        "llama_index",
+        categories=["developer-tools", "open-source", "rag"],
+        metadata={"topics": ["rag"]},
+    )
+
+    relationships = RelationshipMapper().map_relationships([task, repository])
+    edges = by_edge(relationships)
+
+    assert (repository.id, "solves", task.id) in edges
+    assert edges[(repository.id, "solves", task.id)].confidence == 0.82
+
+
+def test_relationship_mapper_maps_category_collection_membership() -> None:
+    collection = make_entity(
+        EntityType.COLLECTION,
+        "RAG Systems Collection",
+    )
+    collection.categories = ["developer-tools", "open-source", "rag"]
+    repository = make_entity(
+        EntityType.REPOSITORY,
+        "langchain",
+        categories=["agents", "developer-tools", "open-source", "rag"],
+    )
+
+    relationships = RelationshipMapper().map_relationships([collection, repository])
+    edges = by_edge(relationships)
+
+    assert (repository.id, "part_of_collection", collection.id) in edges
+    assert edges[(repository.id, "part_of_collection", collection.id)].confidence == 0.8
 
 
 def test_relationship_mapper_returns_relationships_with_valid_references() -> None:

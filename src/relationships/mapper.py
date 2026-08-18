@@ -7,6 +7,19 @@ from src.relationships.rules import build_entity_index, metadata_name_values
 from src.utils.ids import generate_relationship_id
 from src.normalization.names import normalize_name
 
+OWNER_ALIASES = {
+    "anthropics": "Anthropic",
+    "github": "GitHub",
+    "googledeepmind": "Google DeepMind",
+    "huggingface": "Hugging Face",
+    "langchainai": "LangChain",
+    "meta": "Meta",
+    "microsoft": "Microsoft",
+    "openai": "OpenAI",
+}
+
+GENERIC_COLLECTION_CATEGORIES = {"developer-tools", "open-source", "research"}
+
 
 class RelationshipMapper:
     def map_relationships(self, entities: list[Entity]) -> list[Relationship]:
@@ -32,8 +45,14 @@ class RelationshipMapper:
                 self._map_mcp_integrations(entity, index, relationships)
             elif entity_type == EntityType.DEVICE:
                 self._map_device_runs_models(entity, index, relationships)
+            elif entity_type == EntityType.REPOSITORY:
+                self._map_repository_owner(entity, index, relationships)
+                self._map_entity_solves_tasks(entity, index, relationships)
+            if entity_type in {EntityType.TOOL, EntityType.MODEL, EntityType.MCP}:
+                self._map_entity_solves_tasks(entity, index, relationships)
             if entity_type != EntityType.COLLECTION:
                 self._map_entity_collections(entity, index, relationships)
+                self._map_category_collections(entity, index, relationships)
             else:
                 self._map_collection_members(entity, index, relationships)
 
@@ -76,6 +95,57 @@ class RelationshipMapper:
                 confidence=0.92,
                 note=f"{_metadata_label(field)} metadata links {tool.name} to {task.name}",
             )
+
+    def _map_entity_solves_tasks(
+        self,
+        entity: Entity,
+        index: dict[EntityType, dict[str, Entity]],
+        relationships: dict[str, Relationship],
+    ) -> None:
+        labels = _entity_labels(entity)
+        if not labels:
+            return
+
+        for task in index.get(EntityType.TASK, {}).values():
+            task_categories = set(task.categories)
+            if not task_categories or not task_categories.issubset(labels):
+                continue
+            self._add_relationship(
+                relationships,
+                source=entity,
+                relationship_type=RelationshipType.SOLVES,
+                target=task,
+                confidence=0.82,
+                note=f"Category and topic metadata links {entity.name} to {task.name}",
+            )
+
+    def _map_repository_owner(
+        self,
+        repository: Entity,
+        index: dict[EntityType, dict[str, Entity]],
+        relationships: dict[str, Relationship],
+    ) -> None:
+        for field, owner_name in metadata_name_values(
+            repository,
+            "owner",
+            "provider",
+            "company",
+            "developer",
+            "organization",
+        ):
+            for candidate_name in _owner_candidate_names(owner_name):
+                company = self._find_entity(index, EntityType.COMPANY, candidate_name)
+                if company is None:
+                    continue
+                self._add_relationship(
+                    relationships,
+                    source=company,
+                    relationship_type=RelationshipType.DEVELOPS,
+                    target=repository,
+                    confidence=0.9,
+                    note=f"{_metadata_label(field)} metadata links {company.name} to {repository.name}",
+                )
+                break
 
     def _map_mcp_integrations(
         self,
@@ -132,6 +202,31 @@ class RelationshipMapper:
                 target=collection,
                 confidence=0.88,
                 note=f"{_metadata_label(field)} metadata links {entity.name} to {collection.name}",
+            )
+
+    def _map_category_collections(
+        self,
+        entity: Entity,
+        index: dict[EntityType, dict[str, Entity]],
+        relationships: dict[str, Relationship],
+    ) -> None:
+        entity_categories = set(entity.categories)
+        if not entity_categories:
+            return
+
+        for collection in index.get(EntityType.COLLECTION, {}).values():
+            collection_categories = set(collection.categories)
+            if not collection_categories:
+                continue
+            if not _matches_collection(entity, collection, entity_categories):
+                continue
+            self._add_relationship(
+                relationships,
+                source=entity,
+                relationship_type=RelationshipType.PART_OF_COLLECTION,
+                target=collection,
+                confidence=0.8,
+                note=f"Category metadata links {entity.name} to {collection.name}",
             )
 
     def _map_collection_members(
@@ -277,3 +372,45 @@ def _evidence_key(evidence: Evidence) -> tuple[str, str, str | None]:
 
 def _metadata_label(field: str) -> str:
     return field.replace("_", " ").capitalize()
+
+
+def _entity_labels(entity: Entity) -> set[str]:
+    labels = {str(category).strip().lower() for category in entity.categories if str(category).strip()}
+    for _, value in metadata_name_values(entity, "topics", "topic", "categories"):
+        labels.add(value.strip().lower())
+    return labels
+
+
+def _owner_candidate_names(owner_name: str) -> list[str]:
+    normalized_owner = normalize_name(owner_name, entity_type=str(EntityType.COMPANY))
+    candidates = [owner_name]
+    alias = OWNER_ALIASES.get(normalized_owner)
+    if alias:
+        candidates.append(alias)
+    if "-" in owner_name:
+        candidates.append(owner_name.split("-", 1)[0])
+    return candidates
+
+
+def _matches_collection(
+    entity: Entity,
+    collection: Entity,
+    entity_categories: set[str],
+) -> bool:
+    collection_categories = set(collection.categories)
+    collection_key = normalize_name(collection.name)
+    entity_type = EntityType(str(entity.entity_type))
+
+    if "mcp" in collection_key:
+        return entity_type == EntityType.MCP or "mcp" in entity_categories
+    if "hardware" in collection_key:
+        return entity_type == EntityType.DEVICE or "hardware" in entity_categories
+    if "robotics" in collection_key:
+        return entity_type == EntityType.ROBOT or "robotics" in entity_categories
+    if "developertooling" in collection_key:
+        return "developer-tools" in entity_categories and "code-generation" in entity_categories
+
+    specific_categories = collection_categories - GENERIC_COLLECTION_CATEGORIES
+    if specific_categories:
+        return specific_categories.issubset(entity_categories)
+    return collection_categories.issubset(entity_categories)

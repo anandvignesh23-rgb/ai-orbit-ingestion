@@ -22,7 +22,7 @@ def test_build_release_bundle_packages_export_artifacts(tmp_path) -> None:
         bundle_name="test-release",
         quality_config=QualityGateConfig(
             min_entities=283,
-            min_relationships=171,
+            min_relationships=610,
             max_possible_duplicates=30,
         ),
     )
@@ -178,7 +178,7 @@ def test_release_bundle_cli_packages_dataset(tmp_path) -> None:
             "--min-entities",
             "283",
             "--min-relationships",
-            "171",
+            "610",
             "--max-possible-duplicates",
             "30",
         ],
