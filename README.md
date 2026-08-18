@@ -406,6 +406,9 @@ https://ai-orbit-ingestion.vercel.app
 Searchable Database:
 https://ai-orbit-ingestion.vercel.app/database
 
+Relationship Explorer:
+https://ai-orbit-ingestion.vercel.app/database/relationships
+
 API Documentation:
 https://ai-orbit-ingestion.vercel.app/docs
 
